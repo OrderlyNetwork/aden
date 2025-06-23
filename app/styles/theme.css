@@ -101,55 +101,15 @@ html {
   font-weight: 600;
 }
 
-header>:first-child button {
+header >:first-child button {
   font-weight: 500 !important;
   color: white;
 }
 
-.oui-order-book-list,
-.oui-tabular-nums {
+.oui-order-book-list,.oui-tabular-nums {
   font-weight: 500 !important;
 }
 
-body>div.oui-scaffold-root.oui-font-semibold.oui-text-base-contrast.oui-bg-base-10.oui-flex.oui-flex-col.oui-overflow-auto.oui-custom-scrollbar>div.oui-box.oui-scaffold-footer.oui-w-full.oui-bg-base-10.oui-fixed.oui-bottom-0.oui-z-50.oui-border-t-\[1px\].oui-border-line-12>div>div.oui-box.oui-flex.oui-flex-row.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-1 {
+.oui-scaffold-footer-powered-by {
   display: none;
-}
-
-/* These two are for the reward tab text on top right */
-body>div.oui-scaffold-root.oui-font-semibold.oui-text-base-contrast.oui-bg-base-10.oui-flex.oui-flex-col.oui-overflow-auto.oui-custom-scrollbar>div.oui-box.oui-scaffold-topNavbar.oui-bg-base-9>header>div:nth-child(2)>div:nth-child(1)>div>button>span>span.oui-bg-clip-text.oui-text-inherit.oui-whitespace-nowrap.oui-break-normal,
-body>div.oui-scaffold-root.oui-font-semibold.oui-text-base-contrast.oui-bg-base-10.oui-flex.oui-flex-col.oui-overflow-auto.oui-custom-scrollbar>div.oui-box.oui-scaffold-topNavbar.oui-bg-base-9>header>div:nth-child(2)>div:nth-child(1)>div>button>span>span.oui-ml-1.group-data-\[open\=true\]\:oui-rotate-180>svg {
-  color: black;
-}
-
-
-/* This is for the reward summary, total commision number*/
-#oui-affiliate-affiliate-summary>div.oui-box.oui-px-6.oui-py-4.oui-rounded-xl.oui-gradient-primary.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-3.oui-max-h-\[104px\] {
-  color: black
-}
-
-/* This is for the reward summary, total commision text*/
-#oui-affiliate-affiliate-summary>div.oui-box.oui-px-6.oui-py-4.oui-rounded-xl.oui-gradient-primary.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-3.oui-max-h-\[104px\]>span {
-  color: #404144;
-}
-
-/* This prevents logo from auto scaling and shrinking */
-body>div.oui-scaffold-root.oui-font-semibold.oui-text-base-contrast.oui-bg-base-10.oui-flex.oui-flex-col.oui-overflow-auto.oui-custom-scrollbar>div.oui-box.oui-scaffold-topNavbar.oui-bg-base-9>header>div.oui-box.oui-flex.oui-flex-row.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-3.\32 xl\:oui-gap-4.oui-overflow-hidden>a>img {
-  max-width: none;
-}
-
-/* Hides top right rewards button when screen width is shrinked to a certain threshold so it doesn't block the tabs*/
-@media (max-width: 980px) {
-  body>div.oui-scaffold-root.oui-font-semibold.oui-text-base-contrast.oui-bg-base-10.oui-flex.oui-flex-col.oui-overflow-auto.oui-custom-scrollbar>div.oui-box.oui-scaffold-topNavbar.oui-bg-base-9>header>div:nth-child(2)>div:nth-child(1) {
-    display: none;
-  }
-}
-
-/* Hide language switcher-icon */
-#language-switcher-icon {
-  display: none !important;
-}
-
-/* Hide the Orderly epoch reward card from mobile portfolio page */
-body>div.oui-box.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-h-full-screen.oui-bg-base-10>div>div.oui-box.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-5.oui-px-3>div:nth-child(3)>div:nth-child(2) {
-  display: none
 }
