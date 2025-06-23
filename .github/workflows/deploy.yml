@@ -70,12 +70,6 @@ jobs:
           VITE_PUBLIC_PATH: /
           VITE_BASE_URL: ""
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          token: ${{ secrets.TEMPLATE_PAT }}
-          enablement: true
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
