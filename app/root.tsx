@@ -26,43 +26,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [lang, setLang] = useState(getInitialLang());
 
   useEffect(() => {
-
-
     setStorageChain(defaultChainId);
-
-    // Appending language button in header
-    const desktopDivSelector = "body > div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto > div.oui-box.oui-scaffold-topNavbar.oui-bg-base-9 > header > div.oui-box.oui-flex.oui-flex-row.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-2";
-    const mobileDivSelector = "body > div.oui-scaffold-root.oui-w-full.oui-overflow-hidden.oui-bg-base-10 > header > div > div.oui-box.oui-flex.oui-flex-row.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-x-2";
-
-
-    function insertLocaleButton() {
-      const targetDiv = document.querySelector(desktopDivSelector) || document.querySelector(mobileDivSelector);
-      if (targetDiv && !document.getElementById("changeLocaleButtonDiv")) {
-        const newElem = document.createElement("div");
-        newElem.style.cursor = "pointer";
-        newElem.id = "changeLocaleButtonDiv";
-        newElem.textContent = (lang === "en" ? "한국어" : "English");
-        newElem.onclick = () => {
-          const nextLang = lang === "en" ? "ko" : "en";
-          localStorage.setItem("lang", nextLang);
-          window.location.reload();
-        };
-        targetDiv.insertBefore(newElem, targetDiv.firstChild);
-      }
-    }
-
-    // Initial insert
-    function tryFind() {
-      const targetDiv = document.querySelector(desktopDivSelector) || document.querySelector(mobileDivSelector);
-      if (targetDiv) {
-        insertLocaleButton();
-      } else {
-        setTimeout(tryFind, 500);
-      }
-    }
-    tryFind();
-
-    window.addEventListener("resize", insertLocaleButton);
 
     // set the language
     const savedLang = localStorage.getItem("lang");
@@ -76,11 +40,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       setLang("en");
       i18n.changeLanguage("en");
     }
-
-    // Cleanup
-    return () => {
-      window.removeEventListener("resize", insertLocaleButton);
-    };
   }, []);
 
   return (

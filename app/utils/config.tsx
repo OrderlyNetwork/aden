@@ -3,9 +3,9 @@ import { useTranslation } from "@orderly.network/i18n";
 import { TradingPageProps } from "@orderly.network/trading";
 import { BottomNavProps, FooterProps, MainNavWidgetProps } from "@orderly.network/ui-scaffold";
 import { AppLogos } from "@orderly.network/react-app";
-import { OrderlyActiveIcon, OrderlyIcon } from "../components/icons/orderly";
 import { withBasePath } from "./base-path";
-import { PortfolioActiveIcon, PortfolioInactiveIcon, TradingActiveIcon, TradingInactiveIcon, LeaderboardActiveIcon, LeaderboardInactiveIcon } from "@orderly.network/ui";
+import { PortfolioActiveIcon, PortfolioInactiveIcon, TradingActiveIcon, TradingInactiveIcon, LeaderboardActiveIcon, LeaderboardInactiveIcon, useScreen } from "@orderly.network/ui";
+import LanguageToggle from "@/components/LanguageToggle";
 
 interface MainNavItem {
   name: string;
@@ -178,6 +178,7 @@ const getColorConfig = (): ColorConfigInterface | undefined => {
 
 export const useOrderlyConfig = () => {
   const { t } = useTranslation();
+  const { isMobile } = useScreen();
 
   return useMemo<OrderlyConfig>(() => {
     const enabledMenus = getEnabledMenus();
@@ -230,6 +231,20 @@ export const useOrderlyConfig = () => {
               //   target: "_blank",
               // },
             ],
+          },
+          customRender: (components) => {
+            return isMobile ? (
+              <>
+                {components.title}
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <LanguageToggle />
+                  {components.scanQRCode}
+                  {components.subAccount}
+                  {components.linkDevice}
+                  {components.chainMenu}
+                </div>
+              </>
+            ) : undefined;
           },
         },
         bottomNavProps: {
