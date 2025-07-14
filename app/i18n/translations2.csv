@@ -1,0 +1,57 @@
+Key,Korean (KO),English (EN)
+"userInfo.guest","회원가입","Guest"
+"userInfo.loginPrompt","구글, 네이버 로그인으로 가입해 주세요.","Please sign up using Google or Naver login."
+"userInfo.usdt","USDT","USDT"
+"userInfo.bugs","벅스","eBUGS"
+"userInfo.profit","순손익","Profit"
+"userInfo.item","아이템","ITEM"
+"userInfo.mypage","마이페이지","Mypage"
+"userInfo.level","내계급","Level"
+"userInfo.maxLevel","최고계급","Max"
+"userInfo.more","더보기","More"
+"userInfo.usdtTransactions","USDT 내역","USDT Transactions"
+"userInfo.membershipBonus","회원가입 보너스","Membership Bonus"
+"userInfo.bugsTransactions","벅스 내역","BUGS Transactions"
+"userInfo.liquidationExample","선물청산 - BTCUSDT 매도 (32,778,745) - 벅스 획득 +15","Liquidation - BTCUSDT Short (32,778,745) - Bugs +15"
+"userInfo.noData","내역이 없습니다.","There are no data."
+"userInfo.useItem","아이템 사용","Use Item"
+"userInfo.leverage100x","레버리지 100x","Leverage 100x"
+"userInfo.leverage100xDesc","레버리지를 x100까지 사용합니다.","Use leverage up to 100x"
+"userInfo.useItemNow","지금 사용하기","Use Item Now"
+"userInfo.owned","보유","Owned"
+"userInfo.usdtRecharge","USDT 재충전","USDT Recharge"
+"userInfo.usdtRechargeDesc","USDT를 기본 금액으로 충전하고 초기화 합니다.","Recharge your USDT balance for futures trading"
+"userInfo.positionSpy","포지션 훔쳐보기","Position Spy"
+"userInfo.positionSpyDesc","다른 회원의 포지션을 훔쳐 봅니다.","View other traders' positions"
+"chat.onlineUsers","온라인 접속자","Online Users"
+"chat.findUser","회원 검색","Find User"
+"chat.liquidatedPosition","님이 비트코인 매도 포지션","liquidated Ethereum short position of"
+"chat.liquidateAmount","원 청산하여","KRW, Acquire"
+"chat.acquireBugs","벅스를 획득 하였습니다.","BUGS"
+"chat.liquidatedLongPosition","님이 비트코인 매수 포지션","liquidated Ethereum long position of"
+"chat.liquidated","원 청산 하였습니다.","liquidated"
+"alert.loginRequired","로그인 후 이용 가능합니다.","Available after logging in."
+"guide.anttalkTitle","개미톡은 Bugscoin 프로젝트의 생태계를 구성하는 핵심 플랫폼입니다.","ANTTALK is a core platform that forms the ecosystem of the Bugscoin project."
+"guide.anttalkDesc","개미톡은 암호화폐에 관심 있는 사람들이 정보를 공유하고 소통하는 커뮤니티 플랫폼이자, 거래 플랫폼을 사용하여 수수료를 환급받을 수 있는 코인 선물 모의 투자 플랫폼입니다.","ANTTALK is a community platform where people interested in cryptocurrencies gather to share information and communicate with each other, and a simulation trading site where they can receive a fee back from using the trading platform."
+"guide.communityPlatform","커뮤니티 플랫폼","Community Platform"
+"guide.communityPlatformDesc","암호화폐와 관련된 토론, 정보 공유, 네트워킹이 이루어지는 공간입니다.","A space where discussions, information sharing, and networking related to cryptocurrencies are conducted."
+"guide.demoTrading","모의 선물투자","Demo Trading"
+"guide.demoTradingDesc","누구나 로그인만 하면 암호화폐 모의 거래에 수수료 없이 참여할 수 있습니다.","Anyone can participate in the monthly cryptocurrency simulation trading without any fees by simply logging in."
+"guide.miningReward","벅스코인 채굴 보상","Bugscoin Mining Reward"
+"guide.miningRewardDesc","모의 거래에 참여함으로써 일정량의 벅스코인을 보상으로 채굴할 수 있습니다.","By participating in Demo Trading, you can mine a certain amount of Bugscoin as a reward."
+"guide.bgscSwap","벅스코인 스왑","BGSC Swap"
+"guide.bgscSwapDesc","모의 거래를 통해 얻은 벅스코인을 거래소로 스왑할 수 있습니다.","You can swap the BGSC obtained through Demo Trading to an exchange."
+"demoGuide.googleSignup","구글 회원가입","Google Signup"
+"demoGuide.googleSignupDesc","구글 계정으로 회원가입을 완료하면 100,000 USDT의 가상 자금을 받게 됩니다.","After completing the signup with your Google account, you will receive 100,000 USDT in virtual funds."
+"demoGuide.naverEndingSoon","* 네이버 계정은 종료 예정입니다.","* Naver account is scheduled to be discontinued."
+"demoGuide.crossIsolated","크로스 / 격리 투자","Cross / Isolated Investment"
+"demoGuide.crossIsolatedDesc","격리 또는 크로스를 선택하여 거래할 수 있습니다.","You can trade by selecting Isolated or Cross."
+board.community,커뮤니티,Community
+board.title,제목,Title
+board.author,작성자,Author
+board.searchTitle,제목,Title
+board.searchAuthor,작성자,Author
+board.write,글쓰기,Write
+board.search,검색,Search
+board.searchPlaceholder,검색어 입력,Enter search text
+board.comments,댓글,Comments 

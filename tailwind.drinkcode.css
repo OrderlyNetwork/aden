@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  @apply dc-bg-white dc-bg-gray-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
+
+@keyframes slash-animation {
+  0% {
+    left: -20px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+.slash-effect::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  height: 140%;
+  width: calc(100% + 25px);
+  background-image: url('/images/slash.webp');
+  background-size: auto 140%;
+  background-repeat: repeat-x;
+  z-index: 1;
+  animation: slash-animation 1s linear 0s infinite;
+  will-change: left;
+}
+
+/* slider 트랙 색상 변경 */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #E1E1E1 0%, #E1E1E1 100%, #4B5563 100%, #4B5563 100%);
+  height: 2px;
+  border-radius: 50%;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(to right, #E1E1E1 0%, #E1E1E1 100%, #4B5563 100%, #4B5563 100%);
+  background-color: #000;
+  border-radius: 50%;
+}
+
+
+.slider::-moz-range-thumb {
+  background-color: #E1E1E1;
+  border: 10px solid #E1E1E1;
+}
+
+.slider::-ms-track {
+  background: linear-gradient(to right, #E1E1E1 0%, #E1E1E1 100%, #4B5563 100%, #4B5563 100%);
+  height: 2px;
+}
+
+/* 게시판 글쓰기 */
+.box_drop_shadow {
+  filter: drop-shadow(0px 0px 3px #303030);
+}
+
+.ck-powered-by {
+  display: none;
+}
+
+.ck-editor__editable_inline p
+{
+/* font-size: 25px !important; */
+}
+/* 
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-fade-in-out {
+  animation: fadeInOut 10s infinite;
+}
+
+.animate-fade-in-out-delayed {
+  animation: fadeInOut 10s infinite;
+  animation-delay: 5s;
+} 
+
+
+
+ */

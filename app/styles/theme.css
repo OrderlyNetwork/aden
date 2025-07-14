@@ -105,6 +105,11 @@ html {
 header>:first-child button {
   font-weight: 500 !important;
   color: white;
+
+  span {
+    font-weight: 500 !important;
+    color: white;
+  }
 }
 
 .oui-order-book-list,

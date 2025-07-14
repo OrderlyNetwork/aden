@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 배경 -->
+  <defs>
+    <linearGradient id="bronzeBgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1A1A" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+    <linearGradient id="bronzeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8C09B" />
+      <stop offset="25%" stop-color="#D7995C" />
+      <stop offset="50%" stop-color="#CD7F32" />
+      <stop offset="75%" stop-color="#B87333" />
+      <stop offset="100%" stop-color="#A46628" />
+    </linearGradient>
+    <radialGradient id="bronzeGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#FFF8E1" stop-opacity="0.8" />
+      <stop offset="80%" stop-color="#CD7F32" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#CD7F32" stop-opacity="0" />
+    </radialGradient>
+    <filter id="bronzeShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" />
+      <feOffset dx="0" dy="0" result="offsetblur" />
+      <feFlood flood-color="#CD7F32" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 기본 배경 -->
+  <circle cx="100" cy="100" r="100" fill="url(#bronzeBgGradient)" />
+  
+  <!-- 원형 테두리와 반짝이는 효과 -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="url(#bronzeGradient)" stroke-width="8" stroke-dasharray="4,4" />
+  <circle cx="100" cy="100" r="98" fill="none" stroke="#CD7F32" stroke-width="1" opacity="0.5">
+    <animate attributeName="r" values="98;97;98" dur="2.5s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2.5s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- 화려한 메달 -->
+  <g transform="translate(100,85)">
+    <circle cx="0" cy="0" r="40" fill="url(#bronzeGradient)" stroke="#A46628" stroke-width="2" filter="url(#bronzeShadow)" />
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#FFF8E1" stroke-width="1" stroke-dasharray="5,5" opacity="0.7">
+      <animate attributeName="stroke-dashoffset" values="0;50" dur="10s" repeatCount="indefinite" />
+    </circle>
+    <text x="0" y="12" font-family="Arial" font-size="32" font-weight="bold" fill="#FFF8E1" text-anchor="middle" filter="url(#bronzeShadow)">3</text>
+  </g>
+  
+  <!-- 메달 리본 -->
+  <path d="M70,120 L65,150 L100,140 L135,150 L130,120" 
+        fill="url(#bronzeGradient)" 
+        stroke="#A46628" 
+        stroke-width="1"
+        filter="url(#bronzeShadow)">
+    <animate attributeName="d" 
+             values="M70,120 L65,150 L100,140 L135,150 L130,120;
+                     M70,120 L65,160 L100,145 L135,160 L130,120;
+                     M70,120 L65,150 L100,140 L135,150 L130,120" 
+             dur="3s" 
+             repeatCount="indefinite" />
+  </path>
+  
+  <!-- 빛나는 배경 효과 -->
+  <circle cx="100" cy="100" r="65" fill="url(#bronzeGlow)" />
+  
+  <!-- 3등 텍스트 -->
+  <g transform="translate(100,155) scale(1.2)">
+    <text x="0" y="0" font-family="Arial" font-size="20" font-weight="bold" fill="url(#bronzeGradient)" text-anchor="middle" filter="url(#bronzeShadow)">TOP 3</text>
+  </g>
+  
+  <!-- 장식 요소 -->
+  <g transform="translate(50,50)">
+    <circle cx="0" cy="0" r="10" fill="url(#bronzeGradient)" filter="url(#bronzeShadow)">
+      <animate attributeName="r" values="10;8;10" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <g transform="translate(150,50)">
+    <circle cx="0" cy="0" r="10" fill="url(#bronzeGradient)" filter="url(#bronzeShadow)">
+      <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <g transform="translate(50,150)">
+    <circle cx="0" cy="0" r="10" fill="url(#bronzeGradient)" filter="url(#bronzeShadow)">
+      <animate attributeName="r" values="9;7;9" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.8;0.6;0.8" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <g transform="translate(150,150)">
+    <circle cx="0" cy="0" r="10" fill="url(#bronzeGradient)" filter="url(#bronzeShadow)">
+      <animate attributeName="r" values="7;9;7" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.6;0.8;0.6" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- 반짝이는 효과 -->
+  <g>
+    <circle cx="70" cy="70" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0s" />
+    </circle>
+    <circle cx="130" cy="70" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.3s" />
+    </circle>
+    <circle cx="80" cy="130" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.6s" />
+    </circle>
+    <circle cx="120" cy="130" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.9s" />
+    </circle>
+    <circle cx="100" cy="60" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.2s" />
+    </circle>
+    <circle cx="100" cy="170" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.5s" />
+    </circle>
+  </g>
+</svg> 

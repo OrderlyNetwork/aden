@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 배경 -->
+  <defs>
+    <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5F5F5" />
+      <stop offset="50%" stop-color="#C0C0C0" />
+      <stop offset="100%" stop-color="#A9A9A9" />
+    </linearGradient>
+    <radialGradient id="faceGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#E0E0E0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- 기본 원형 -->
+  <circle cx="100" cy="100" r="95" fill="url(#silverGradient)" />
+  
+  <!-- 얼굴 -->
+  <circle cx="100" cy="110" r="60" fill="url(#faceGlow)" />
+  
+  <!-- 은색 별 무늬 -->
+  <path d="M100,40 L110,65 L135,65 L115,80 L125,105 L100,90 L75,105 L85,80 L65,65 L90,65 Z" 
+        fill="#C0C0C0" stroke="#A9A9A9" stroke-width="2" />
+  
+  <!-- 눈 -->
+  <circle cx="80" cy="110" r="5" fill="#000" />
+  <circle cx="120" cy="110" r="5" fill="#000" />
+  
+  <!-- 웃는 입 -->
+  <path d="M75,130 Q100,145 125,130" fill="none" stroke="#000" stroke-width="3" />
+  
+  <!-- 반짝임 효과 -->
+  <circle cx="110" cy="60" r="3" fill="#FFFFFF" />
+  <circle cx="90" cy="60" r="3" fill="#FFFFFF" />
+  <circle cx="100" cy="80" r="2" fill="#FFFFFF" />
+  <circle cx="65" cy="70" r="2" fill="#FFFFFF" />
+  <circle cx="135" cy="70" r="2" fill="#FFFFFF" />
+</svg> 

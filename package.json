@@ -11,6 +11,7 @@
     "build": "remix vite:build",
     "build:spa": "tsx build.ts",
     "dev": "remix vite:dev",
+    "dev:dctailwind": "npx tailwindcss -c ./tailwind.drinkcode.config.js -i ./tailwind.drinkcode.css -o ./app/styles/drinkcode.css --watch",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "remix-serve ./build/server/index.js",
     "typecheck": "tsc"
@@ -40,8 +41,10 @@
     "@tanstack/query-core": "^5.79.0",
     "@web3-onboard/walletconnect": "^2.6.2",
     "isbot": "^4.1.0",
+    "lucide-react": "^0.523.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
     "wagmi": "^2.15.4"
   },
   "devDependencies": {
@@ -66,5 +69,6 @@
     "vite-plugin-cjs-interop": "^2.2.0",
     "vite-plugin-node-polyfills": "0.23.0",
     "vite-tsconfig-paths": "^5.1.4"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

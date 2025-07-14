@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 배경 -->
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700" />
+      <stop offset="50%" stop-color="#FFC107" />
+      <stop offset="100%" stop-color="#FF8C00" />
+    </linearGradient>
+    <radialGradient id="faceGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#FFFDE7" />
+      <stop offset="100%" stop-color="#FFC107" />
+    </radialGradient>
+  </defs>
+  
+  <!-- 기본 원형 -->
+  <circle cx="100" cy="100" r="95" fill="url(#goldGradient)" />
+  
+  <!-- 얼굴 -->
+  <circle cx="100" cy="110" r="60" fill="url(#faceGlow)" />
+  
+  <!-- 왕관 -->
+  <path d="M45,70 L70,90 L100,55 L130,90 L155,70 L140,105 L60,105 Z" fill="#FFD700" stroke="#FF8C00" stroke-width="2" />
+  
+  <!-- 보석 -->
+  <circle cx="70" cy="85" r="5" fill="#FF0000" />
+  <circle cx="100" cy="70" r="7" fill="#3F51B5" />
+  <circle cx="130" cy="85" r="5" fill="#4CAF50" />
+  
+  <!-- 눈 -->
+  <circle cx="80" cy="110" r="5" fill="#000" />
+  <circle cx="120" cy="110" r="5" fill="#000" />
+  
+  <!-- 웃는 입 -->
+  <path d="M75,130 Q100,150 125,130" fill="none" stroke="#000" stroke-width="3" />
+  
+  <!-- 반짝임 효과 -->
+  <circle cx="60" cy="65" r="3" fill="#FFFFFF" />
+  <circle cx="140" cy="65" r="3" fill="#FFFFFF" />
+  <circle cx="70" cy="55" r="2" fill="#FFFFFF" />
+  <circle cx="130" cy="55" r="2" fill="#FFFFFF" />
+  <circle cx="100" cy="50" r="2" fill="#FFFFFF" />
+</svg> 

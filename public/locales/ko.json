@@ -1,7 +1,11 @@
 {
+  "portfolio.overview.transferHistory": "전송 내역",
+  "common.demo_trading": "모의투자",
   "common.withdrawals": "출금",
   "common.deposits": "입금",
-  "portfolio.overview.transferHistory": "전송 내역",
+  "common.community": "커뮤니티",
+  "common.ranking": "랭킹",
+  "common.hall_of_fame": "명예의 전당",
   "common.cancel": "취소",
   "common.confirm": "확인",
   "common.ok": "확인",

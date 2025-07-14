@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 배경 -->
+  <defs>
+    <linearGradient id="bronzeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CD7F32" />
+      <stop offset="50%" stop-color="#B87333" />
+      <stop offset="100%" stop-color="#A46628" />
+    </linearGradient>
+    <radialGradient id="faceGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#FFF8E1" />
+      <stop offset="100%" stop-color="#FFCC80" />
+    </radialGradient>
+  </defs>
+  
+  <!-- 기본 원형 -->
+  <circle cx="100" cy="100" r="95" fill="url(#bronzeGradient)" />
+  
+  <!-- 얼굴 -->
+  <circle cx="100" cy="110" r="60" fill="url(#faceGlow)" />
+  
+  <!-- 동색 메달 무늬 -->
+  <circle cx="100" cy="70" r="25" fill="#CD7F32" stroke="#A46628" stroke-width="2" />
+  <text x="100" y="77" font-family="Arial" font-size="20" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+  
+  <!-- 눈 -->
+  <circle cx="80" cy="110" r="5" fill="#000" />
+  <circle cx="120" cy="110" r="5" fill="#000" />
+  
+  <!-- 웃는 입 -->
+  <path d="M75,130 Q100,140 125,130" fill="none" stroke="#000" stroke-width="3" />
+  
+  <!-- 메달 리본 -->
+  <path d="M85,95 L75,115 L100,105 L125,115 L115,95" fill="#A46628" />
+  
+  <!-- 반짝임 효과 -->
+  <circle cx="90" cy="60" r="3" fill="#FFFFFF" />
+  <circle cx="110" cy="60" r="3" fill="#FFFFFF" />
+  <circle cx="100" cy="55" r="2" fill="#FFFFFF" />
+</svg> 

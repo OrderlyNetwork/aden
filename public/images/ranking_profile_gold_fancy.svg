@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 배경 -->
+  <defs>
+    <linearGradient id="goldBgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1A1A" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700" />
+      <stop offset="25%" stop-color="#FFEB3B" />
+      <stop offset="50%" stop-color="#FFC107" />
+      <stop offset="75%" stop-color="#FF9800" />
+      <stop offset="100%" stop-color="#FF8C00" />
+    </linearGradient>
+    <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#FFFDE7" stop-opacity="0.8" />
+      <stop offset="80%" stop-color="#FFD700" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#FFD700" stop-opacity="0" />
+    </radialGradient>
+    <filter id="goldShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+      <feOffset dx="0" dy="0" result="offsetblur" />
+      <feFlood flood-color="#FFD700" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 기본 배경 -->
+  <circle cx="100" cy="100" r="100" fill="url(#goldBgGradient)" />
+  
+  <!-- 반짝이는 효과 배경 -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="url(#goldGradient)" stroke-width="8" stroke-dasharray="2,2" />
+  <circle cx="100" cy="100" r="98" fill="none" stroke="#FFD700" stroke-width="1" opacity="0.5">
+    <animate attributeName="r" values="98;96;98" dur="2s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- 화려한 왕관 모양 -->
+  <path d="M50,85 L65,100 L80,85 L95,105 L110,75 L125,105 L140,85 L155,100 L170,85 L160,110 L40,110 Z" 
+        fill="url(#goldGradient)" 
+        stroke="#FF8C00" 
+        stroke-width="2"
+        filter="url(#goldShadow)" />
+  
+  <!-- 왕관 보석들 -->
+  <circle cx="65" cy="94" r="6" fill="#FF5252" filter="url(#goldShadow)" />
+  <circle cx="95" cy="94" r="6" fill="#2196F3" filter="url(#goldShadow)" />
+  <circle cx="110" cy="85" r="8" fill="#9C27B0" filter="url(#goldShadow)" />
+  <circle cx="125" cy="94" r="6" fill="#4CAF50" filter="url(#goldShadow)" />
+  <circle cx="155" cy="94" r="6" fill="#03A9F4" filter="url(#goldShadow)" />
+  
+  <!-- 빛나는 배경 효과 -->
+  <circle cx="100" cy="100" r="75" fill="url(#goldGlow)" />
+  
+  <!-- 1등 텍스트 -->
+  <g transform="translate(100,140) scale(1.2)">
+    <text x="0" y="0" font-family="Arial" font-size="24" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" filter="url(#goldShadow)">TOP 1</text>
+  </g>
+  
+  <!-- 별 장식 -->
+  <g transform="translate(60,60) scale(0.5)">
+    <path d="M0,0 L29,100 L-95,40 L95,40 L-29,100 Z" fill="#FFEB3B" />
+    <animate attributeName="opacity" values="1;0.7;1" dur="1.5s" repeatCount="indefinite" />
+  </g>
+  <g transform="translate(140,60) scale(0.5)">
+    <path d="M0,0 L29,100 L-95,40 L95,40 L-29,100 Z" fill="#FFEB3B" />
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite" />
+  </g>
+  
+  <!-- 반짝이는 효과 -->
+  <g>
+    <circle cx="80" cy="70" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0s" />
+    </circle>
+    <circle cx="130" cy="65" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.3s" />
+    </circle>
+    <circle cx="60" cy="125" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.6s" />
+    </circle>
+    <circle cx="150" cy="120" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.9s" />
+    </circle>
+    <circle cx="100" cy="60" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.2s" />
+    </circle>
+    <circle cx="110" cy="150" r="2" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.5s" />
+    </circle>
+  </g>
+</svg> 
