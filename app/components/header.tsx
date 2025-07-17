@@ -7,7 +7,6 @@ import { cn } from "../utils"
 import SignInModal from "./SignInModal"
 import { useTranslation } from "../i18n/TranslationContext"
 import LanguageSwitcher from "./LanguageSwitcher"
-import { withBasePath } from "@/utils/base-path";
 
 // Navigation data structure with dropdown items
 const navigationItems = [
@@ -40,7 +39,7 @@ const navigationItems = [
   {
     title: "Gate.io",
     href: "/gate.io",
-    image: "/images/gateio.svg",
+    image: "/v2/images/gateio.svg",
     dropdown: [],
   },
   {
@@ -65,7 +64,7 @@ const navigationItems = [
   {
     title: "Crypto Data",
     href: "/crypto-data",
-    image: "/images/chart.svg",
+    image: "/v2/images/chart.svg",
     color: "#18f2ad",
     dropdown: [],
   },
@@ -144,7 +143,7 @@ export default function Header() {
         <div className="dc-mr-280 dc-flex">
           <Link to="/" className="dc-flex dc-items-center dc-space-x-2">
             {/* <span className="text-xl font-bold">Logo</span> */}
-            <img src={withBasePath("/images/logo.svg")} alt="logo" />
+            <img src="/v2/logo.svg" alt="logo" />
           </Link>
         </div>
 
@@ -162,7 +161,7 @@ export default function Header() {
                   to={item.href}
                   className="hover:dc-bg-accent hover:dc-text-accent-foreground dc-flex dc-items-center dc-px-3 dc-py-2 dc-font-bold dc-rounded-sm"
                 >
-                  {item.image && <img src={withBasePath(item.image)} alt={item.title} className={cn("dc-w-16 dc-h-16 dc-mr-4")} />}
+                  {item.image && <img src={item.image} alt={item.title} className={cn("dc-w-16 dc-h-16 dc-mr-4")} />}
                   {item.title}
                   {item.dropdown.length > 0 && (
                     <ChevronDown
@@ -203,8 +202,8 @@ export default function Header() {
             <div className="size-sm dc-w-120 dc-h-40 dc-mr-16">
               <LanguageSwitcher className="dc-h-full" />
             </div>
-            <img src={withBasePath("/images/bell.svg")} alt="bell" className="!dc-mr-16" />
-            <button 
+            <img src="/v2/images/bell.svg" alt="bell" className="!dc-mr-16" />
+            <button
               className="size-sm dc-w-98 dc-h-40 dc-bg-[#18f2ad] dc-text-black dc-font-bold dc-rounded-sm"
               onClick={() => setIsSignInModalOpen(true)}
             >
@@ -215,9 +214,9 @@ export default function Header() {
         </nav>
 
         {/* Sign In Modal */}
-        <SignInModal 
-          isOpen={isSignInModalOpen} 
-          onClose={() => setIsSignInModalOpen(false)} 
+        <SignInModal
+          isOpen={isSignInModalOpen}
+          onClose={() => setIsSignInModalOpen(false)}
         />
 
         {/* Mobile Menu button */}

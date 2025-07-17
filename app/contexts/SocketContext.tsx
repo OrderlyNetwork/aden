@@ -73,14 +73,14 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const cleanupChatSocket = () => {
     if (chatSocketRef.current) {
       // 이벤트 리스너 제거
-      chatSocketRef.current.removeEventListener('open', () => {});
-      chatSocketRef.current.removeEventListener('message', () => {});
-      chatSocketRef.current.removeEventListener('error', () => {});
-      chatSocketRef.current.removeEventListener('close', () => {});
-      
+      chatSocketRef.current.removeEventListener('open', () => { });
+      chatSocketRef.current.removeEventListener('message', () => { });
+      chatSocketRef.current.removeEventListener('error', () => { });
+      chatSocketRef.current.removeEventListener('close', () => { });
+
       // WebSocket 연결 종료
-      if (chatSocketRef.current.readyState === WebSocket.OPEN || 
-          chatSocketRef.current.readyState === WebSocket.CONNECTING) {
+      if (chatSocketRef.current.readyState === WebSocket.OPEN ||
+        chatSocketRef.current.readyState === WebSocket.CONNECTING) {
         chatSocketRef.current.close(1000, 'Component unmounting');
       }
       chatSocketRef.current = null;
@@ -91,14 +91,14 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const cleanupLiquidationSocket = () => {
     if (liquidationSocketRef.current) {
       // 이벤트 리스너 제거
-      liquidationSocketRef.current.removeEventListener('open', () => {});
-      liquidationSocketRef.current.removeEventListener('message', () => {});
-      liquidationSocketRef.current.removeEventListener('error', () => {});
-      liquidationSocketRef.current.removeEventListener('close', () => {});
-      
+      liquidationSocketRef.current.removeEventListener('open', () => { });
+      liquidationSocketRef.current.removeEventListener('message', () => { });
+      liquidationSocketRef.current.removeEventListener('error', () => { });
+      liquidationSocketRef.current.removeEventListener('close', () => { });
+
       // WebSocket 연결 종료
-      if (liquidationSocketRef.current.readyState === WebSocket.OPEN || 
-          liquidationSocketRef.current.readyState === WebSocket.CONNECTING) {
+      if (liquidationSocketRef.current.readyState === WebSocket.OPEN ||
+        liquidationSocketRef.current.readyState === WebSocket.CONNECTING) {
         liquidationSocketRef.current.close(1000, 'Component unmounting');
       }
       liquidationSocketRef.current = null;
@@ -110,13 +110,13 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const cleanup = () => {
     cleanupChatSocket();
     cleanupLiquidationSocket();
-    
+
     // 상태 초기화
     setChatItems([]);
     setLiquidationData([]);
     setConnectedUserCount(0);
     messageIdCounter.current = 1;
-    
+
     console.log('Socket context cleanup completed');
   };
 
@@ -129,7 +129,7 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           username: user.username,
           email: user.email,
           level: user.level,
-          profile_image_url: !user.profile_image_url ? '/images/blank_profile.webp' : user.profile_image_url
+          profile_image_url: !user.profile_image_url ? '/v2/images/blank_profile.webp' : user.profile_image_url
         }
       }));
     }
@@ -143,7 +143,7 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
     if (data.action === 'recent_messages') {
       setConnectedUserCount(data.data.connected_user_count || 0);
-      
+
       // messages 배열이 존재하는지 확인
       if (data.data.messages && Array.isArray(data.data.messages)) {
         // 메시지 ID가 없는 경우 할당
@@ -157,7 +157,7 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
               username: message.sender?.username || 'Unknown',
               email: message.sender?.email || '',
               level: message.sender?.level || 1,
-              profile_image_url: message.sender?.profile_image_url || '/images/blank_profile.webp',
+              profile_image_url: message.sender?.profile_image_url || '/v2/images/blank_profile.webp',
               direction: message.sender?.direction,
               liquidation_amount: message.sender?.liquidation_amount,
               acquire_bugs: message.sender?.acquire_bugs,
@@ -166,19 +166,19 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
             created_at: message.created_at || new Date().toISOString(),
           };
         }).filter(Boolean); // null 값 제거
-        
+
         // 최대 메시지 개수를 유지하기 위해 필요한 경우 오래된 메시지 제거
         setChatItems(prev => {
           const combinedMessages = [...prev, ...messagesWithId];
           // 메시지가 최대 개수를 초과하면 오래된 메시지를 제거
-          return combinedMessages.length > MAX_MESSAGES 
-            ? combinedMessages.slice(combinedMessages.length - MAX_MESSAGES) 
+          return combinedMessages.length > MAX_MESSAGES
+            ? combinedMessages.slice(combinedMessages.length - MAX_MESSAGES)
             : combinedMessages;
         });
       }
     } else if (data.action === 'new_message') {
       setConnectedUserCount(data.data.connected_user_count || 0);
-      
+
       // message 또는 messages 객체 확인 (서버에서 messages로 보낼 수도 있음)
       const messageData = data.data.message || data.data.messages;
       if (messageData) {
@@ -190,7 +190,7 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
             username: messageData.sender?.username || 'Unknown',
             email: messageData.sender?.email || '',
             level: messageData.sender?.level || 1,
-            profile_image_url: messageData.sender?.profile_image_url || '/images/blank_profile.webp',
+            profile_image_url: messageData.sender?.profile_image_url || '/v2/images/blank_profile.webp',
             direction: messageData.sender?.direction,
             liquidation_amount: messageData.sender?.liquidation_amount,
             acquire_bugs: messageData.sender?.acquire_bugs,
@@ -198,7 +198,7 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           message: messageData.message || '',
           created_at: messageData.created_at || new Date().toISOString(),
         };
-        
+
         // 새 메시지를 추가하고 메시지가 최대 개수를 초과하면 가장 오래된 메시지를 제거
         setChatItems(prev => {
           const newMessages = [...prev, newMessage];
@@ -228,11 +228,11 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           username: user.username,
           email: user.email,
           level: user.level,
-          profile_image_url: !user.profile_image_url ? '/images/blank_profile.webp' : user.profile_image_url,
+          profile_image_url: !user.profile_image_url ? '/v2/images/blank_profile.webp' : user.profile_image_url,
         },
         created_at: new Date().toISOString(),
       };
-      
+
       // 새 메시지를 추가하고 메시지가 최대 개수를 초과하면 가장 오래된 메시지를 제거
       setChatItems(prev => {
         const newMessages = [...prev, newMessage];
@@ -284,7 +284,7 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       socket.removeEventListener('message', handleMessage);
       socket.removeEventListener('error', handleError);
       socket.removeEventListener('close', handleClose);
-      
+
       if (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING) {
         socket.close(1000, 'Component unmounting');
       }
@@ -299,17 +299,17 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     const handleOpen = () => {
       console.log('Connected to Liquidation WebSocket server');
       setLiquidationSocketConnected(true);
-      socket.send("get_data"); 
+      socket.send("get_data");
     };
 
     const handleMessage = (event: MessageEvent) => {
       try {
         const newLiquidationEntry = JSON.parse(event.data as string) as LiquidationData;
-        
+
         setLiquidationData(prevData => {
           // time_range에 따라 기존 데이터를 업데이트하거나 새로 추가
           const existingIndex = prevData.findIndex(item => item.time_range === newLiquidationEntry.time_range);
-          
+
           if (existingIndex !== -1) {
             // 기존 time_range 데이터 업데이트
             const updatedData = [...prevData];
@@ -345,7 +345,7 @@ export const AppSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       socket.removeEventListener('message', handleMessage);
       socket.removeEventListener('error', handleError);
       socket.removeEventListener('close', handleClose);
-      
+
       if (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING) {
         socket.close(1000, 'Component unmounting');
       }

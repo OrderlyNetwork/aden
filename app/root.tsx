@@ -4,19 +4,30 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLocation,
+  useLocation
 } from "@remix-run/react";
 import OrderlyProvider from "@/components/orderlyProvider";
-import { useState, useEffect } from "react";
-import { AppSocketProvider } from "./contexts/SocketContext";
-import TranslationProvider from "./i18n/TranslationContext";
-import "./styles/index.css";
 import { withBasePath } from "./utils/base-path";
 import { i18n } from "@orderly.network/i18n";
+import { useApiInterceptor } from "@/hooks/useApiInterceptor";
+import { useStorageChain } from "@orderly.network/hooks";
+import { useEffect, useState } from "react";
+// import { AppSocketProvider } from "./contexts/SocketContext";
+import TranslationProvider from "./i18n/TranslationContext";
+import "./styles/index.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const [lang, setLang] = useState("en");
+  // const [lang, setLang] = useState("en");
+  const { setStorageChain } = useStorageChain();
+  const defaultChainId = Number(import.meta.env.VITE_DEFAULT_CHAIN_ID);
+  const getInitialLang = () => {
+    if (typeof window !== "undefined") {
+      const savedLang = localStorage.getItem("lang");
+      if (savedLang) return savedLang;
+    }
+    return i18n.language === "ko" ? "ko" : "en";
+  };
 
   // Handle initial language setup
   useEffect(() => {
@@ -48,6 +59,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   // Handle referral code from URL parameters and set the default referral code
+  const [lang, setLang] = useState(getInitialLang());
+
+  // Handle referral code from URL parameters and set the default referral code
   useEffect(() => {
     if (typeof window === "undefined") return;
     const urlParams = new URLSearchParams(window.location.search);
@@ -67,7 +81,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       }
     }
   }, [location.pathname]);
-
 
   useEffect(() => {
     // Appending language button in header
@@ -156,50 +169,43 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
     window.addEventListener("resize", insertLocaleButton);
 
-    function checkAndEnableOrderButton() {
+    // set the language
+    const savedLang = localStorage.getItem("lang");
+    console.log(`Language set from localStorage: ${savedLang}`);
+    // If a language is saved in localStorage, use it; otherwise default to "en"
+    if (savedLang) {
+      setLang(savedLang);
+      i18n.changeLanguage(savedLang);
+      // localStorage.removeItem("lang"); // 이 줄을 제거하여 언어 설정 유지
+    } else {
+      setLang("en");
+      i18n.changeLanguage("en");
+      localStorage.setItem("lang", "en"); // 기본 언어도 저장
+    }
+
+    function checkAndDisableOrderButton() {
       const targetDate = new Date('2025-07-21T18:00:00+09:00');
       const currentDate = new Date();
 
       const submitButton = document.getElementById('order-entry-submit-button');
 
       if (currentDate < targetDate) {
-        // Before target date: hide real button, show fake disabled button
+        // Set the CSS variable based on current language
         const tradingDisabledText = lang === "ko" ? "거래 비활성화" : "Trading Disabled";
+        document.documentElement.style.setProperty('--trading-disabled-text', `"${tradingDisabledText}"`);
 
         if (submitButton) {
-          // Hide the real button
-          submitButton.style.display = 'none';          // Create or update fake button
-          let fakeButton = document.getElementById('fake-order-entry-submit-button');
-          if (!fakeButton && submitButton.parentElement) {
-            fakeButton = document.createElement('button');
-            fakeButton.id = 'fake-order-entry-submit-button';
-            fakeButton.textContent = tradingDisabledText;
-            fakeButton.setAttribute('disabled', 'true');
-
-            // Insert fake button right after the real button
-            submitButton.parentElement.insertBefore(fakeButton, submitButton.nextSibling);
-          } else if (fakeButton) {
-            // Update text if language changed
-            fakeButton.textContent = tradingDisabledText;
-          }
+          submitButton.classList.add('orderly-disabled');
         }
       } else {
-        // After target date: show real button, remove fake button
         if (submitButton) {
-          // Show the real button
-          submitButton.style.display = 'block';
-
-          // Remove fake button if it exists
-          const fakeButton = document.getElementById('fake-order-entry-submit-button');
-          if (fakeButton) {
-            fakeButton.remove();
-          }
+          submitButton.classList.remove('orderly-disabled');
         }
       }
     }
 
-    const buttonCheckInterval = setInterval(checkAndEnableOrderButton, 2000);
-    checkAndEnableOrderButton();
+    const buttonCheckInterval = setInterval(checkAndDisableOrderButton, 2000);
+    checkAndDisableOrderButton();
 
     return () => {
       window.removeEventListener("resize", insertLocaleButton);
@@ -249,14 +255,34 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://aden.io/" />
         <meta property="og:image" content={withBasePath("/logo.svg")} />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+          }
+          @media (max-width: 767px) {
+            .desktop-only { display: none !important; }
+          }
+          @media (min-width: 768px) {
+            .mobile-only { display: none !important; }
+          }
+        `}} />
       </head>
       <body>
+        {/* <OrderlyProvider>
+          {children}
+        </OrderlyProvider> */}
+
         <TranslationProvider>
-          <AppSocketProvider>
+          {/* <AppSocketProvider> */}
             <OrderlyProvider>
               {children}
             </OrderlyProvider>
-          </AppSocketProvider>
+          {/* </AppSocketProvider> */}
         </TranslationProvider>
         <ScrollRestoration />
         <Scripts />

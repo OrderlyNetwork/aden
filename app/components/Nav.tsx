@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { Link, useLocation, useNavigate } from "@remix-run/react"
 import { Menu, X, ChevronDown, Bell, LogOut, ChevronRight, LogIn, ChevronDownIcon } from "lucide-react"
 import { cn } from "../utils"
@@ -10,7 +10,7 @@ import useUserStore from "../store/userStore"
 import { getCookie, setCookie, removeCookie } from "../utils/cookies"
 import { useUserAssetsStore } from "../store/userAssetsStore"
 import NumberAnimation from "../components/NumberAnimation"
-
+import React from "react"
 import { useTranslation } from "../i18n/TranslationContext"
 import LanguageSwitcher from "./LanguageSwitcher"
 import { getSiteConfig } from "../api/site_config"
@@ -18,27 +18,26 @@ import { getBoard } from "../api/board"
 import MobileLanguageSwitcher from "./MobileLanguageSwitcher"
 import useCommonStore from "../store/commonStore"
 import UserLoginPrompt from "./UserLoginPrompt"
-import { withBasePath } from "@/utils/base-path";
 
 // Navigation data structure with dropdown items
 const navigationItems = [
   {
     titleKey: "nav.home",
     href: "/",
-    image: "/images/home.png",
+    image: "/v2/images/home.png",
     dropdown: [],
   },
   {
     titleKey: "nav.bugscoinDoc",
     href: "https://www.bugscoin.com",
     target: "_blank",
-    image: "/images/doc.png",
+    image: "/v2/images/doc.png",
     dropdown: [],
   },
   {
     titleKey: "nav.guide",
     href: "/",
-    image: "/images/guide.png",
+    image: "/v2/images/guide.png",
     dropdown: [
       {
         titleKey: "guide.whatIsAnttalk",
@@ -67,7 +66,7 @@ const navigationItems = [
   {
     titleKey: "nav.futures",
     href: "/",
-    image: "/images/candlestick.png",
+    image: "/v2/images/candlestick.png",
     dropdown: [
       {
         titleKey: "crypto.bitcoin",
@@ -82,7 +81,7 @@ const navigationItems = [
   {
     titleKey: "nav.cryptoData",
     href: "/",
-    image: "/images/equalizer.png",
+    image: "/v2/images/equalizer.png",
     dropdown: [
       {
         titleKey: "data.analyze",
@@ -97,7 +96,7 @@ const navigationItems = [
   {
     titleKey: "nav.community",
     href: "/",
-    image: "/images/forum.png",
+    image: "/v2/images/forum.png",
     dropdown: [
       {
         titleKey: "community.best",
@@ -124,7 +123,7 @@ const navigationItems = [
   {
     titleKey: "nav.ranking",
     href: "/ranking",
-    image: "/images/trophy.png",
+    image: "/v2/images/trophy.png",
     dropdown: [
       {
         titleKey: "ranking.top100",
@@ -139,7 +138,7 @@ const navigationItems = [
   {
     titleKey: "nav.market",
     href: "/market",
-    image: "/images/store.png",
+    image: "/v2/images/store.png",
     dropdown: [],
   }
 ]
@@ -202,19 +201,19 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
     const collapsed = localStorage.getItem('nav-collapsed') === 'true';
     setIsNavCollapsed(collapsed);
 
-    // 사이트 설정 데이터 가져오기
-    const fetchSiteConfig = async () => {
-      try {
-        const response = await getSiteConfig();
-        if (response.success) {
-          setSiteConfig(response.data);
-        }
-      } catch (error) {
-        console.error("Error fetching site config:", error);
-      }
-    };
+    // // 사이트 설정 데이터 가져오기
+    // const fetchSiteConfig = async () => {
+    //   try {
+    //     const response = await getSiteConfig();
+    //     if (response.success) {
+    //       setSiteConfig(response.data);
+    //     }
+    //   } catch (error) {
+    //     console.error("Error fetching site config:", error);
+    //   }
+    // };
 
-    fetchSiteConfig();
+    // fetchSiteConfig();
   }, [setIsNavCollapsed]);
 
   // Check auth state whenever user changes
@@ -251,20 +250,20 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
     }
   }, [mounted]);
 
-  useEffect(() => {
-    const fetchBoards = async () => {
-      try {
-        const response = await getBoard();
-        if (response.success) {
-          // is_active가 true인 게시판만 필터링
-          setActiveBoards(response.data.filter((b: any) => b.is_active));
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    fetchBoards();
-  }, []);
+  // useEffect(() => {
+  //   const fetchBoards = async () => {
+  //     try {
+  //       const response = await getBoard();
+  //       if (response.success) {
+  //         // is_active가 true인 게시판만 필터링
+  //         setActiveBoards(response.data.filter((b: any) => b.is_active));
+  //       }
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+  //   };
+  //   fetchBoards();
+  // }, []);
 
   const handleClickMyPage = () => {
     navigate("/my_information/info");
@@ -343,7 +342,7 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
     <div className="dc-w-full dc-h-80 dc-flex dc-px-12 dc-py-16 dc-bg-white dc-bg-opacity-2 dc-border dc-border-white dc-border-opacity-6 dc-rounded-[12px] dc-mb-8 dc-relative dc-overflow-hidden">
       <div className="dc-absolute dc-top-[-26px] dc-left-0 dc-w-52 dc-h-52 dc-rounded-full dc-bg-[#40B185] dc-blur-2xl"></div>
       <img
-        src={isLoggedIn && user?.profile_image_url ? user.profile_image_url : withBasePath("/images/random_profile.png")}
+        src={isLoggedIn && user?.profile_image_url ? user.profile_image_url : "/v2/images/random_profile.png"}
         alt="user"
         className='dc-object-cover dc-w-40 dc-h-40 dc-mr-10 dc-rounded-full'
       />
@@ -353,7 +352,7 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
         </span>
         <div className='dc-flex dc-items-center dc-gap-4'>
           <img
-            src={withBasePath(`/images/level/LV_${isLoggedIn && user?.level ? user.level : 1}.webp`)}
+            src={`/v2/images/level/LV_${isLoggedIn && user?.level ? user.level : 1}.webp`}
             alt="level"
             className='dc-w-16 dc-h-16'
           />
@@ -426,7 +425,7 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
         {/* Logo */}
         <Link to="/" className="dc-h-[25.5px]">
           <img
-            src={withBasePath("/logo.svg")}
+            src="/v2/logo.svg"
             alt="ADEN"
             className="dc-w-auto dc-h-[25.5px]"
           />
@@ -454,7 +453,7 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
             onClick={toggleMobileMenu}
             className="focus:dc-outline-none dc-text-white"
           >
-            {mobileMenuOpen ? <button className="dc-w-36 dc-h-36 dc-flex dc-items-center dc-justify-center"><X size={20}/></button> : <img src={withBasePath("/images/hamberger.png")} alt="menu" className="dc-w-36 dc-h-36" />}
+            {mobileMenuOpen ? <button className="dc-w-36 dc-h-36 dc-flex dc-items-center dc-justify-center"><X size={20}/></button> : <img src="/v2/images/hamberger.png" alt="menu" className="dc-w-36 dc-h-36" />}
           </button> */}
         </div>
       </div>
@@ -473,7 +472,7 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
                 <div className="dc-absolute dc-top-[-26px] dc-left-0 dc-w-52 dc-h-52 dc-rounded-full dc-bg-[#40B185] dc-blur-2xl"></div>
                 <div className='dc-flex dc-flex-col dc-justify-center dc-w-1/2 dc-gap-8'>
                   <div className='dc-flex dc-items-center dc-w-full'>
-                    <img src={withBasePath("/images/USDT.png")} alt="USDT" className="dc-w-20 dc-h-20 dc-mr-4" />
+                    <img src="/v2/images/USDT.png" alt="USDT" className="dc-w-20 dc-h-20 dc-mr-4" />
                     <span className="dc-text-14 dc-font-medium dc-text-[#898D99]">{t('userInfo.usdt')}</span>
                   </div>
                   <span className="dc-text-14 dc-font-bold">
@@ -485,7 +484,7 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
                 </div>
                 <div className='dc-flex dc-flex-col dc-justify-center dc-w-1/2 dc-gap-8'>
                   <div className='dc-flex dc-items-center dc-w-full'>
-                    <img src={withBasePath("/images/bugs.png")} alt="BUGS" className="dc-w-20 dc-h-20 dc-mr-4" />
+                    <img src="/v2/images/bugs.png" alt="BUGS" className="dc-w-20 dc-h-20 dc-mr-4" />
                     <span className="dc-text-14 dc-font-medium dc-text-[#898D99]">{t('userInfo.bugs')}</span>
                   </div>
                   <span className="dc-text-14 dc-font-bold">
@@ -507,7 +506,7 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
                     >
                       {item.image && (
                         <img
-                          src={withBasePath(item.image)}
+                          src={item.image}
                           alt={t(item.titleKey)}
                           className="dc-w-24 dc-h-24 dc-mr-8"
                         />
@@ -589,7 +588,7 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
           onClick={toggleNav}
           className="md:flex top-24 left-20 fixed z-50 items-center justify-center hidden w-48 h-48 text-white"
         >
-          <img src={withBasePath("/images/demotraindg_hamberger.png")} alt="menu" className="dc-w-36 dc-h-36" />
+          <img src="/v2/images/demotraindg_hamberger.png" alt="menu" className="dc-w-36 dc-h-36" />
         </button>
       )} */}
 
@@ -616,7 +615,7 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
           {/* Logo */}
           <Link to="/" className="dc-mb-42 dc-block dc-w-full">
             <img
-              src={withBasePath("/logo.svg")}
+              src="/v2/logo.svg"
               alt="ADEN"
               className="dc-mb-42 dc-h-auto dc-w-130"
             />
@@ -632,7 +631,7 @@ export default React.memo(function Nav({ isHeaderCollapsed = false }: NavProps) 
                 >
                   {item.image && (
                     <img
-                      src={withBasePath(item.image)}
+                      src={item.image}
                       alt={t(item.titleKey)}
                       className="dc-w-24 dc-h-24 dc-mr-8"
                     />

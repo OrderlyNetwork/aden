@@ -74,33 +74,6 @@ Run the development server:
 yarn dev
 ```
 
-## Docker
-
-### Build and Run with Docker
-
-Build the Docker image:
-
-```sh
-docker build -t aden .
-```
-
-Run the container:
-
-```sh
-docker run --rm -p 80:80 aden
-```
-
-The application will be available at `http://localhost`.
-
-### What the Docker container does:
-
-- **Landing Page**: Serves the landing page at the root `/`
-- **App Routes**: Serves the trading app at routes like `/markets`, `/portfolio`, etc.
-- **Static Assets**: Handles all CSS, JS, images, and other static files
-- **SPA Routing**: Properly routes single-page app navigation
-
-The container uses nginx to serve both the landing page and the built Remix application with proper routing configuration.
-
 ## Deployment
 
 1. Build the application:

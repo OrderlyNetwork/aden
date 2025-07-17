@@ -141,8 +141,8 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
 				navItems[1]?.classList.add('nav-active'); // Portfolio
 			} else if (path.includes('/markets')) {
 				navItems[2]?.classList.add('nav-active'); // Markets
-			} else if (path.includes('/demo_trading')) {
-				navItems[3]?.classList.add('nav-active'); // Demo
+			} else if (path.includes('/leaderboard')) {
+				navItems[3]?.classList.add('nav-active'); // Leaderboard
 			}
 		};
 

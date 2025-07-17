@@ -20,26 +20,26 @@ export default function Footer() {
   const { t } = useTranslation();
   const [siteConfig, setSiteConfig] = useState<SiteConfigData>(null); // 사이트 설정 상태 추가
 
-  // 컴포넌트 마운트 시 사이트 설정 데이터 가져오기
-  useEffect(() => {
-    const fetchSiteConfig = async () => {
-      try {
-        const config = await getSiteConfig();
-        if (config.success && config.data) {
-          setSiteConfig(config.data);
-        } else {
-          // API 호출은 성공했으나 데이터가 없는 경우 또는 success가 false인 경우
-          console.warn("Failed to fetch site config or data is missing.");
-          setSiteConfig(null); // 명시적으로 null 설정 (선택적)
-        }
-      } catch (error) {
-        console.error("Error fetching site config:", error);
-        setSiteConfig(null); // 에러 발생 시 null 설정
-      }
-    };
+  // // 컴포넌트 마운트 시 사이트 설정 데이터 가져오기
+  // useEffect(() => {
+  //   const fetchSiteConfig = async () => {
+  //     try {
+  //       const config = await getSiteConfig();
+  //       if (config.success && config.data) {
+  //         setSiteConfig(config.data);
+  //       } else {
+  //         // API 호출은 성공했으나 데이터가 없는 경우 또는 success가 false인 경우
+  //         console.warn("Failed to fetch site config or data is missing.");
+  //         setSiteConfig(null); // 명시적으로 null 설정 (선택적)
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching site config:", error);
+  //       setSiteConfig(null); // 에러 발생 시 null 설정
+  //     }
+  //   };
 
-    fetchSiteConfig();
-  }, []); // 빈 배열을 전달하여 마운트 시 한 번만 실행
+  //   fetchSiteConfig();
+  // }, []); // 빈 배열을 전달하여 마운트 시 한 번만 실행
 
   // 데이터 로딩 중이거나 없을 경우 사용할 기본값
   const companyName = siteConfig?.company_name || t('footer.companyNameValue');

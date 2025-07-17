@@ -15,14 +15,22 @@ export default defineConfig(() => {
     noExternal.push("ethers");
   }
 
+  const basePath = process.env.PUBLIC_PATH || "/v2/";
+
   return {
+    base: basePath,
+    server: {
+      port: 9001,
+      allowedHosts: ["aden.io", ".aden.io","godd.app", "*"]
+    },
     ssr: {
       noExternal,
       external: ["@privy-io/cross-app-connect/rainbow-kit"],
     },
     plugins: [
       remix({
-        ssr: false,
+        basename: basePath,
+        ssr: true,
         future: {
           v3_fetcherPersist: true,
           v3_relativeSplatPath: true,

@@ -1,32 +1,5 @@
 import { useEffect } from 'react';
 
-// TypeScript interfaces for better type safety
-interface FuturesPair {
-    symbol: string;
-    [key: string]: any;
-}
-
-interface ChainDetail {
-    chain_id: string;
-    [key: string]: any;
-}
-
-interface TokenRow {
-    chain_details?: ChainDetail[];
-    [key: string]: any;
-}
-
-interface ApiResponseData {
-    rows: FuturesPair[] | TokenRow[];
-    [key: string]: any;
-}
-
-interface ApiResponse {
-    success?: boolean;
-    data?: ApiResponseData;
-    [key: string]: any;
-}
-
 // Chain ID to name mapping
 const chainIdToName = {
     56: 'BNB Smart Chain',
@@ -60,128 +33,136 @@ const desiredChainOrder = [
 
 export const useApiInterceptor = () => {
     useEffect(() => {
-        // Early return if we're on the server side
-        if (typeof window === 'undefined') return;
-
         const originalFetch = window.fetch;
 
-        // Cache allowed tokens to avoid re-parsing on every request
-        const allowedTokensEnv = import.meta.env.VITE_ALLOWED_TOKENS;
-        const allowedTokens = allowedTokensEnv?.split(',').map((token: string) => token.trim()).filter(Boolean) || [];
-        const hasTokenFilter = allowedTokens.length > 0;
+        // Get allowed tokens from environment variable
+        const allowedTokens = import.meta.env.VITE_ALLOWED_TOKENS?.split(',').map(token => token.trim()) || [];
 
-        // Only intercept if there's actually something to do
-        if (!hasTokenFilter) {
-            console.log('🔧 API Interceptor: No token filtering needed, skipping fetch override');
-            return;
-        }
-
-        console.log('🔧 API Interceptor: Setting up with allowed tokens:', allowedTokens);
-
-        // Create a more efficient interceptor
         window.fetch = async function (url, options) {
             const response = await originalFetch.call(this, url, options);
 
-            // Quick exit for non-matching URLs
-            if (typeof url !== 'string') return response;
+            // Check if this is the futures API call
+            if (typeof url === 'string' && url.includes('/v1/public/futures')) {
+                try {
+                    const data = await response.clone().json();
 
-            const isFuturesAPI = url.includes('/v1/public/futures');
-            const isTokenAPI = url.includes('/v1/public/token');
+                    // Filter the data if allowedTokens is configured
+                    if (allowedTokens.length > 0 && allowedTokens[0] !== '' && data.data?.rows) {
 
-            if (!isFuturesAPI && !isTokenAPI) return response;
+                        const filteredRows = data.data.rows.filter(pair => {
+                            const symbol = pair.symbol;
 
-            try {
-                // Only clone if we need to process the response
-                const data = await response.clone().json() as ApiResponse;
+                            // Extract token name (e.g., "PERP_BTC_USDC" -> "BTC")
+                            const tokenPart = symbol.replace('PERP_', '').replace('_USDC', '').replace('_USDT', '');
 
-                if (isFuturesAPI && hasTokenFilter && data.data?.rows) {
-                    const originalLength = data.data.rows.length;
+                            // Check if token is in allowed list
+                            const isAllowed = allowedTokens.includes(tokenPart);
 
-                    const filteredRows = (data.data.rows as FuturesPair[]).filter((pair: FuturesPair) => {
-                        const symbol = pair.symbol;
-                        // Extract token name (e.g., "PERP_BTC_USDC" -> "BTC")
-                        const tokenPart = symbol.replace('PERP_', '').replace(/_USD[CT]$/, '');
-                        return allowedTokens.includes(tokenPart);
-                    });
+                            if (isAllowed) {
+                                console.log(`✅ Allowing token pair: ${symbol}`);
+                            }
 
-                    if (filteredRows.length !== originalLength) {
-                        console.log(`🎯 Filtered futures: ${originalLength} -> ${filteredRows.length} pairs`);
+                            return isAllowed;
+                        });
 
-                        return new Response(JSON.stringify({
+                        console.log(`🎯 Filtered futures data: ${data.data.rows.length} -> ${filteredRows.length} pairs`);
+
+                        // Create new response with filtered data
+                        const filteredResponse = {
                             ...data,
                             data: {
                                 ...data.data,
                                 rows: filteredRows
                             }
-                        }), {
+                        };
+
+                        return new Response(JSON.stringify(filteredResponse), {
                             status: response.status,
                             statusText: response.statusText,
                             headers: response.headers
                         });
                     }
+
+                    return response;
+                } catch (error) {
+                    console.error('Error filtering futures data:', error);
+                    return response;
                 }
-
-                if (isTokenAPI && data.success && data.data?.rows) {
-                    // Process chain reordering
-                    const reorderedRows = (data.data.rows as TokenRow[]).map((tokenRow: TokenRow) => {
-                        if (!tokenRow.chain_details || !Array.isArray(tokenRow.chain_details)) {
-                            return tokenRow;
-                        }
-
-                        const chainDetailsMap = new Map<number, ChainDetail>();
-                        tokenRow.chain_details.forEach((detail: ChainDetail) => {
-                            chainDetailsMap.set(parseInt(detail.chain_id), detail);
-                        });
-
-                        // Build reordered array efficiently
-                        const reorderedChainDetails: ChainDetail[] = [];
-
-                        // Add priority chains first
-                        desiredChainOrder.forEach(chainId => {
-                            const detail = chainDetailsMap.get(chainId);
-                            if (detail) {
-                                reorderedChainDetails.push(detail);
-                                chainDetailsMap.delete(chainId);
-                            }
-                        });
-
-                        // Add remaining chains
-                        chainDetailsMap.forEach(detail => {
-                            reorderedChainDetails.push(detail);
-                        });
-
-                        return {
-                            ...tokenRow,
-                            chain_details: reorderedChainDetails
-                        };
-                    });
-
-                    return new Response(JSON.stringify({
-                        ...data,
-                        data: {
-                            ...data.data,
-                            rows: reorderedRows
-                        }
-                    }), {
-                        status: response.status,
-                        statusText: response.statusText,
-                        headers: response.headers
-                    });
-                }
-
-                return response;
-            } catch (error) {
-                console.error('Error in API interceptor:', error);
-                return response;
             }
+
+            // Check if this is the token API call
+            if (typeof url === 'string' && url.includes('/v1/public/token')) {
+                try {
+                    const data = await response.clone().json();
+
+                    if (data.success && data.data?.rows) {
+
+                        // Process each token's chain_details to reorder chains
+                        const reorderedRows = data.data.rows.map(tokenRow => {
+                            if (tokenRow.chain_details && Array.isArray(tokenRow.chain_details)) {
+                                const originalChainDetails = [...tokenRow.chain_details];
+
+                                // Separate priority chains and others
+                                const priorityChains = [];
+                                const otherChains = [];
+
+                                // First, collect priority chains in the desired order
+                                desiredChainOrder.forEach(chainId => {
+                                    const chainDetail = originalChainDetails.find(chain =>
+                                        parseInt(chain.chain_id) === chainId
+                                    );
+                                    if (chainDetail) {
+                                        priorityChains.push(chainDetail);
+                                    }
+                                });
+
+                                // Then collect all other chains
+                                originalChainDetails.forEach(chainDetail => {
+                                    const chainId = parseInt(chainDetail.chain_id);
+                                    if (!desiredChainOrder.includes(chainId)) {
+                                        otherChains.push(chainDetail);
+                                    }
+                                });
+
+                                // Combine priority chains first, then others
+                                const reorderedChainDetails = [...priorityChains, ...otherChains];
+
+                                return {
+                                    ...tokenRow,
+                                    chain_details: reorderedChainDetails
+                                };
+                            }
+                            return tokenRow;
+                        });
+
+                        // Create new response with reordered data
+                        const reorderedResponse = {
+                            ...data,
+                            data: {
+                                ...data.data,
+                                rows: reorderedRows
+                            }
+                        };
+
+                        return new Response(JSON.stringify(reorderedResponse), {
+                            status: response.status,
+                            statusText: response.statusText,
+                            headers: response.headers
+                        });
+                    }
+
+                    return response;
+                } catch (error) {
+                    console.error('Error reordering token data:', error);
+                    return response;
+                }
+            }
+
+            return response;
         };
 
         return () => {
-            // Restore original fetch on cleanup
-            if (window.fetch !== originalFetch) {
-                window.fetch = originalFetch;
-                console.log('🔧 API Interceptor: Cleaned up fetch override');
-            }
+            window.fetch = originalFetch;
         };
-    }, []); // Empty dependency array is fine since we're using env vars that don't change at runtime
+    }, []);
 };
