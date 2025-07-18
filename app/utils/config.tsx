@@ -236,32 +236,27 @@ export const useOrderlyConfig = () => {
         mainNavProps: {
           initialMenu: "/",
           mainMenus: allMenuItems,
-          // campaigns: {
-          //   name: t("tradingRewards.rewards"),
-          //   href: "/rewards",
-          //   children: [
-          //     {
-          //       name: t("common.tradingRewards"),
-          //       href: "https://aden.io/",
-          //       // description: t("extend.tradingRewards.description"),
-          //       // icon: <OrderlyIcon size={14} />,
-          //       // activeIcon: <OrderlyActiveIcon size={14} />,
-          //       target: "_blank",
-          //     },
-          //     // {
-          //     //   name: t("common.demo_trading"),
-          //     //   href: "/guide/guide1",
-          //     // },
-          //     // {
-          //     //   name: t("extend.staking"),
-          //     //   href: "https://app.orderly.network/staking",
-          //     //   description: t("extend.staking.description"),
-          //     //   icon: <OrderlyIcon size={14} />,
-          //     //   activeIcon: <OrderlyActiveIcon size={14} />,
-          //     //   target: "_blank",
-          //     // },
-          //   ],
-          // },
+          campaigns: {
+            name: t("extend.links"),
+            href: "/",
+            children: [
+              {
+                name: "NFT",
+                href: "https://bgscnft.com/",
+                target: "_blank",
+              },
+              {
+                name: "Leaderboard",
+                href: "https://bgscleaderboard.com/",
+                target: "_blank",
+              },
+              {
+                name: "Vault",
+                href: "https://bgscvault.com/",
+                target: "_blank",
+              },
+            ],
+          },
           customRender: (components) => {
             return isMobile ? (
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px", width: "100%" }}>

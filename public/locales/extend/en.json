@@ -1,4 +1,5 @@
 {
+  "extend.links": "Bugscoin",
   "common.demo_trading": "Demo",
   "common.trading": "Trading",
   "common.portfolio": "Portfolio",

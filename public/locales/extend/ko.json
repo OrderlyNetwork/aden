@@ -1,4 +1,5 @@
 {
+  "extend.links": "벅스코인",
   "common.demo_trading": "모의투자",
   "common.trading": "거래",
   "common.portfolio": "내 자산",
