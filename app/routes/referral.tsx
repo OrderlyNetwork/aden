@@ -1,4 +1,4 @@
-import { Dashboard, ReferralProvider } from "@orderly.network/affiliate";
+import { ReferralProvider } from "@orderly.network/affiliate";
 import { Outlet } from "@remix-run/react";
 import {
     TradingRewardsLayoutWidget,
@@ -29,7 +29,6 @@ export default function TradingRewardsLayout() {
                     initialMenu: "/referral",
                 }}
                 routerAdapter={{ onRouteChange }}
-                bottomNavProps={config.scaffold.bottomNavProps}
                 leftSidebar={null}>
                 <Outlet />
             </TradingRewardsLayoutWidget>

@@ -15,7 +15,6 @@ export default function PerpPage() {
         onRouteChange,
         currentPath: "/",
       }}
-      bottomNavProps={config.scaffold.bottomNavProps}
     >
       <Outlet />
     </Scaffold>

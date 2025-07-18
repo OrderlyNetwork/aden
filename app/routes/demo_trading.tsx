@@ -18,7 +18,6 @@ export default function PerpPage() {
         onRouteChange,
         currentPath: "/demo_trading/BTCUSDT",
       }}
-    bottomNavProps={{...config.scaffold.bottomNavProps, current: "/demo_trading/BTCUSDT"}}
     >
       <Outlet />
     </Scaffold>

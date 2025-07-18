@@ -2,12 +2,12 @@ import { useMemo } from "react";
 import { Link } from "@remix-run/react";
 import { useTranslation } from "@orderly.network/i18n";
 import { TradingPageProps } from "@orderly.network/trading";
-import { BottomNavProps, FooterProps, MainNavWidgetProps } from "@orderly.network/ui-scaffold";
+import { FooterProps, MainNavWidgetProps } from "@orderly.network/ui-scaffold";
 import { AppLogos } from "@orderly.network/react-app";
 import { withBasePath } from "./base-path";
-import { MarketsActiveIcon, PortfolioActiveIcon, TradingActiveIcon, MarketsInactiveIcon, PortfolioInactiveIcon, TradingInactiveIcon, useScreen } from "@orderly.network/ui";
-import { Gamepad2 } from "lucide-react";
+import { useScreen } from "@orderly.network/ui";
 import LanguageToggle from "@/components/LanguageToggle";
+import CustomLeftNav from "@/components/CustomLeftNav";
 
 interface MainNavItem {
   name: string;
@@ -30,7 +30,6 @@ export type OrderlyConfig = {
   scaffold: {
     mainNavProps: MainNavWidgetProps;
     footerProps: FooterProps;
-    bottomNavProps: BottomNavProps;
   };
   tradingPage: {
     tradingViewConfig: TradingPageProps["tradingViewConfig"];
@@ -149,25 +148,6 @@ const getPnLBackgroundImages = (): string[] => {
   ];
 };
 
-const getBottomNavIcon = (menuName: string) => {
-  switch (menuName) {
-    case "Trading":
-      return { activeIcon: <TradingActiveIcon />, inactiveIcon: <TradingInactiveIcon /> };
-    case "Portfolio":
-      return { activeIcon: <PortfolioActiveIcon />, inactiveIcon: <PortfolioInactiveIcon /> };
-    case "Markets":
-      return { activeIcon: <MarketsActiveIcon />, inactiveIcon: <MarketsInactiveIcon /> };
-    // case "Leaderboard":
-    //   return { activeIcon: <LeaderboardActiveIcon />, inactiveIcon: <LeaderboardInactiveIcon /> };
-    // case "Referral":
-    //   return { activeIcon: <AffiliateIcon />, inactiveIcon: <AffiliateIcon /> };
-    case "Demo":
-      return { activeIcon: <Gamepad2 className="oui-text-[#FFB018]" />, inactiveIcon: <Gamepad2 className="oui-text-base-contrast-54" /> };
-    default:
-      throw new Error(`Unsupported menu name: ${menuName}`);
-  }
-};
-
 const getColorConfig = (): ColorConfigInterface | undefined => {
   const customColorConfigEnv = import.meta.env.VITE_TRADING_VIEW_COLOR_CONFIG;
 
@@ -195,47 +175,16 @@ export const useOrderlyConfig = () => {
     const translatedEnabledMenus = enabledMenus.map(menu => ({
       name: t(menu.translationKey),
       href: menu.href,
-      isHomePageInMobile: true
     }));
 
     const allMenuItems = [...translatedEnabledMenus, ...customMenus];
-
-    // Mobile-only bottom nav items
-    const mobileOnlyBottomNavItems = [
-      { name: "Demo", href: "/demo_trading/BTCUSDT", translationKey: "common.demo_trading" }
-    ];
-
-    const supportedBottomNavMenus = ["Trading", "Portfolio", "Markets", "Demo"];
-    const standardBottomNavMenus = enabledMenus
-      .filter(menu => supportedBottomNavMenus.includes(menu.name) && menu.name !== "Demo")
-      .map(menu => {
-        const icons = getBottomNavIcon(menu.name);
-        return {
-          name: t(menu.translationKey),
-          href: menu.href,
-          ...icons
-        };
-      })
-      .filter(menu => menu.activeIcon && menu.inactiveIcon);
-
-    const mobileBottomNavMenus = mobileOnlyBottomNavItems
-      .map(menu => {
-        const icons = getBottomNavIcon(menu.name);
-        return {
-          name: t(menu.translationKey),
-          href: menu.href,
-          ...icons
-        };
-      })
-      .filter(menu => menu.activeIcon && menu.inactiveIcon);
-
-    const bottomNavMenus = [...standardBottomNavMenus, ...mobileBottomNavMenus];
 
     return {
       scaffold: {
         mainNavProps: {
           initialMenu: "/",
           mainMenus: allMenuItems,
+          
           campaigns: {
             name: t("extend.links"),
             href: "/",
@@ -260,7 +209,31 @@ export const useOrderlyConfig = () => {
           customRender: (components) => {
             return isMobile ? (
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px", width: "100%" }}>
-                {components.title}
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                     <CustomLeftNav 
+                     menus={allMenuItems}
+                     externalLinks={[
+                       {
+                         name: "NFT",
+                         href: "https://bgscnft.com/",
+                         target: "_blank",
+                       },
+                       {
+                         name: "Leaderboard",
+                         href: "https://bgscleaderboard.com/",
+                         target: "_blank",
+                       },
+                       {
+                         name: "Vault",
+                         href: "https://bgscvault.com/",
+                         target: "_blank",
+                       },
+                     ]}
+                   />
+                  <Link to="/perp/PERP_BTC_USDC">
+                    <img src={withBasePath("/logo-text.svg")} alt="logo" style={{ height: "32px" }} />
+                  </Link>
+                </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                   <LanguageToggle />
                   {components.scanQRCode}
@@ -287,9 +260,6 @@ export const useOrderlyConfig = () => {
             );
           },
         },
-        bottomNavProps: {
-          mainMenus: bottomNavMenus,
-        },
         footerProps: {
           telegramUrl: import.meta.env.VITE_TELEGRAM_URL || undefined,
           discordUrl: import.meta.env.VITE_DISCORD_URL || undefined,
@@ -305,7 +275,7 @@ export const useOrderlyConfig = () => {
                 component: (
                   <Link
                     id="primary-logo-link"
-                    to="/"
+                    to="/perp/PERP_BTC_USDC"
                   >
                     <img src={withBasePath("/logo.svg")} alt="logo" />
                   </Link>
