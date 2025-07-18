@@ -1,0 +1,11 @@
+include:
+  - project: 'orderlynetwork/orderly-devops/orderly-common/common-ci'
+    ref: main
+    file: '/common-orderly-network-staging-evm.yaml'
+  - project: 'orderlynetwork/orderly-devops/orderly-common/common-ci'
+    ref: main
+    file: '/common-orderly-network-prod-evm.yaml'
+
+variables:
+  SERVICE_NAME: aden
+  IMAGE_NAME: aden
