@@ -1,7 +1,7 @@
 {
   "common.demo_trading": "모의투자",
   "common.trading": "거래",
-  "common.portfolio": "포트폴리오",
+  "common.portfolio": "내 자산",
   "common.markets": "마켓",
   "common.demo": "모의투자",
   "tradingLeaderboard.leaderboard": "리더보드",
@@ -11,7 +11,7 @@
   "nav.guide": "가이드",
   "nav.gateio": "Gate.io",
   "nav.trading": "거래",
-  "nav.portfolio": "포트폴리오",
+  "nav.portfolio": "내 자산",
   "nav.markets": "마켓",
   "nav.leaderboard": "리더보드",
   "nav.referral": "레퍼럴",

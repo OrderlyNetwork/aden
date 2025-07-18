@@ -13,7 +13,7 @@ const translations: TranslationDictionary = {
     EN: 'Trading'
   },
   'common.portfolio': {
-    KO: '포트폴리오',
+    KO: '내 자산',
     EN: 'Portfolio'
   },
   'common.markets': {
@@ -54,7 +54,7 @@ const translations: TranslationDictionary = {
     EN: 'Trading'
   },
   'nav.portfolio': {
-    KO: '포트폴리오',
+    KO: '내 자산',
     EN: 'Portfolio'
   },
   'nav.markets': {
