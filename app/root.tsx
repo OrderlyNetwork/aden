@@ -69,18 +69,35 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     function checkAndEnableOrderButton() {
+      // Check URL parameter for trade enabled override
+      const urlParams = new URLSearchParams(window.location.search);
+      const tradeEnabledParam = urlParams.get('tradeenabled');
+
       const targetDate = new Date('2025-07-21T18:00:00+09:00');
       const currentDate = new Date();
 
       const submitButton = document.getElementById('order-entry-submit-button');
 
-      if (currentDate < targetDate) {
-        // Before target date: hide real button, show fake disabled button
+      // Determine if trading should be enabled
+      let tradingEnabled: boolean;
+
+      if (tradeEnabledParam !== null) {
+        // URL parameter takes precedence
+        tradingEnabled = tradeEnabledParam.toLowerCase() === 'true';
+      } else {
+        // Fall back to date-based logic
+        tradingEnabled = currentDate >= targetDate;
+      }
+
+      if (!tradingEnabled) {
+        // Trading disabled: hide real button, show fake disabled button
         const tradingDisabledText = lang === "ko" ? "거래 비활성화" : "Trading Disabled";
 
         if (submitButton) {
           // Hide the real button
-          submitButton.style.display = 'none';          // Create or update fake button
+          submitButton.style.display = 'none';
+
+          // Create or update fake button
           let fakeButton = document.getElementById('fake-order-entry-submit-button');
           if (!fakeButton && submitButton.parentElement) {
             fakeButton = document.createElement('button');
@@ -96,7 +113,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           }
         }
       } else {
-        // After target date: show real button, remove fake button
+        // Trading enabled: show real button, remove fake button
         if (submitButton) {
           // Show the real button
           submitButton.style.display = 'block';
@@ -116,7 +133,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     return () => {
       clearInterval(buttonCheckInterval);
     };
-  }, [lang]);
+  }, [lang, location.search]);
 
   return (
     <html lang={lang}>
