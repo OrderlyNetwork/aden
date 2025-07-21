@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { Outlet, useLocation } from "@remix-run/react";
 import { PortfolioLayoutWidget } from "@orderly.network/portfolio";
 import { useOrderlyConfig } from "@/utils/config";
@@ -12,6 +12,10 @@ export default function PortfolioLayout() {
 
   const { onRouteChange } = useNav();
   const config = useOrderlyConfig();
+
+  useEffect(() => {
+    document.title = t('extend.pageTitle');
+  }, [t]);
 
   const currentPath = useMemo(() => {
     if (pathname.endsWith("/portfolio")) return "/portfolio";

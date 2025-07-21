@@ -1,5 +1,6 @@
 {
   "extend.links": "벅스코인",
+  "extend.pageTitle": "DeFi: DEX 거래소 아덴",
   "common.demo_trading": "모의투자",
   "common.trading": "거래",
   "common.portfolio": "내 자산",

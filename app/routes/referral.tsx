@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ReferralProvider } from "@orderly.network/affiliate";
 import { Outlet } from "@remix-run/react";
 import {
@@ -5,10 +6,16 @@ import {
 } from "@orderly.network/trading-rewards";
 import { useOrderlyConfig } from "@/utils/config";
 import { useNav } from "@/hooks/useNav";
+import { useTranslation } from "@orderly.network/i18n";
 
 export default function TradingRewardsLayout() {
     const { onRouteChange } = useNav();
     const config = useOrderlyConfig();
+    const { t } = useTranslation();
+
+    useEffect(() => {
+        document.title = t('extend.pageTitle');
+    }, [t]);
 
     return (
         <ReferralProvider
