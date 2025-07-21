@@ -1,25 +1,91 @@
-/* Target the specific div and reorder its children */
-.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3 {
-    display: flex;
-    flex-direction: column;
+/* Apply reordering only when screen width is less than 1280px */
+@media (max-width: 1279px) {
+    body>div.oui-scaffold-root>div.oui-scaffold-container>div.oui-box>div>div.oui-box.w-split-pane>div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Set order for the children */
+    body>div.oui-scaffold-root>div.oui-scaffold-container>div.oui-box>div>div.oui-box.w-split-pane>div:nth-child(2)> :nth-child(1) {
+        order: 1;
+    }
+
+    body>div.oui-scaffold-root>div.oui-scaffold-container>div.oui-box>div>div.oui-box.w-split-pane>div:nth-child(2)> :nth-child(2) {
+        order: 3;
+        /* Move 2nd child to 3rd position */
+    }
+
+    body>div.oui-scaffold-root>div.oui-scaffold-container>div.oui-box>div>div.oui-box.w-split-pane>div:nth-child(2)> :nth-child(3) {
+        order: 2;
+        /* Move 3rd child to 2nd position */
+    }
+
+    body>div.oui-scaffold-root>div.oui-scaffold-container>div.oui-box>div>div.oui-box.w-split-pane>div:nth-child(2)> :nth-child(n+4) {
+        order: 4;
+        /* Keep any additional children in order */
+    }
 }
 
-/* Set order for the children */
-.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(1) {
-    order: 1;
+@media (min-width: 1289px) {
+    body>div.oui-scaffold-root>div.oui-scaffold-container>div.oui-box>div>div.oui-box.w-split-pane>div:nth-child(3) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Set order for the children */
+    body>div.oui-scaffold-root>div.oui-scaffold-container>div.oui-box>div>div.oui-box.w-split-pane>div:nth-child(3)> :nth-child(1) {
+        order: 1;
+    }
+
+    body>div.oui-scaffold-root>div.oui-scaffold-container>div.oui-box>div>div.oui-box.w-split-pane>div:nth-child(3)> :nth-child(2) {
+        order: 3;
+        /* Move 2nd child to 3rd position */
+    }
+
+    body>div.oui-scaffold-root>div.oui-scaffold-container>div.oui-box>div>div.oui-box.w-split-pane>div:nth-child(3)> :nth-child(3) {
+        order: 2;
+        /* Move 3rd child to 2nd position */
+    }
+
+    body>div.oui-scaffold-root>div.oui-scaffold-container>div.oui-box>div>div.oui-box.w-split-pane>div:nth-child(3)> :nth-child(n+4) {
+        order: 4;
+        /* Keep any additional children in order */
+    }
 }
 
-.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(2) {
-    order: 3;
-    /* Move 2nd child to 3rd position */
+/* TP/SL Outcome Message Styles - applies to all screen sizes */
+#tpsl-outcome-message {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    /* Removed background-color and border */
 }
 
-.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(3) {
-    order: 2;
-    /* Move 3rd child to 2nd position */
+/* Message content styling */
+#tpsl-outcome-message .tpsl-message {
+    font-size: 0.575rem;
+    color: #c9d5e9;
+    margin-bottom: 0.5rem;
 }
 
-.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(n+4) {
-    order: 4;
-    /* Keep any additional children in order */
+#tpsl-outcome-message .tpsl-message:last-child {
+    margin-bottom: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    #tpsl-outcome-message .tpsl-message {
+        color: #0e0e0f;
+    }
+}
+
+/* Highlighted text styling */
+#tpsl-outcome-message .font-bold {
+    font-weight: 700;
+}
+
+#tpsl-outcome-message .text-green-500 {
+    color: #10b981;
+}
+
+#tpsl-outcome-message .text-red-500 {
+    color: #ef4444;
 }
