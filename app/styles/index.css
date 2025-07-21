@@ -3,6 +3,7 @@
 @import "../styles/fonts.css";
 @import "./drinkcode.css";
 @import "./global.css";
+@import "../styles/aden.css";
 
 @tailwind base;
 @tailwind components;
