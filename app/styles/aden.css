@@ -1,12 +1,58 @@
-/* Target the specific div and reorder its children */
-.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3 {
-    display: flex;
-    flex-direction: column;
+/* Apply reordering only when screen width is less than 1280px */
+@media (max-width: 1279px) {
+    body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto>div.oui-scaffold-container.oui-relative.oui-h-full.oui-min-w-\[1018px\]>div.oui-box.oui-size-height>div>div.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>div.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Set order for the children */
+    body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto>div.oui-scaffold-container.oui-relative.oui-h-full.oui-min-w-\[1018px\]>div.oui-box.oui-size-height>div>div.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>div.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(1) {
+        order: 1;
+    }
+
+    body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto>div.oui-scaffold-container.oui-relative.oui-h-full.oui-min-w-\[1018px\]>div.oui-box.oui-size-height>div>div.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>div.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(2) {
+        order: 3;
+        /* Move 2nd child to 3rd position */
+    }
+
+    body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto>div.oui-scaffold-container.oui-relative.oui-h-full.oui-min-w-\[1018px\]>div.oui-box.oui-size-height>div>div.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>div.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(3) {
+        order: 2;
+        /* Move 3rd child to 2nd position */
+    }
+
+    body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto>div.oui-scaffold-container.oui-relative.oui-h-full.oui-min-w-\[1018px\]>div.oui-box.oui-size-height>div>div.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>div.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(n+4) {
+        order: 4;
+        /* Keep any additional children in order */
+    }
 }
 
-/* Set order for the children */
-.oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(1) {
-    order: 1;
+@media (min-width: 1280px) {
+    body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto>div.oui-scaffold-container.oui-relative.oui-h-full.oui-min-w-\[1018px\]>div.oui-box.oui-size-height>div>div.w-split.oui-flex.oui-flex-1.oui-overflow-hidden.w-split-horizontal>div.oui-box.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-2.w-split-pane {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Set order for the children */
+    body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto>div.oui-scaffold-container.oui-relative.oui-h-full.oui-min-w-\[1018px\]>div.oui-box.oui-size-height>div>div.w-split.oui-flex.oui-flex-1.oui-overflow-hidden.w-split-horizontal>div.oui-box.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-2.w-split-pane> :nth-child(1) {
+        order: 1;
+    }
+
+    body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto>div.oui-scaffold-container.oui-relative.oui-h-full.oui-min-w-\[1018px\]>div.oui-box.oui-size-height>div>div.w-split.oui-flex.oui-flex-1.oui-overflow-hidden.w-split-horizontal>div.oui-box.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-2.w-split-pane> :nth-child(2) {
+        order: 3;
+        /* Move 2nd child to 3rd position */
+    }
+
+    body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto>div.oui-scaffold-container.oui-relative.oui-h-full.oui-min-w-\[1018px\]>div.oui-box.oui-size-height>div>div.w-split.oui-flex.oui-flex-1.oui-overflow-hidden.w-split-horizontal>div.oui-box.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-2.w-split-pane> :nth-child(3) {
+        order: 2;
+        /* Move 3rd child to 2nd position */
+    }
+
+    body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contrast.oui-flex.oui-flex-col.oui-custom-scrollbar.oui-overflow-auto>div.oui-scaffold-container.oui-relative.oui-h-full.oui-min-w-\[1018px\]>div.oui-box.oui-size-height>div>div.w-split.oui-flex.oui-flex-1.oui-overflow-hidden.w-split-horizontal>div.oui-box.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-2.w-split-pane> :nth-child(n+4) {
+        order: 4;
+        /* Keep any additional children in order */
+    }
+
+    >>>>>>>Stashed changes
 }
 
 .oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(2) {
