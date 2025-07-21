@@ -9,8 +9,18 @@ import { useTranslation } from "@orderly.network/i18n";
 
 // Order History Table Header Modifier Component
 function OrderHistoryHeaderModifier() {
+  const { i18n } = useTranslation();
+
   useEffect(() => {
     console.log('🔍 Setting up Order History header modification...');
+
+    const getFeeText = (isMMFee: boolean) => {
+      const isKorean = i18n.language === 'ko';
+      if (isMMFee) {
+        return isKorean ? 'MM 수수료' : 'MM fee';
+      }
+      return isKorean ? '수수료' : 'Fee';
+    };
 
     const modifyFeeHeader = () => {
       // Check if order history tab is selected
@@ -46,13 +56,14 @@ function OrderHistoryHeaderModifier() {
       tableHeaders.forEach((header, index) => {
         const headerDiv = header.querySelector('.oui-inline-flex.oui-items-center.oui-gap-x-1');
         if (headerDiv) {
-          if (headerDiv.textContent?.trim() === 'Fee') {
-            headerDiv.textContent = 'MM fee';
+          const headerText = headerDiv.textContent?.trim();
+          if (headerText === 'Fee' || headerText === '수수료') {
+            headerDiv.textContent = getFeeText(true); // Convert to MM fee
             mmFeeHeader = header;
             mmFeeIndex = index;
             mmFeeStyle = (header as HTMLElement).style.cssText || 'width: 124px;';
             header.setAttribute('data-header-type', 'mm-fee');
-          } else if (headerDiv.textContent?.trim() === 'MM fee') {
+          } else if (headerText === 'MM fee' || headerText === 'MM 수수료') {
             mmFeeHeader = header;
             mmFeeIndex = index;
             mmFeeStyle = (header as HTMLElement).style.cssText || 'width: 124px;';
@@ -79,7 +90,7 @@ function OrderHistoryHeaderModifier() {
           newFeeTh.className = mmFeeHeader.className;
           newFeeTh.setAttribute('data-header-type', 'fee');
           newFeeTh.style.cssText = mmFeeStyle;
-          newFeeTh.innerHTML = `<div class="oui-inline-flex oui-items-center oui-gap-x-1">Fee</div>`;
+          newFeeTh.innerHTML = `<div class="oui-inline-flex oui-items-center oui-gap-x-1">${getFeeText(false)}</div>`;
 
           // Insert before MM fee
           headerRow.insertBefore(newFeeTh, mmFeeHeader);
@@ -155,7 +166,7 @@ function OrderHistoryHeaderModifier() {
     return () => {
       clearTimeout(setupTimeout);
     };
-  }, []);
+  }, [i18n.language]); // Add i18n.language as a dependency
 
   return null;
 }
