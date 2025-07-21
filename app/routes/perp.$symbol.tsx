@@ -9,45 +9,47 @@ import { useTranslation } from "@orderly.network/i18n";
 
 // Fee Section Modifier Component
 function FeeSectionModifier() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     console.log('🔍 Setting up Fee section modification...');
 
-    const getFeeText = (isMMFee: boolean) => {
-      const isKorean = i18n.language === 'ko';
-      if (isMMFee) {
-        return isKorean ? 'MM 수수료' : 'MM Fees';
-      }
-      return isKorean ? '수수료' : 'Fees';
-    };
-
-    const getTakerMakerText = () => {
-      const isKorean = i18n.language === 'ko';
-      return {
-        taker: isKorean ? '테이커' : 'Taker',
-        maker: isKorean ? '메이커' : 'Maker'
-      };
-    };
-
     const modifyFeeSection = () => {
-      // Check if new fees section already exists
-      if (document.getElementById('new-fees-section')) {
-        return;
+      // Remove existing fee section when language changes
+      const existingNewSection = document.getElementById('new-fees-section');
+      if (existingNewSection) {
+        existingNewSection.remove();
       }
 
-      // Define selectors for both desktop and mobile
-      const desktopSelector = '.oui-scaffold-root > .oui-scaffold-container > .oui-box.oui-size-height > div > .oui-box.w-split-pane > .oui-box.oui-flex-col > div:nth-child(3) > .oui-space-y-2 > .oui-space-y-\\[2px\\] > div:nth-child(4)';
-      const mobileSelector = '.oui-scaffold-root > div > div > div > main > div.oui-grid > div.oui-bg-base-9 > div > div.oui-space-y-\\[2px\\] > div:nth-child(4)';
-
-      // Try both selectors based on screen width
+      // Find the fees section by looking for specific span elements
+      const spans = document.querySelectorAll('span.oui-text-2xs');
       let feesSection = null;
-      if (window.innerWidth <= 768) {
-        feesSection = document.querySelector(mobileSelector) as HTMLDivElement | null;
-        console.log('📱 Using mobile selector');
-      } else {
-        feesSection = document.querySelector(desktopSelector) as HTMLDivElement | null;
-        console.log('🖥️ Using desktop selector');
+
+      for (const span of spans) {
+        const text = span.textContent?.trim() || '';
+        // Check if this is the Fees span
+        if (text === t('common.fees') || text.includes('MM')) {
+          // Check if parent div also contains Taker and Maker spans
+          const parentDiv = span.closest('div.oui-box');
+          if (parentDiv) {
+            const childSpans = parentDiv.querySelectorAll('span.oui-text-2xs');
+            const hasTakerMaker = Array.from(childSpans).some(s =>
+              (s.textContent?.includes(`${t('portfolio.feeTier.column.taker')}:`) ||
+                s.textContent?.includes('Taker:') ||
+                s.textContent?.includes('테이커:')) &&
+              Array.from(childSpans).some(s2 =>
+                s2.textContent?.includes(`${t('portfolio.feeTier.column.maker')}:`) ||
+                s2.textContent?.includes('Maker:') ||
+                s2.textContent?.includes('메이커:')
+              )
+            );
+
+            if (hasTakerMaker) {
+              feesSection = parentDiv;
+              break;
+            }
+          }
+        }
       }
 
       if (!feesSection) {
@@ -65,25 +67,21 @@ function FeeSectionModifier() {
       // Change existing "Fees" to "MM Fees"
       const existingFeesSpan = feesSection.querySelector('span.oui-text-2xs');
       if (existingFeesSpan) {
-        existingFeesSpan.textContent = getFeeText(true);
+        existingFeesSpan.textContent = `MM ${t('common.fees')}`;
       }
-
-      // Get translated text for Taker/Maker
-      const { taker, maker } = getTakerMakerText();
 
       // Create new fees section with the same structure
       const newFeesSection = document.createElement('div');
       newFeesSection.id = 'new-fees-section';
-      // Copy all classes from the original element
       newFeesSection.setAttribute('class', 'oui-box oui-flex oui-flex-row oui-items-center oui-justify-between oui-flex-nowrap');
 
       newFeesSection.innerHTML = `
-        <span class="oui-text-2xs">${getFeeText(false)}</span>
+        <span class="oui-text-2xs">${t('common.fees')}</span>
         <div class="oui-box oui-flex oui-flex-row oui-items-center oui-justify-start oui-flex-nowrap oui-gap-1">
-          <span class="oui-text-2xs">${taker}:</span>
+          <span class="oui-text-2xs">${t('portfolio.feeTier.column.taker')}:</span>
           <span class="oui-text-2xs oui-text-base-contrast-80">0%</span>
           <span class="oui-text-2xs">/</span>
-          <span class="oui-text-2xs">${maker}:</span>
+          <span class="oui-text-2xs">${t('portfolio.feeTier.column.maker')}:</span>
           <span class="oui-text-2xs oui-text-base-contrast-80">0%</span>
         </div>
       `;
@@ -92,24 +90,12 @@ function FeeSectionModifier() {
       parentContainer.insertBefore(newFeesSection, feesSection);
     };
 
-    // Handle window resize
-    const handleResize = () => {
-      // Remove existing section to allow recreation with correct selector
-      const existingSection = document.getElementById('new-fees-section');
-      if (existingSection) {
-        existingSection.remove();
-      }
-      modifyFeeSection();
-    };
-
-    // Monitor for changes and window resize
+    // Monitor for changes
     const observer = new MutationObserver((mutations) => {
       const shouldProcess = mutations.some(mutation =>
         mutation.type === 'childList' ||
-        (mutation.type === 'attributes' &&
-          mutation.attributeName === 'id' &&
-          mutation.target instanceof Element &&
-          !document.getElementById('new-fees-section'))
+        mutation.type === 'attributes' ||
+        mutation.type === 'characterData'  // Add this to catch text content changes
       );
 
       if (shouldProcess) {
@@ -121,20 +107,26 @@ function FeeSectionModifier() {
       childList: true,
       subtree: true,
       attributes: true,
-      attributeFilter: ['id']
+      characterData: true  // Add this to watch for text content changes
     };
 
     observer.observe(document.body, config);
-    window.addEventListener('resize', handleResize);
 
     // Initial check
     modifyFeeSection();
 
+    // Force update when language changes
+    const handleLanguageChange = () => {
+      modifyFeeSection();
+    };
+
+    i18n.on('languageChanged', handleLanguageChange);
+
     return () => {
       observer.disconnect();
-      window.removeEventListener('resize', handleResize);
+      i18n.off('languageChanged', handleLanguageChange);
     };
-  }, [i18n.language]);
+  }, [t, i18n]); // Add i18n to dependencies
 
   return null;
 }
