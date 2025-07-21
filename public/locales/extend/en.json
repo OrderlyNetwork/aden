@@ -1,5 +1,6 @@
 {
   "extend.links": "Bugscoin",
+  "extend.pageTitle": "ADEN - DeFi Crypto Futures Trading Platform",
   "common.demo_trading": "Demo",
   "common.trading": "Trading",
   "common.portfolio": "Portfolio",
