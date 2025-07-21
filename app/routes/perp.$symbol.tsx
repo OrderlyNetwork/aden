@@ -139,6 +139,62 @@ function FeeSectionModifier() {
   return null;
 }
 
+// Toast Sound Effect Component
+function ToastSoundEffect() {
+  useEffect(() => {
+    console.log('🔊 Setting up toast sound effect...');
+
+    // Create audio element with coin sound from public folder
+    const audio = new Audio('/coin.mp3');
+    audio.volume = 0.5; // Set volume to 50%
+
+    // Messages that should trigger the sound
+    const triggerMessages = [
+      'Order filled',
+      'Deposit completed',
+      '주문 체결됨',
+      '입금 완료됨'
+    ];
+
+    // Create observer to watch for toast elements
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof HTMLElement) {
+            // Check for any toast element by role="status"
+            const toastElement = node.querySelector('[role="status"]');
+            if (toastElement) {
+              // Check if the toast contains any of the trigger messages
+              const toastText = toastElement.textContent || '';
+              const shouldPlaySound = triggerMessages.some(msg => toastText.includes(msg));
+
+              if (shouldPlaySound) {
+                audio.currentTime = 0; // Reset audio to start
+                audio.play().catch(err => console.log('Audio play failed:', err));
+              }
+            }
+          }
+        });
+      });
+    });
+
+    // Start observing
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    // Cleanup
+    return () => {
+      observer.disconnect();
+      audio.pause();
+      audio.src = '';
+    };
+  }, []);
+
+  return null;
+}
+
 // Order History Table Header Modifier Component
 function OrderHistoryHeaderModifier() {
   const { i18n } = useTranslation();
@@ -357,6 +413,7 @@ export default function PerpPage() {
       <OrderHistoryHeaderModifier />
       {/* Fee Section Modifier */}
       <FeeSectionModifier />
+      <ToastSoundEffect />
     </>
   );
 }
