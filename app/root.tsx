@@ -73,7 +73,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       const urlParams = new URLSearchParams(window.location.search);
       const tradeEnabledParam = urlParams.get('tradeenabled');
 
-      const targetDate = new Date('2025-07-21T18:00:00+09:00');
+      const targetDate = new Date('2025-07-23T18:00:00+09:00');
       const currentDate = new Date();
 
       const submitButton = document.getElementById('order-entry-submit-button');
