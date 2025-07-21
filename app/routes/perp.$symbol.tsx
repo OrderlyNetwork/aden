@@ -31,79 +31,119 @@ function OrderHistoryHeaderModifier() {
         return;
       }
 
+      // Check if table is already processed
+      if (tableContainer.getAttribute('data-fee-headers-processed') === 'true') {
+        return;
+      }
+
       // Find table headers
       const tableHeaders = tableContainer.querySelectorAll('thead tr th');
+      let mmFeeHeader: Element | null = null;
+      let mmFeeIndex = -1;
+      let mmFeeStyle: string = '';
 
-      tableHeaders.forEach((header) => {
-        // Look for the div containing "Fee" text
+      // First pass: find MM fee header and capture its style
+      tableHeaders.forEach((header, index) => {
         const headerDiv = header.querySelector('.oui-inline-flex.oui-items-center.oui-gap-x-1');
-
-        if (headerDiv && headerDiv.textContent?.trim() === 'Fee') {
-          console.log('🎯 Found Fee header, changing to MM fee');
-          headerDiv.textContent = 'MM fee';
-
-          // Mark as modified to avoid repeated changes
-          header.setAttribute('data-header-modified', 'true');
+        if (headerDiv) {
+          if (headerDiv.textContent?.trim() === 'Fee') {
+            headerDiv.textContent = 'MM fee';
+            mmFeeHeader = header;
+            mmFeeIndex = index;
+            mmFeeStyle = (header as HTMLElement).style.cssText || 'width: 124px;';
+            header.setAttribute('data-header-type', 'mm-fee');
+          } else if (headerDiv.textContent?.trim() === 'MM fee') {
+            mmFeeHeader = header;
+            mmFeeIndex = index;
+            mmFeeStyle = (header as HTMLElement).style.cssText || 'width: 124px;';
+            header.setAttribute('data-header-type', 'mm-fee');
+          }
         }
       });
+
+      // Wait for styles to be applied if they're not present
+      if (!mmFeeStyle.includes('width')) {
+        console.log('⚠️ Waiting for styles to be applied...');
+        return; // Will retry on next mutation
+      }
+
+      // Check if Fee header already exists using data attribute
+      const feeHeaderExists = tableContainer.querySelector('th[data-header-type="fee"]') !== null;
+
+      // If MM fee header found and Fee header doesn't exist yet, add new Fee header
+      if (mmFeeHeader && !feeHeaderExists && mmFeeIndex !== -1) {
+        const headerRow = tableContainer.querySelector('thead tr');
+        if (headerRow) {
+          // Create new Fee header with same styling
+          const newFeeTh = document.createElement('th');
+          newFeeTh.className = mmFeeHeader.className;
+          newFeeTh.setAttribute('data-header-type', 'fee');
+          newFeeTh.style.cssText = mmFeeStyle;
+          newFeeTh.innerHTML = `<div class="oui-inline-flex oui-items-center oui-gap-x-1">Fee</div>`;
+
+          // Insert before MM fee
+          headerRow.insertBefore(newFeeTh, mmFeeHeader);
+          console.log('➕ Added new Fee header before MM fee');
+
+          // Add corresponding empty cells to each row in tbody
+          const tbody = tableContainer.querySelector('tbody');
+          if (tbody) {
+            const existingCell = tbody.querySelector(`td:nth-child(${mmFeeIndex + 1})`);
+            const cellStyle = existingCell ? (existingCell as HTMLElement).style.cssText : mmFeeStyle;
+
+            tbody.querySelectorAll('tr').forEach(row => {
+              const newCell = document.createElement('td');
+              newCell.className = row.children[mmFeeIndex]?.className || '';
+              newCell.setAttribute('data-cell-type', 'fee');
+              newCell.style.cssText = cellStyle;
+              newCell.innerHTML = `
+                <span data-accent-color="inherit" class="oui-text-inherit oui-tabular-nums">0</span>
+                <div class="oui-absolute oui-left-0 oui-top-0 oui-z-[-1] oui-size-full group-hover:oui-bg-line-4"></div>
+              `;
+              row.insertBefore(newCell, row.children[mmFeeIndex]);
+            });
+            console.log('➕ Added corresponding cells in table rows');
+          }
+
+          // Mark table as processed
+          tableContainer.setAttribute('data-fee-headers-processed', 'true');
+        }
+      } else if (mmFeeHeader) {
+        // If we found MM fee header but didn't need to add Fee header, still mark as processed
+        tableContainer.setAttribute('data-fee-headers-processed', 'true');
+      }
     };
 
     // Monitor for order history tab selection and table changes
     const setupHeaderModification = () => {
-      // Initial modification
       modifyFeeHeader();
 
-      // Observer for tab changes and table updates
       const observer = new MutationObserver((mutations) => {
-        let shouldCheck = false;
+        // Only process if the table structure might have changed
+        const shouldProcess = mutations.some(mutation =>
+          mutation.type === 'childList' ||
+          (mutation.type === 'attributes' &&
+            (mutation.attributeName === 'data-fee-headers-processed' ||
+              mutation.attributeName === 'style') &&
+            mutation.target instanceof Element &&
+            (!mutation.target.hasAttribute('data-fee-headers-processed') ||
+              mutation.attributeName === 'style'))
+        );
 
-        mutations.forEach((mutation) => {
-          // Check if order history tab state changed
-          if (mutation.target &&
-            (mutation.target as Element).getAttribute?.('data-testid') === 'oui-testid-dataList-orderHistory-tab') {
-            shouldCheck = true;
-          }
-
-          // Check if table content changed
-          if (mutation.target &&
-            ((mutation.target as Element).classList?.contains('oui-table-root') ||
-              (mutation.target as Element).closest?.('.oui-table-root'))) {
-            shouldCheck = true;
-          }
-
-          // Check if any table headers were added/modified
-          if (mutation.addedNodes.length > 0) {
-            mutation.addedNodes.forEach((node) => {
-              if (node.nodeType === Node.ELEMENT_NODE &&
-                ((node as Element).tagName === 'TH' ||
-                  (node as Element).querySelector?.('th'))) {
-                shouldCheck = true;
-              }
-            });
-          }
-        });
-
-        if (shouldCheck) {
-          console.log('🔄 Table or tab changed, checking for Fee header...');
-          setTimeout(modifyFeeHeader, 100); // Small delay to ensure DOM is updated
+        if (shouldProcess) {
+          setTimeout(modifyFeeHeader, 100);
         }
       });
 
-      // Watch for changes in the entire trading page
       const tradingPageContainer = document.body;
       observer.observe(tradingPageContainer, {
         childList: true,
         subtree: true,
         attributes: true,
-        attributeFilter: ['class', 'aria-selected', 'data-testid']
+        attributeFilter: ['class', 'aria-selected', 'data-testid', 'data-fee-headers-processed', 'style']
       });
 
-      console.log('✅ Order history header modification observer setup complete');
-
-      return () => {
-        observer.disconnect();
-        console.log('🛑 Order history header modification observer cleanup');
-      };
+      return () => observer.disconnect();
     };
 
     // Setup with delay to ensure TradingPage is loaded
@@ -119,6 +159,8 @@ function OrderHistoryHeaderModifier() {
 
   return null;
 }
+
+
 
 export default function PerpPage() {
   const params = useParams();
