@@ -151,9 +151,17 @@ function ToastSoundEffect() {
     // Messages that should trigger the sound
     const triggerMessages = [
       'Order filled',
-      'Deposit completed',
       '주문 체결됨',
-      '입금 완료됨'
+      'Approve success',
+      '승인 성공',
+      'Deposit requested',
+      '입금 요청됨',
+      'Deposit completed',
+      '입금 완료됨',
+      'Withdraw requested',
+      '출금 요청됨',
+      'Withdraw completed',
+      '출금 완료됨',
     ];
 
     // Create observer to watch for toast elements
