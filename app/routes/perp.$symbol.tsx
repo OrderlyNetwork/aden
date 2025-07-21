@@ -7,6 +7,138 @@ import { useOrderlyConfig } from "@/utils/config";
 import { useMarkPrice } from "@orderly.network/hooks";
 import { useTranslation } from "@orderly.network/i18n";
 
+// Fee Section Modifier Component
+function FeeSectionModifier() {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    console.log('🔍 Setting up Fee section modification...');
+
+    const getFeeText = (isMMFee: boolean) => {
+      const isKorean = i18n.language === 'ko';
+      if (isMMFee) {
+        return isKorean ? 'MM 수수료' : 'MM Fees';
+      }
+      return isKorean ? '수수료' : 'Fees';
+    };
+
+    const getTakerMakerText = () => {
+      const isKorean = i18n.language === 'ko';
+      return {
+        taker: isKorean ? '테이커' : 'Taker',
+        maker: isKorean ? '메이커' : 'Maker'
+      };
+    };
+
+    const modifyFeeSection = () => {
+      // Check if new fees section already exists
+      if (document.getElementById('new-fees-section')) {
+        return;
+      }
+
+      // Define selectors for both desktop and mobile
+      const desktopSelector = '.oui-scaffold-root > .oui-scaffold-container > .oui-box.oui-size-height > div > .oui-box.w-split-pane > .oui-box.oui-flex-col > div:nth-child(3) > .oui-space-y-2 > .oui-space-y-\\[2px\\] > div:nth-child(4)';
+      const mobileSelector = '.oui-scaffold-root > div > div > div > main > div.oui-grid > div.oui-bg-base-9 > div > div.oui-space-y-\\[2px\\] > div:nth-child(4)';
+
+      // Try both selectors based on screen width
+      let feesSection = null;
+      if (window.innerWidth <= 768) {
+        feesSection = document.querySelector(mobileSelector) as HTMLDivElement | null;
+        console.log('📱 Using mobile selector');
+      } else {
+        feesSection = document.querySelector(desktopSelector) as HTMLDivElement | null;
+        console.log('🖥️ Using desktop selector');
+      }
+
+      if (!feesSection) {
+        console.log('⚠️ Fees section not found');
+        return;
+      }
+
+      // Get the parent container
+      const parentContainer = feesSection.parentElement;
+      if (!parentContainer) {
+        console.log('⚠️ Parent container not found');
+        return;
+      }
+
+      // Change existing "Fees" to "MM Fees"
+      const existingFeesSpan = feesSection.querySelector('span.oui-text-2xs');
+      if (existingFeesSpan) {
+        existingFeesSpan.textContent = getFeeText(true);
+      }
+
+      // Get translated text for Taker/Maker
+      const { taker, maker } = getTakerMakerText();
+
+      // Create new fees section with the same structure
+      const newFeesSection = document.createElement('div');
+      newFeesSection.id = 'new-fees-section';
+      // Copy all classes from the original element
+      newFeesSection.setAttribute('class', 'oui-box oui-flex oui-flex-row oui-items-center oui-justify-between oui-flex-nowrap');
+
+      newFeesSection.innerHTML = `
+        <span class="oui-text-2xs">${getFeeText(false)}</span>
+        <div class="oui-box oui-flex oui-flex-row oui-items-center oui-justify-start oui-flex-nowrap oui-gap-1">
+          <span class="oui-text-2xs">${taker}:</span>
+          <span class="oui-text-2xs oui-text-base-contrast-80">0%</span>
+          <span class="oui-text-2xs">/</span>
+          <span class="oui-text-2xs">${maker}:</span>
+          <span class="oui-text-2xs oui-text-base-contrast-80">0%</span>
+        </div>
+      `;
+
+      // Insert the new section before the existing one
+      parentContainer.insertBefore(newFeesSection, feesSection);
+    };
+
+    // Handle window resize
+    const handleResize = () => {
+      // Remove existing section to allow recreation with correct selector
+      const existingSection = document.getElementById('new-fees-section');
+      if (existingSection) {
+        existingSection.remove();
+      }
+      modifyFeeSection();
+    };
+
+    // Monitor for changes and window resize
+    const observer = new MutationObserver((mutations) => {
+      const shouldProcess = mutations.some(mutation =>
+        mutation.type === 'childList' ||
+        (mutation.type === 'attributes' &&
+          mutation.attributeName === 'id' &&
+          mutation.target instanceof Element &&
+          !document.getElementById('new-fees-section'))
+      );
+
+      if (shouldProcess) {
+        setTimeout(modifyFeeSection, 100);
+      }
+    });
+
+    const config = {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['id']
+    };
+
+    observer.observe(document.body, config);
+    window.addEventListener('resize', handleResize);
+
+    // Initial check
+    modifyFeeSection();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [i18n.language]);
+
+  return null;
+}
+
 // Order History Table Header Modifier Component
 function OrderHistoryHeaderModifier() {
   const { i18n } = useTranslation();
@@ -223,6 +355,8 @@ export default function PerpPage() {
       />
       {/* Order History Header Modifier */}
       <OrderHistoryHeaderModifier />
+      {/* Fee Section Modifier */}
+      <FeeSectionModifier />
     </>
   );
 }
