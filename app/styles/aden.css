@@ -51,8 +51,6 @@
         order: 4;
         /* Keep any additional children in order */
     }
-
-    >>>>>>>Stashed changes
 }
 
 .oui-box.oui-flex.oui-flex-row.oui-items-stretch.oui-justify-start.oui-flex-nowrap.oui-gap-x-2.w-split-pane.oui-flex-1>.oui-box.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-y-3> :nth-child(2) {
