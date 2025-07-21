@@ -1,4 +1,8 @@
 {
+  "orderEntry.orderType.scaledOrder": "분할 주문",
+  "orderEntry.upperPrice": "최고가",
+  "orderEntry.lowerPrice": "최저가",
+  "orderEntry.distributionType.custom": "사용자 정의",
   "trading.portfolioSettings": "내 자산 설정",
   "portfolio.overview.transferHistory": "전송 내역",
   "common.community": "커뮤니티",
