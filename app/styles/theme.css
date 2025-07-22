@@ -404,3 +404,7 @@ footer>div>div.nav-active::before {
 html[data-lang="ko"] #oui-deposit-form>div:first-child::after {
   content: "※ ADEN은 탈중앙화 거래소로 고객 자산을 중앙화로 보관하지 않습니다. 고객의 모든 자산은 볼트 스마트 컨트랙트에 보관 됩니다.";
 }
+
+.oui-bg-base-4.oui-text-primary-contrast {
+  color: white;
+}
