@@ -17,12 +17,12 @@
 
   --oui-color-danger: 234 57 67;
   --oui-color-danger-light: 255 102 102;
-  --oui-color-danger-darken: 200 50 60;
+  --oui-color-danger-darken: 239 69 74;
   --oui-color-danger-contrast: 255 255 255;
 
   --oui-color-success: 22 163 74;
   --oui-color-success-light: 72 187 120;
-  --oui-color-success-darken: 20 140 60;
+  --oui-color-success-darken: 32 178 108;
   --oui-color-success-contrast: 255 255 255;
 
   --oui-color-warning: 255 159 67;
@@ -405,6 +405,6 @@ html[data-lang="ko"] #oui-deposit-form>div:first-child::after {
   content: "※ ADEN은 탈중앙화 거래소로 고객 자산을 중앙화로 보관하지 않습니다. 고객의 모든 자산은 볼트 스마트 컨트랙트에 보관 됩니다.";
 }
 
-.oui-bg-base-4.oui-text-primary-contrast {
+.oui-bg-base-4.oui-text-primary-contrast, .oui-bg-success-darken.oui-text-primary-contrast, .oui-bg-danger-darken.oui-text-primary-contrast {
   color: white;
 }
