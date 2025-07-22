@@ -218,7 +218,6 @@ function OrderHistoryHeaderModifier() {
         orderHistoryTab?.classList.contains('selected');
 
       if (!isOrderHistoryActive) {
-        console.log('⚠️ Order history tab not active');
         return;
       }
 
