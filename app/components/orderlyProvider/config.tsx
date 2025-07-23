@@ -202,8 +202,6 @@ export async function initOnBoard() {
   const wcV2InitOptions = {
     version: 2,
     projectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,
-    requiredChains: [1],
-    optionalChains: [...mainChains.map((chain) => parseInt(chain.id))],
     dappUrl: window.location.origin,
   };
   const injected = injectedModule();
