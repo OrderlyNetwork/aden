@@ -9,16 +9,15 @@ let hasAttemptedSwitch = false;
 let lastConnectedWallet: string | null = null;
 
 const getDefaultChainId = (isMainnet: boolean = true): string => {
-  return isMainnet
-    ? '0x38'
-    : '0x66eee';
+  return isMainnet ? "0x38" : "0x66eee";
 };
 
 const handleNetworkSwitch = async (walletState: WalletState[]) => {
   if (!onboardInstance || !walletState || walletState.length === 0) return;
 
   const connectedWallet = walletState[0];
-  if (!connectedWallet?.chains?.[0] || !connectedWallet.accounts?.length) return;
+  if (!connectedWallet?.chains?.[0] || !connectedWallet.accounts?.length)
+    return;
 
   const currentWalletId = `${connectedWallet.label}-${connectedWallet.accounts[0].address}`;
 
@@ -29,11 +28,12 @@ const handleNetworkSwitch = async (walletState: WalletState[]) => {
   hasAttemptedSwitch = true;
   lastConnectedWallet = currentWalletId;
 
-  const currentNetworkId = typeof window !== 'undefined'
-    ? localStorage.getItem('orderly_network_id') || 'mainnet'
-    : 'mainnet';
+  const currentNetworkId =
+    typeof window !== "undefined"
+      ? localStorage.getItem("orderly_network_id") || "mainnet"
+      : "mainnet";
 
-  const isMainnet = currentNetworkId === 'mainnet';
+  const isMainnet = currentNetworkId === "mainnet";
   const expectedChainId = getDefaultChainId(isMainnet);
   const currentChainId = connectedWallet.chains[0].id;
 
@@ -43,7 +43,7 @@ const handleNetworkSwitch = async (walletState: WalletState[]) => {
     try {
       const success = await onboardInstance.setChain({
         chainId: expectedChainId,
-        wallet: connectedWallet.label
+        wallet: connectedWallet.label,
       });
 
       if (success) {
@@ -52,7 +52,7 @@ const handleNetworkSwitch = async (walletState: WalletState[]) => {
         console.warn(`Failed to switch to chain ${expectedChainId}`);
       }
     } catch (error) {
-      console.error('Error switching chain:', error);
+      console.error("Error switching chain:", error);
     }
   }
 };
@@ -214,13 +214,16 @@ export async function initOnBoard() {
   }
 
   return Promise.resolve().then(() => {
+    if (onboardInstance) {
+      return onboardInstance;
+    }
     onboardInstance = init({
       wallets,
       chains: [...mainChains],
       appMetadata: {
         name: "Aden DEX",
         description: "Aden DEX",
-        icon: `${import.meta.env.VITE_BASE_URL || ''}/logo-secondary.svg`,
+        icon: `${import.meta.env.VITE_BASE_URL || ""}/logo-secondary.svg`,
       },
       theme: {
         "--w3o-background-color": "#1b112c",
@@ -245,7 +248,7 @@ export async function initOnBoard() {
     });
 
     // Subscribe to wallet state changes to detect connections/disconnections
-    const walletState = onboardInstance.state.select('wallets');
+    const walletState = onboardInstance.state.select("wallets");
     walletState.subscribe((wallets: WalletState[]) => {
       // Reset tracking when wallet disconnects
       resetSwitchTracking(wallets);
