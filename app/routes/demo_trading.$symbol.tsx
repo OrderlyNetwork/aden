@@ -793,7 +793,7 @@ export default function SymbolTradingPage() {
   }, [updateSmoothedValues]);
 
   useEffect(() => {
-    soundRef.current = new Audio('/v2/Coin.mp3');
+    soundRef.current = new Audio('/v2/coin.mp3');
     soundRef.current.volume = 0.5;
 
     // 사용자 상호작용 시 오디오 활성화
