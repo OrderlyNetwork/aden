@@ -191,31 +191,6 @@ body>div.oui-box.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-
   }
 }
 
-/* Order entry submit button - hide by default, show fake disabled button */
-#order-entry-submit-button {
-  display: none;
-}
-
-/* Fake disabled button styling */
-#fake-order-entry-submit-button {
-  cursor: default !important;
-  pointer-events: none !important;
-  opacity: 0.6 !important;
-  background-color: #6b7280 !important;
-  color: #ffffff !important;
-  border: none !important;
-  border-radius: 6px !important;
-  padding: 12px 24px !important;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 100% !important;
-  min-height: 40px !important;
-  box-sizing: border-box !important;
-}
-
 input[value="ADEN"] {
   pointer-events: none !important;
   user-select: none !important;
@@ -405,6 +380,8 @@ html[data-lang="ko"] #oui-deposit-form>div:first-child::after {
   content: "※ ADEN은 탈중앙화 거래소로 고객 자산을 중앙화로 보관하지 않습니다. 고객의 모든 자산은 볼트 스마트 컨트랙트에 보관 됩니다.";
 }
 
-.oui-bg-base-4.oui-text-primary-contrast, .oui-bg-success-darken.oui-text-primary-contrast, .oui-bg-danger-darken.oui-text-primary-contrast {
+.oui-bg-base-4.oui-text-primary-contrast,
+.oui-bg-success-darken.oui-text-primary-contrast,
+.oui-bg-danger-darken.oui-text-primary-contrast {
   color: white;
 }
