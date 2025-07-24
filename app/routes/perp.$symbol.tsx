@@ -194,7 +194,9 @@ function ToastSoundEffect() {
     console.log('🔊 Setting up toast sound effect...');
 
     // Create audio element with coin sound from public folder
-    const audio = new Audio('/coin.mp3');
+    const audioPath = `${import.meta.env.VITE_BASE_URL || ""}/coin.mp3`;
+    console.log('🔊 Audio path:', audioPath);
+    const audio = new Audio(audioPath);
     audio.volume = 0.5; // Set volume to 50%
 
     // Messages that should trigger the sound
