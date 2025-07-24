@@ -6,6 +6,7 @@ import { updateSymbol } from "@/utils/storage";
 import { useOrderlyConfig } from "@/utils/config";
 import { useMarkPrice } from "@orderly.network/hooks";
 import { useTranslation } from "@orderly.network/i18n";
+import { withBasePath } from "../utils/base-path";
 
 // Shared polling hook for DOM modifications
 function usePollingEffect(callback: () => void, dependencies: any[] = []) {
@@ -194,7 +195,7 @@ function ToastSoundEffect() {
     console.log('🔊 Setting up toast sound effect...');
 
     // Create audio element with coin sound from public folder
-    const audioPath = `${import.meta.env.VITE_BASE_URL || ""}/coin.mp3`;
+    const audioPath = withBasePath("/Coin.mp3")
     console.log('🔊 Audio path:', audioPath);
     const audio = new Audio(audioPath);
     audio.volume = 0.5; // Set volume to 50%
