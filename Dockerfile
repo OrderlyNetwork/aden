@@ -3,7 +3,7 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .npmrc  ./
 RUN yarn --ignore-scripts
 COPY . .
 RUN NODE_OPTIONS="--max-old-space-size=4096" yarn build
