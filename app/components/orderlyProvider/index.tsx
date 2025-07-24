@@ -292,6 +292,9 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
       }}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       {...(chainFilter && ({ chainFilter } as any))}
+      defaultChain={{
+        mainnet: { id: 56 },
+      }}
     >
       <ServiceRestrictionsDialog />
       {props.children}
