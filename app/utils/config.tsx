@@ -92,7 +92,6 @@ const getCustomMenuItems = (): MainNavItem[] => {
 
 const getEnabledMenus = () => {
   const enabledMenusEnv = import.meta.env.VITE_ENABLED_MENUS;
-  console.log("Enabled menus from env:", enabledMenusEnv);
 
   if (!enabledMenusEnv || typeof enabledMenusEnv !== 'string' || enabledMenusEnv.trim() === '') {
     return DEFAULT_ENABLED_MENUS;
@@ -184,7 +183,7 @@ export const useOrderlyConfig = () => {
         mainNavProps: {
           initialMenu: "/",
           mainMenus: allMenuItems,
-          
+
           campaigns: {
             name: t("extend.links"),
             href: "/",
@@ -210,26 +209,26 @@ export const useOrderlyConfig = () => {
             return isMobile ? (
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px", width: "100%" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                     <CustomLeftNav 
-                     menus={allMenuItems}
-                     externalLinks={[
-                       {
-                         name: "NFT",
-                         href: "https://bgscnft.com/",
-                         target: "_blank",
-                       },
-                       {
-                         name: "Leaderboard",
-                         href: "https://bgscleaderboard.com/",
-                         target: "_blank",
-                       },
-                       {
-                         name: "Vault",
-                         href: "https://bgscvault.com/",
-                         target: "_blank",
-                       },
-                     ]}
-                   />
+                  <CustomLeftNav
+                    menus={allMenuItems}
+                    externalLinks={[
+                      {
+                        name: "NFT",
+                        href: "https://bgscnft.com/",
+                        target: "_blank",
+                      },
+                      {
+                        name: "Leaderboard",
+                        href: "https://bgscleaderboard.com/",
+                        target: "_blank",
+                      },
+                      {
+                        name: "Vault",
+                        href: "https://bgscvault.com/",
+                        target: "_blank",
+                      },
+                    ]}
+                  />
                   <Link to="/perp/PERP_BTC_USDC">
                     <img src={withBasePath("/logo-text.svg")} alt="logo" style={{ height: "32px" }} />
                   </Link>

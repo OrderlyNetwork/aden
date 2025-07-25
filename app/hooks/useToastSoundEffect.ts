@@ -6,11 +6,8 @@ import { withBasePath } from '@/utils/base-path';
  */
 export function useToastSoundEffect() {
     useEffect(() => {
-        console.log('🔊 Setting up toast sound effect...');
-
         // Create audio element with coin sound from public folder
         const audioPath = withBasePath("/Coin.mp3");
-        console.log('🔊 Audio path:', audioPath);
         const audio = new Audio(audioPath);
         audio.volume = 0.5; // Set volume to 50%
 

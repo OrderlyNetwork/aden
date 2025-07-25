@@ -105,8 +105,6 @@ export const useApiInterceptor = () => {
                     });
 
                     if (filteredRows.length !== originalLength) {
-                        console.log(`🎯 Filtered futures: ${originalLength} -> ${filteredRows.length} pairs`);
-
                         return new Response(JSON.stringify({
                             ...data,
                             data: {
