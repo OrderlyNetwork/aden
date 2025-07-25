@@ -158,7 +158,7 @@ function CompetitionContent() {
         .hero-section {
             position: relative;
             min-height: 100vh;
-            background: url('./back.png') center/contain no-repeat;
+            background: url('./back.webp') center/contain no-repeat;
             background-color: var(--bg-primary);
             display: flex;
             align-items: center;
@@ -1117,7 +1117,7 @@ function CompetitionContent() {
           <section className="hero-section">
             {/* Video Background */}
             <video className="hero-video-bg" autoPlay muted loop playsInline preload="auto">
-              <source src="./back.mp4" type="video/mp4" />
+              <source src="./back.webm" type="video/webm" />
               Your browser does not support the video tag.
             </video>
             
