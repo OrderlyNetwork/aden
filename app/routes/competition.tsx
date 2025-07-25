@@ -5,6 +5,7 @@ import { Scaffold } from "@orderly.network/ui-scaffold";
 import { useOrderlyConfig } from "@/utils/config";
 import { useNav } from "@/hooks/useNav";
 import { useTranslation } from "@orderly.network/i18n";
+import { useScreen } from "@orderly.network/ui";
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,6 +16,7 @@ export const meta: MetaFunction = () => {
 
 function CompetitionContent() {
   const { t } = useTranslation();
+  const { isMobile } = useScreen();
   const [countdown, setCountdown] = useState({
     days: '00',
     hours: '00',
@@ -386,45 +388,55 @@ function CompetitionContent() {
         }
 
         .countdown {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            background: none;
+            border: none;
+            padding: 0;
+            margin-bottom: 0;
         }
-
-        .countdown-item {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-accent);
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-width: 120px;
-        }
-
-        .countdown-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-        }
-
-        .countdown-number {
+        .countdown-inline .countdown-number {
             font-size: 64px;
             font-weight: 700;
             color: var(--text-primary);
             font-variant-numeric: tabular-nums;
             line-height: 1;
+            background: none;
+            border: none;
+            min-width: 60px;
+            text-align: center;
         }
-
+        .countdown-colon {
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 8px;
+            line-height: 1;
+        }
+        .countdown-labels {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-top: 8px;
+        }
         .countdown-label {
-            font-size: 12px;
+            font-size: 14px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 10px;
+            min-width: 60px;
+            text-align: center;
+        }
+        @media (max-width: 480px) {
+            .countdown-inline .countdown-number, .countdown-colon {
+                font-size: 36px;
+            }
+            .countdown-label {
+                font-size: 10px;
+                min-width: 36px;
+            }
         }
 
         /* Info Grid */
@@ -1107,6 +1119,13 @@ function CompetitionContent() {
             .prize-container {
                 padding: 40px 20px;
             }
+
+            .prize-tier {
+                text-align: center !important;
+            }
+            .prize-rank {
+                min-width: unset !important;
+            }
         }
         `
       }} />
@@ -1142,23 +1161,20 @@ function CompetitionContent() {
               
               <div className="countdown-wrapper">
                 <div className="countdown-title">{countdownTitle}</div>
-                <div className="countdown">
-                  <div className="countdown-item">
-                    <div className="countdown-number">{countdown.days}</div>
-                    <div className="countdown-label">{t('extend.competition.days')}</div>
-                  </div>
-                  <div className="countdown-item">
-                    <div className="countdown-number">{countdown.hours}</div>
-                    <div className="countdown-label">{t('extend.competition.hours')}</div>
-                  </div>
-                  <div className="countdown-item">
-                    <div className="countdown-number">{countdown.minutes}</div>
-                    <div className="countdown-label">{t('extend.competition.minutes')}</div>
-                  </div>
-                  <div className="countdown-item">
-                    <div className="countdown-number">{countdown.seconds}</div>
-                    <div className="countdown-label">{t('extend.competition.seconds')}</div>
-                  </div>
+                <div className="countdown countdown-inline">
+                  <span className="countdown-number">{countdown.days}</span>
+                  <span className="countdown-colon"> : </span>
+                  <span className="countdown-number">{countdown.hours}</span>
+                  <span className="countdown-colon"> : </span>
+                  <span className="countdown-number">{countdown.minutes}</span>
+                  <span className="countdown-colon"> : </span>
+                  <span className="countdown-number">{countdown.seconds}</span>
+                </div>
+                <div className="countdown-labels">
+                  <span className="countdown-label">{t('extend.competition.days')}</span>
+                  <span className="countdown-label" style={{margin: '0 18px'}}>{t('extend.competition.hours')}</span>
+                  <span className="countdown-label" style={{margin: '0 18px'}}>{t('extend.competition.minutes')}</span>
+                  <span className="countdown-label">{t('extend.competition.seconds')}</span>
                 </div>
               </div>
             </div>
@@ -1219,18 +1235,45 @@ function CompetitionContent() {
                   {/* Top 3 Prizes */}
                   <div className="top-prizes">
                     <div className="prize-tier tier-1">
-                      <span className="prize-rank">{t('extend.competition.firstPlace')}</span>
-                      <span className="prize-tier-amount">$50,000</span>
+                      {isMobile ? (
+                        <>
+                          <span className="prize-rank">1st</span>
+                          <span className="prize-tier-amount">50K</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="prize-rank">{t('extend.competition.firstPlace')}</span>
+                          <span className="prize-tier-amount">$50,000</span>
+                        </>
+                      )}
                       <span className="prize-winners">1 {t('extend.competition.winner')}</span>
                     </div>
                     <div className="prize-tier tier-2">
-                      <span className="prize-rank">{t('extend.competition.secondPlace')}</span>
-                      <span className="prize-tier-amount">$30,000</span>
+                      {isMobile ? (
+                        <>
+                          <span className="prize-rank">2nd</span>
+                          <span className="prize-tier-amount">30K</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="prize-rank">{t('extend.competition.secondPlace')}</span>
+                          <span className="prize-tier-amount">$30,000</span>
+                        </>
+                      )}
                       <span className="prize-winners">1 {t('extend.competition.winner')}</span>
                     </div>
                     <div className="prize-tier tier-3">
-                      <span className="prize-rank">{t('extend.competition.thirdPlace')}</span>
-                      <span className="prize-tier-amount">$20,000</span>
+                      {isMobile ? (
+                        <>
+                          <span className="prize-rank">3rd</span>
+                          <span className="prize-tier-amount">20K</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="prize-rank">{t('extend.competition.thirdPlace')}</span>
+                          <span className="prize-tier-amount">$20,000</span>
+                        </>
+                      )}
                       <span className="prize-winners">1 {t('extend.competition.winner')}</span>
                     </div>
                   </div>
