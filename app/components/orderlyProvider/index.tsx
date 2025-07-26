@@ -15,7 +15,7 @@ import {
   defaultLanguages,
 } from "@orderly.network/i18n";
 import { useLocation } from "@remix-run/react";
-import { useApiInterceptor } from "@/hooks/useApiInterceptor";
+
 
 const NETWORK_ID_KEY = "orderly_network_id";
 
@@ -276,7 +276,7 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
     []
   );
 
-  useApiInterceptor();
+  // Note: Using dataAdapter instead of the old API interceptor for cleaner SDK integration
 
   const appProvider = (
     <OrderlyAppProvider
@@ -289,6 +289,28 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
         PERP_BTC_USDC: "10",
         PERP_ETH_USDC: "0.1",
         PERP_SOL_USDC: "0.01",
+      }}
+      dataAdapter={{
+        symbolList: (original) => {
+          // Get allowed tokens from environment variable
+          const allowedTokensEnv = import.meta.env.VITE_ALLOWED_TOKENS;
+          const allowedTokens = allowedTokensEnv?.split(',').map((token: string) => token.trim()).filter(Boolean) || [];
+
+          // If no tokens specified, return all symbols
+          if (allowedTokens.length === 0) {
+            return original;
+          }
+
+          console.log("allowedTokens", allowedTokens);
+
+          // Filter symbols based on allowed tokens
+          return original.filter((item) => {
+            const symbol = item.symbol;
+            // Extract token name (e.g., "PERP_BTC_USDC" -> "BTC")
+            const tokenPart = symbol.replace('PERP_', '').replace(/_USD[CT]$/, '');
+            return allowedTokens.includes(tokenPart);
+          });
+        },
       }}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       {...(chainFilter && ({ chainFilter } as any))}
