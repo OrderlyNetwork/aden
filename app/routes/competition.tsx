@@ -5,7 +5,6 @@ import { Scaffold } from "@orderly.network/ui-scaffold";
 import { useOrderlyConfig } from "@/utils/config";
 import { useNav } from "@/hooks/useNav";
 import { useTranslation } from "@orderly.network/i18n";
-import { useScreen } from "@orderly.network/ui";
 
 export const meta: MetaFunction = () => {
   return [
@@ -16,7 +15,6 @@ export const meta: MetaFunction = () => {
 
 function CompetitionContent() {
   const { t } = useTranslation();
-  const { isMobile } = useScreen();
   const [countdown, setCountdown] = useState({
     days: '00',
     hours: '00',
@@ -519,12 +517,14 @@ function CompetitionContent() {
 
         .timeline-dates {
             display: flex;
+            align-items: center;
             justify-content: space-between;
             margin-bottom: 20px;
             color: var(--text-secondary);
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            gap: 8px;
         }
 
         .timeline-bar {
@@ -541,7 +541,7 @@ function CompetitionContent() {
 
         /* --- Make competition period dates stand out more --- */
         .timeline-dates {
-            font-size: 48px !important;
+            font-size: 42px !important;
             font-weight: 900 !important;
             color: var(--accent-primary) !important;
             text-shadow: 0 4px 20px rgba(253,180,29,0.3), 0 0 4px #000;
@@ -566,7 +566,7 @@ function CompetitionContent() {
         }
         @media (max-width: 480px) {
             .timeline-dates {
-                font-size: 24px !important;
+                font-size: 18px !important;
             }
         }
 
@@ -631,6 +631,7 @@ function CompetitionContent() {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
         }
 
         .prize-stat-label {
@@ -644,6 +645,7 @@ function CompetitionContent() {
             font-size: 24px;
             font-weight: 700;
             color: var(--text-primary);
+            text-align: right;
         }
 
         /* Competitions Grid */
@@ -677,6 +679,12 @@ function CompetitionContent() {
             text-align: center;
             padding-bottom: 20px;
             border-bottom: 2px solid var(--border-accent);
+        }
+
+        @media (min-width: 768px) {
+            .competition-title {
+                min-height: 140px;
+            }
         }
 
         /* Prize Distribution - 상위 3개 분리 */
@@ -1322,8 +1330,9 @@ function CompetitionContent() {
             <section className="timeline-section">
               <div className="timeline-track">
                 <div className="timeline-dates">
-                  <span>2025/08/01 00:00 KST</span>
-                  <span>2025/08/31 23:59 KST</span>
+                  <span>2025/08/01 00:00</span>
+                  <span>~</span>
+                  <span>2025/08/31 23:59</span>
                 </div>
                 <div className="timeline-bar">{t('extend.competition.competitionPeriod')}</div>
               </div>
@@ -1358,51 +1367,21 @@ function CompetitionContent() {
                 <div className="competitions-grid">
                   {/* Trading Volume Competition */}
                   <div className="competition-section special-competition">
-                    <h3 className="competition-title">1️⃣ {t('extend.competition.tradingVolume')} Competition – 500,000 USDT (500 Winners)</h3>
+                    <h3 className="competition-title">1️⃣ {t('extend.competition.tradingVolume')} – 500,000 USDT (500 Winners)</h3>
                     <div className="prize-list">
                       {/* Top 3 Prizes */}
                       <div className="top-prizes">
                         <div className="prize-tier tier-1">
-                          {isMobile ? (
-                            <>
-                              <span className="prize-rank">1st</span>
-                              <span className="prize-tier-amount">40K</span>
-                            </>
-                          ) : (
-                            <>
-                              <span className="prize-rank">{t('extend.competition.firstPlace')}</span>
-                              <span className="prize-tier-amount">$40,000</span>
-                            </>
-                          )}
-                          <span className="prize-winners">1 {t('extend.competition.winner')}</span>
+                          <span className="prize-rank">{t('extend.competition.firstPlace')}</span>
+                          <span className="prize-tier-amount">$40,000</span>
                         </div>
                         <div className="prize-tier tier-2">
-                          {isMobile ? (
-                            <>
-                              <span className="prize-rank">2nd</span>
-                              <span className="prize-tier-amount">25K</span>
-                            </>
-                          ) : (
-                            <>
-                              <span className="prize-rank">{t('extend.competition.secondPlace')}</span>
-                              <span className="prize-tier-amount">$25,000</span>
-                            </>
-                          )}
-                          <span className="prize-winners">1 {t('extend.competition.winner')}</span>
+                          <span className="prize-rank">{t('extend.competition.secondPlace')}</span>
+                          <span className="prize-tier-amount">$25,000</span>
                         </div>
                         <div className="prize-tier tier-3">
-                          {isMobile ? (
-                            <>
-                              <span className="prize-rank">3rd</span>
-                              <span className="prize-tier-amount">15K</span>
-                            </>
-                          ) : (
-                            <>
-                              <span className="prize-rank">{t('extend.competition.thirdPlace')}</span>
-                              <span className="prize-tier-amount">$15,000</span>
-                            </>
-                          )}
-                          <span className="prize-winners">1 {t('extend.competition.winner')}</span>
+                          <span className="prize-rank">{t('extend.competition.thirdPlace')}</span>
+                          <span className="prize-tier-amount">$15,000</span>
                         </div>
                       </div>
                       
@@ -1411,27 +1390,22 @@ function CompetitionContent() {
                         <div className="prize-tier">
                           <span className="prize-rank">4-10</span>
                           <span className="prize-tier-amount">$7,000</span>
-                          <span className="prize-winners">7 {t('extend.competition.winners')}</span>
                         </div>
                         <div className="prize-tier">
                           <span className="prize-rank">11-30</span>
                           <span className="prize-tier-amount">$4,000</span>
-                          <span className="prize-winners">20 {t('extend.competition.winners')}</span>
                         </div>
                         <div className="prize-tier">
                           <span className="prize-rank">31-100</span>
                           <span className="prize-tier-amount">$2,000</span>
-                          <span className="prize-winners">70 {t('extend.competition.winners')}</span>
                         </div>
                         <div className="prize-tier">
                           <span className="prize-rank">101-200</span>
                           <span className="prize-tier-amount">$1,000</span>
-                          <span className="prize-winners">100 {t('extend.competition.winners')}</span>
                         </div>
                         <div className="prize-tier">
                           <span className="prize-rank">201-500</span>
                           <span className="prize-tier-amount">$170</span>
-                          <span className="prize-winners">300 {t('extend.competition.winners')}</span>
                         </div>
                       </div>
                     </div>
@@ -1444,46 +1418,16 @@ function CompetitionContent() {
                       {/* Top 3 Prizes */}
                       <div className="top-prizes">
                         <div className="prize-tier tier-1">
-                          {isMobile ? (
-                            <>
-                              <span className="prize-rank">1st</span>
-                              <span className="prize-tier-amount">30K</span>
-                            </>
-                          ) : (
-                            <>
-                              <span className="prize-rank">{t('extend.competition.firstPlace')}</span>
-                              <span className="prize-tier-amount">$30,000</span>
-                            </>
-                          )}
-                          <span className="prize-winners">1 {t('extend.competition.winner')}</span>
+                          <span className="prize-rank">{t('extend.competition.firstPlace')}</span>
+                          <span className="prize-tier-amount">$30,000</span>
                         </div>
                         <div className="prize-tier tier-2">
-                          {isMobile ? (
-                            <>
-                              <span className="prize-rank">2nd</span>
-                              <span className="prize-tier-amount">20K</span>
-                            </>
-                          ) : (
-                            <>
-                              <span className="prize-rank">{t('extend.competition.secondPlace')}</span>
-                              <span className="prize-tier-amount">$20,000</span>
-                            </>
-                          )}
-                          <span className="prize-winners">1 {t('extend.competition.winner')}</span>
+                          <span className="prize-rank">{t('extend.competition.secondPlace')}</span>
+                          <span className="prize-tier-amount">$20,000</span>
                         </div>
                         <div className="prize-tier tier-3">
-                          {isMobile ? (
-                            <>
-                              <span className="prize-rank">3rd</span>
-                              <span className="prize-tier-amount">10K</span>
-                            </>
-                          ) : (
-                            <>
-                              <span className="prize-rank">{t('extend.competition.thirdPlace')}</span>
-                              <span className="prize-tier-amount">$10,000</span>
-                            </>
-                          )}
-                          <span className="prize-winners">1 {t('extend.competition.winner')}</span>
+                          <span className="prize-rank">{t('extend.competition.thirdPlace')}</span>
+                          <span className="prize-tier-amount">$10,000</span>
                         </div>
                       </div>
                       
@@ -1492,27 +1436,22 @@ function CompetitionContent() {
                         <div className="prize-tier">
                           <span className="prize-rank">4-10</span>
                           <span className="prize-tier-amount">$5,000</span>
-                          <span className="prize-winners">7 {t('extend.competition.winners')}</span>
                         </div>
                         <div className="prize-tier">
                           <span className="prize-rank">11-30</span>
                           <span className="prize-tier-amount">$3,000</span>
-                          <span className="prize-winners">20 {t('extend.competition.winners')}</span>
                         </div>
                         <div className="prize-tier">
                           <span className="prize-rank">31-100</span>
                           <span className="prize-tier-amount">$2,000</span>
-                          <span className="prize-winners">70 {t('extend.competition.winners')}</span>
                         </div>
                         <div className="prize-tier">
                           <span className="prize-rank">101-200</span>
                           <span className="prize-tier-amount">$1,000</span>
-                          <span className="prize-winners">100 {t('extend.competition.winners')}</span>
                         </div>
                         <div className="prize-tier">
                           <span className="prize-rank">201-500</span>
                           <span className="prize-tier-amount">$170</span>
-                          <span className="prize-winners">300 {t('extend.competition.winners')}</span>
                         </div>
                       </div>
                     </div>
@@ -1525,7 +1464,7 @@ function CompetitionContent() {
             <section className="leaderboard-section">
               <div className="leaderboard-container">
                 <div className="leaderboard-tabs">
-                  <div className="leaderboard-tab">{t('extend.competition.tradingVolume')}</div>
+                  <div className="leaderboard-tab">{t('extend.competition.tradingVolumeShort')}</div>
                 </div>
                 <div className="leaderboard-info">
                   <p>{t('extend.competition.maliciousTrading')}</p>
