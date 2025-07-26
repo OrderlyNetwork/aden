@@ -14,7 +14,8 @@
     "dev:dctailwind": "npx tailwindcss -c ./tailwind.drinkcode.config.js -i ./tailwind.drinkcode.css -o ./app/styles/drinkcode.css --watch",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "remix-serve ./build/server/index.js",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "update-locale-version": "tsx scripts/update-locale-version.ts"
   },
   "dependencies": {
     "@orderly.network/affiliate": "2.5.3-internal-20250724-hotfix.20",

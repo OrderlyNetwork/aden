@@ -13,6 +13,8 @@ interface MainNavItem {
   name: string;
   href: string;
   target?: string;
+  icon?: string | React.ReactElement;
+  translationKey?: string;
 }
 
 interface ColorConfigInterface {
@@ -38,7 +40,7 @@ export type OrderlyConfig = {
 };
 
 // All available menu items with translation keys
-const ALL_MENU_ITEMS = [
+const ALL_MENU_ITEMS: MainNavItem[] = [
   { name: "Trading", href: "/", translationKey: "common.trading" },
   { name: "Portfolio", href: "/portfolio", translationKey: "common.portfolio" },
   { name: "Markets", href: "/markets", translationKey: "common.markets" },
@@ -47,13 +49,14 @@ const ALL_MENU_ITEMS = [
 ];
 
 // Default enabled menu items (excluding Leaderboard)
-const DEFAULT_ENABLED_MENUS = [
+const DEFAULT_ENABLED_MENUS: MainNavItem[] = [
   { name: "Trading", href: "/", translationKey: "common.trading" },
   { name: "Portfolio", href: "/portfolio", translationKey: "common.portfolio" },
   { name: "Markets", href: "/markets", translationKey: "common.markets" },
   // { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
   { name: "Community", href: "/demo_trading/BTCUSDT", translationKey: "common.demo_trading" },
   // { name: "Referral", href: "/referral", translationKey: "affiliate.referral" },
+  { name: "Competition", href: "/competition", translationKey: "extend.competition.menuItem", icon: "https://assets.coingecko.com/coins/images/325/standard/Tether.png?1696501661" },
 ];
 
 const getCustomMenuItems = (): MainNavItem[] => {
@@ -172,8 +175,21 @@ export const useOrderlyConfig = () => {
     const customMenus = getCustomMenuItems();
 
     const translatedEnabledMenus = enabledMenus.map(menu => ({
-      name: t(menu.translationKey),
+      name: t(menu.translationKey!),
       href: menu.href,
+      target: menu.target,
+      icon: isMobile && typeof menu.icon === 'string' ? (
+        <img 
+          src={menu.icon} 
+          alt="menu icon" 
+          style={{ 
+            width: '16px', 
+            height: '16px', 
+            marginRight: '6px',
+            borderRadius: '50%'
+          }} 
+        />
+      ) : menu.icon,
     }));
 
     const allMenuItems = [...translatedEnabledMenus, ...customMenus];
