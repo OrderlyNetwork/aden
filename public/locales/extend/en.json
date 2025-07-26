@@ -28,6 +28,7 @@
   "extend.competition.winner": "Winner",
   "extend.competition.winners": "Winners",
   "extend.competition.tradingVolume": "Trading Volume",
+  "extend.competition.roiCompetition": "ROI Competition",
   "extend.competition.maliciousTrading": "Malicious trading activities will result in immediate disqualification",
   "extend.competition.hourlyUpdate": "Updated hourly",
   "extend.competition.rank": "Rank",

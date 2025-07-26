@@ -84,6 +84,7 @@
   "extend.competition.winner": "명",
   "extend.competition.winners": "명",
   "extend.competition.tradingVolume": "거래량",
+  "extend.competition.roiCompetition": "수익률 대회",
   "extend.competition.maliciousTrading": "악의적인 거래 행위는 즉시 실격 처리됩니다",
   "extend.competition.hourlyUpdate": "매시간 업데이트",
   "extend.competition.rank": "순위",

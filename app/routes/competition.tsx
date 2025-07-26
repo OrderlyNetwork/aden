@@ -1311,7 +1311,7 @@ function CompetitionContent() {
                 <div className="competitions-grid">
                   {/* Trading Volume Competition */}
                   <div className="competition-section">
-                    <h3 className="competition-title">1️⃣ Trading Volume Competition – 500,000 USDT (500 Winners)</h3>
+                    <h3 className="competition-title">1️⃣ {t('extend.competition.tradingVolume')} Competition – 500,000 USDT (500 Winners)</h3>
                     <div className="prize-list">
                       {/* Top 3 Prizes */}
                       <div className="top-prizes">
@@ -1392,7 +1392,7 @@ function CompetitionContent() {
 
                   {/* ROI Competition */}
                   <div className="competition-section">
-                    <h3 className="competition-title">2️⃣ ROI Competition – 500,000 USDT (500 Winners)</h3>
+                    <h3 className="competition-title">2️⃣ {t('extend.competition.roiCompetition')} – 500,000 USDT (500 Winners)</h3>
                     <div className="prize-list">
                       {/* Top 3 Prizes */}
                       <div className="top-prizes">
