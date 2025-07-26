@@ -539,6 +539,37 @@ function CompetitionContent() {
             font-size: 18px;
         }
 
+        /* --- Make competition period dates stand out more --- */
+        .timeline-dates {
+            font-size: 48px !important;
+            font-weight: 900 !important;
+            color: var(--accent-primary) !important;
+            text-shadow: 0 4px 20px rgba(253,180,29,0.3), 0 0 4px #000;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            opacity: 1 !important;
+            line-height: 1.2;
+        }
+        .timeline-dates span {
+            flex: 1;
+            text-align: center;
+            font-stretch: expanded;
+        }
+        .timeline-bar {
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            color: var(--bg-primary) !important;
+            background: var(--gradient-primary) !important;
+            box-shadow: var(--glow-primary) !important;
+            letter-spacing: 1px !important;
+            margin-top: 0 !important;
+        }
+        @media (max-width: 480px) {
+            .timeline-dates {
+                font-size: 24px !important;
+            }
+        }
+
         /* Prize Pool */
         .prize-section {
             margin: 80px 0;
@@ -1203,6 +1234,22 @@ function CompetitionContent() {
                 min-width: unset !important;
             }
         }
+        .special-competition {
+            position: relative;
+            border: 2px solid var(--accent-primary) !important;
+            box-shadow: 0 0 32px 4px rgba(253, 180, 29, 0.25), 0 0 0 4px rgba(255, 255, 255, 0.03);
+            background: linear-gradient(120deg, rgba(253,180,29,0.10) 0%, rgba(255,0,102,0.08) 100%) !important;
+            animation: special-glow 2.5s ease-in-out infinite alternate;
+            z-index: 2;
+        }
+        @keyframes special-glow {
+            0% {
+                box-shadow: 0 0 32px 4px rgba(253, 180, 29, 0.25), 0 0 0 4px rgba(255, 255, 255, 0.03);
+            }
+            100% {
+                box-shadow: 0 0 48px 12px rgba(253, 180, 29, 0.45), 0 0 0 8px rgba(255, 0, 102, 0.10);
+            }
+        }
         `
       }} />
       
@@ -1310,7 +1357,7 @@ function CompetitionContent() {
                 {/* Competitions Grid */}
                 <div className="competitions-grid">
                   {/* Trading Volume Competition */}
-                  <div className="competition-section">
+                  <div className="competition-section special-competition">
                     <h3 className="competition-title">1️⃣ {t('extend.competition.tradingVolume')} Competition – 500,000 USDT (500 Winners)</h3>
                     <div className="prize-list">
                       {/* Top 3 Prizes */}
@@ -1391,7 +1438,7 @@ function CompetitionContent() {
                   </div>
 
                   {/* ROI Competition */}
-                  <div className="competition-section">
+                  <div className="competition-section special-competition">
                     <h3 className="competition-title">2️⃣ {t('extend.competition.roiCompetition')} – 500,000 USDT (500 Winners)</h3>
                     <div className="prize-list">
                       {/* Top 3 Prizes */}
