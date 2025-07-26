@@ -15,6 +15,7 @@ import {
   defaultLanguages,
 } from "@orderly.network/i18n";
 import { useLocation } from "@remix-run/react";
+import { useNav } from "@/hooks/useNav";
 
 
 const NETWORK_ID_KEY = "orderly_network_id";
@@ -276,7 +277,7 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
     []
   );
 
-  // Note: Using dataAdapter instead of the old API interceptor for cleaner SDK integration
+  const { onRouteChange } = useNav();
 
   const appProvider = (
     <OrderlyAppProvider
@@ -289,6 +290,9 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
         PERP_BTC_USDC: "10",
         PERP_ETH_USDC: "0.1",
         PERP_SOL_USDC: "0.01",
+      }}
+      onRouteChange={(option) => {
+        onRouteChange(option as any);
       }}
       dataAdapter={{
         symbolList: (original) => {
