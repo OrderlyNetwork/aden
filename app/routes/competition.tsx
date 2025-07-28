@@ -611,6 +611,16 @@ function CompetitionContent() {
             margin-bottom: 20px;
             letter-spacing: -4px;
         }
+        @media (max-width: 1280px) {
+            .prize-total {
+                font-size: 100px;
+            }
+        }
+        @media (max-width: 1024px) {
+            .prize-total {
+                font-size: 80px;
+            }
+        }
 
         .prize-subtitle {
             color: var(--text-secondary);
@@ -648,213 +658,7 @@ function CompetitionContent() {
             text-align: right;
         }
 
-        /* Competitions Grid */
-        .competitions-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
-        }
 
-        /* Competition Sections */
-        .competition-section {
-            margin-bottom: 0;
-            padding: 40px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-        }
-
-        .competition-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .competition-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--border-accent);
-        }
-
-        @media (min-width: 768px) {
-            .competition-title {
-                min-height: 140px;
-            }
-        }
-
-        /* Prize Distribution - 상위 3개 분리 */
-        .prize-list {
-            margin-top: 20px;
-        }
-
-        .top-prizes {
-            display: grid;
-            gap: 12px;
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border-accent);
-        }
-
-        .regular-prizes {
-            display: grid;
-            gap: 6px;
-        }
-
-        .prize-tier {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            padding: 12px 30px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .prize-tier:hover {
-            border-color: rgba(253, 180, 29, 0.5);
-            background: rgba(253, 180, 29, 0.05);
-            transform: translateX(5px);
-        }
-
-        /* 상위 3개 순위 특별 스타일 */
-        .prize-tier.tier-1,
-        .prize-tier.tier-2,
-        .prize-tier.tier-3 {
-            padding: 20px 40px;
-            margin-bottom: 12px;
-            background: var(--bg-card);
-            border-width: 2px;
-            position: relative;
-        }
-
-        /* 1등 미묘한 펄스 효과 */
-        @keyframes subtle-pulse {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(253, 180, 29, 0);
-            }
-            50% {
-                box-shadow: 0 0 20px 5px rgba(253, 180, 29, 0.1);
-            }
-        }
-
-        .prize-tier.tier-1 {
-            border-color: var(--accent-gold);
-            background: linear-gradient(90deg, rgba(253, 180, 29, 0.08) 0%, transparent 50%);
-            animation: subtle-pulse 3s ease-in-out infinite;
-        }
-
-        .prize-tier.tier-1::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 6px;
-            background: var(--gradient-gold);
-        }
-
-        .prize-tier.tier-1 .prize-rank {
-            font-size: 20px;
-            color: var(--accent-gold);
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        .prize-tier.tier-1 .prize-tier-amount {
-            font-size: 32px;
-            font-weight: 900;
-            color: var(--accent-gold);
-            text-shadow: 0 0 20px rgba(253, 180, 29, 0.3);
-        }
-
-        .prize-tier.tier-2 {
-            border-color: #c0c0c0;
-            background: linear-gradient(90deg, rgba(192, 192, 192, 0.08) 0%, transparent 50%);
-        }
-
-        .prize-tier.tier-2::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 5px;
-            background: linear-gradient(180deg, #c0c0c0 0%, #888888 100%);
-        }
-
-        .prize-tier.tier-2 .prize-rank {
-            font-size: 18px;
-            color: #c0c0c0;
-            font-weight: 800;
-        }
-
-        .prize-tier.tier-2 .prize-tier-amount {
-            font-size: 28px;
-            font-weight: 800;
-            color: #c0c0c0;
-        }
-
-        .prize-tier.tier-3 {
-            border-color: #cd7f32;
-            background: linear-gradient(90deg, rgba(205, 127, 50, 0.08) 0%, transparent 50%);
-        }
-
-        .prize-tier.tier-3::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 5px;
-            background: linear-gradient(180deg, #cd7f32 0%, #a0662a 100%);
-        }
-
-        .prize-tier.tier-3 .prize-rank {
-            font-size: 18px;
-            color: #cd7f32;
-            font-weight: 800;
-        }
-
-        .prize-tier.tier-3 .prize-tier-amount {
-            font-size: 26px;
-            font-weight: 800;
-            color: #cd7f32;
-        }
-
-        /* 상위 3개 순위 우승자 텍스트 강조 */
-        .prize-tier.tier-1 .prize-winners,
-        .prize-tier.tier-2 .prize-winners,
-        .prize-tier.tier-3 .prize-winners {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .prize-rank {
-            font-weight: 700;
-            font-size: 16px;
-            min-width: 100px;
-        }
-
-        .prize-tier-amount {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--accent-primary);
-        }
-
-        .prize-winners {
-            color: var(--text-muted);
-            font-size: 13px;
-        }
 
         /* Leaderboard */
         .leaderboard-section {
@@ -1154,20 +958,7 @@ function CompetitionContent() {
                 font-size: 72px;
             }
 
-            .competitions-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
 
-            .competition-section {
-                padding: 20px;
-                margin-bottom: 0;
-            }
-
-            .competition-title {
-                font-size: 20px;
-                margin-bottom: 20px;
-            }
 
             .section-title {
                 font-size: 28px;
@@ -1221,43 +1012,236 @@ function CompetitionContent() {
                 padding: 40px 20px;
             }
 
-            .competitions-grid {
-                gap: 20px;
-            }
 
-            .competition-section {
-                padding: 15px;
-                margin-bottom: 0;
-            }
-
-            .competition-title {
-                font-size: 18px;
-                margin-bottom: 15px;
-            }
-
-            .prize-tier {
-                text-align: center !important;
-            }
-            .prize-rank {
-                min-width: unset !important;
-            }
         }
-        .special-competition {
+
+        /* Timeline Styles */
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .timeline-design-label {
+            color: #fb923c;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-card {
+            background-color: #000000;
+            border-radius: 48px;
+            border: 4px solid rgba(251, 146, 60, 0.5);
+            padding: 32px;
             position: relative;
-            border: 2px solid var(--accent-primary) !important;
-            box-shadow: 0 0 32px 4px rgba(253, 180, 29, 0.25), 0 0 0 4px rgba(255, 255, 255, 0.03);
-            background: linear-gradient(120deg, rgba(253,180,29,0.10) 0%, rgba(255,0,102,0.08) 100%) !important;
-            animation: special-glow 2.5s ease-in-out infinite alternate;
-            z-index: 2;
         }
-        @keyframes special-glow {
-            0% {
-                box-shadow: 0 0 32px 4px rgba(253, 180, 29, 0.25), 0 0 0 4px rgba(255, 255, 255, 0.03);
+
+        .timeline-header {
+            background: linear-gradient(to right, #f97316, #ea580c);
+            color: #000000;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .timeline-content {
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: linear-gradient(to bottom, #fb923c, #ea580c);
+            transform: translateX(-50%);
+        }
+
+        .timeline-dates-wrapper {
+            position: relative;
+        }
+
+        .timeline-date-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .timeline-date-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-date-left {
+            flex: 1;
+            text-align: right;
+        }
+
+        .timeline-date-right {
+            flex: 1;
+            text-align: left;
+        }
+
+        .timeline-spacer {
+            flex: 1;
+            visibility: hidden;
+        }
+
+        .timeline-label {
+            color: #9ca3af;
+            font-size: 14px;
+            margin: 0 0 8px 0;
+        }
+
+        .timeline-year {
+            font-size: 60px;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 0.9;
+            margin: 0;
+        }
+
+        .timeline-month {
+            font-size: 50px;
+            font-weight: 900;
+            line-height: 0.9;
+            margin: 12px 0 0 0;
+        }
+
+        .timeline-date-left .timeline-month {
+            color: #fb923c;
+        }
+
+        .timeline-date-right .timeline-month {
+            color: #f97316;
+        }
+
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .timeline-dot-start {
+            background-color: #fb923c;
+        }
+
+        .timeline-dot-end {
+            background-color: #ea580c;
+        }
+
+        /* Timeline Responsive Styles */
+        @media (max-width: 640px) {
+            .timeline-container { 
+                padding: 8px; 
             }
-            100% {
-                box-shadow: 0 0 48px 12px rgba(253, 180, 29, 0.45), 0 0 0 8px rgba(255, 0, 102, 0.10);
+            .timeline-card { 
+                padding: 12px; 
+                border-radius: 20px; 
+                border-width: 2px; 
+            }
+            .timeline-header { 
+                font-size: 12px; 
+                padding: 8px 0; 
+                border-radius: 10px; 
+                margin-bottom: 16px; 
+            }
+            .timeline-line { 
+                width: 2px; 
+            }
+            .timeline-date-row { 
+                gap: 8px; 
+                margin-bottom: 24px; 
+            }
+            .timeline-dot { 
+                width: 12px; 
+                height: 12px; 
+            }
+            .timeline-label { 
+                font-size: 9px; 
+                margin: 0 0 2px 0; 
+            }
+            .timeline-year { 
+                font-size: 48px; 
+            }
+            .timeline-month { 
+                font-size: 42px; 
+                margin: 6px 0 0 0; 
             }
         }
+
+        @media (max-width: 380px) {
+            .timeline-container { 
+                padding: 6px; 
+            }
+            .timeline-card { 
+                padding: 10px; 
+                border-radius: 16px; 
+            }
+            .timeline-header { 
+                font-size: 10px; 
+                padding: 6px 0; 
+                margin-bottom: 12px; 
+            }
+            .timeline-date-row { 
+                gap: 6px; 
+                margin-bottom: 20px; 
+            }
+            .timeline-dot { 
+                width: 10px; 
+                height: 10px; 
+            }
+            .timeline-label { 
+                font-size: 8px; 
+                margin: 0 0 1px 0; 
+            }
+            .timeline-year { 
+                font-size: 36px; 
+            }
+            .timeline-month { 
+                font-size: 32px; 
+                margin: 4px 0 0 0; 
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .timeline-year { 
+                font-size: 80px; 
+            }
+            .timeline-month { 
+                font-size: 72px; 
+                margin: 10px 0 0 0; 
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .timeline-card { 
+                padding: 40px; 
+            }
+            .timeline-header { 
+                font-size: 20px; 
+                padding: 14px 0; 
+                margin-bottom: 40px; 
+            }
+            .timeline-date-row { 
+                margin-bottom: 40px; 
+            }
+            .timeline-year { 
+                font-size: 96px; 
+            }
+            .timeline-month { 
+                font-size: 84px; 
+                margin: 12px 0 0 0; 
+            }
+        }
+
         `
       }} />
       
@@ -1328,13 +1312,35 @@ function CompetitionContent() {
 
             {/* Timeline */}
             <section className="timeline-section">
-              <div className="timeline-track">
-                <div className="timeline-dates">
-                  <span>2025/08/01 00:00</span>
-                  <span>~</span>
-                  <span>2025/08/31 23:59</span>
+              <div className="timeline-container">
+                <div className="timeline-card">
+                  <div className="timeline-header">
+                    {t('extend.competition.competitionPeriod')}
+                  </div>
+                  <div className="timeline-content">
+                    <div className="timeline-line"></div>
+                    <div className="timeline-dates-wrapper">
+                      <div className="timeline-date-row">
+                        <div className="timeline-date-left">
+                          <p className="timeline-label">{t('extend.competition.startPeriod')}</p>
+                          <p className="timeline-year">2025</p>
+                          <p className="timeline-month">08/01</p>
+                        </div>
+                        <div className="timeline-dot timeline-dot-start"></div>
+                        <div className="timeline-spacer"></div>
+                      </div>
+                      <div className="timeline-date-row">
+                        <div className="timeline-spacer"></div>
+                        <div className="timeline-dot timeline-dot-end"></div>
+                        <div className="timeline-date-right">
+                          <p className="timeline-label">{t('extend.competition.endPeriod')}</p>
+                          <p className="timeline-year">2025</p>
+                          <p className="timeline-month">08/31</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="timeline-bar">{t('extend.competition.competitionPeriod')}</div>
               </div>
             </section>
 
@@ -1364,94 +1370,112 @@ function CompetitionContent() {
                 </div>
 
                 {/* Competitions Grid */}
-                <div className="competitions-grid">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 max-w-6xl mx-auto p-4">
                   {/* Trading Volume Competition */}
-                  <div className="competition-section special-competition">
-                    <h3 className="competition-title">1️⃣ {t('extend.competition.tradingVolume')} – 500,000 USDT (500 Winners)</h3>
-                    <div className="prize-list">
-                      {/* Top 3 Prizes */}
-                      <div className="top-prizes">
-                        <div className="prize-tier tier-1">
-                          <span className="prize-rank">{t('extend.competition.firstPlace')}</span>
-                          <span className="prize-tier-amount">$40,000</span>
+                  <div className="bg-black border-[3px] border-orange-500/30 rounded-[20px] md:rounded-3xl p-8 md:p-10 relative overflow-hidden hover:border-orange-500/60 hover:-translate-y-0.5 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(251,146,60,0.2)]">
+                    <div className="absolute -top-1/2 -right-1/2 w-[200%] h-[200%] bg-gradient-radial from-orange-500/10 to-transparent pointer-events-none"></div>
+                    <div className="relative">
+                      <div className="flex items-center gap-4 mb-4 md:mb-5 min-h-[120px]">
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <span className="text-black font-black text-2xl md:text-[28px]">1</span>
                         </div>
-                        <div className="prize-tier tier-2">
-                          <span className="prize-rank">{t('extend.competition.secondPlace')}</span>
-                          <span className="prize-tier-amount">$25,000</span>
-                        </div>
-                        <div className="prize-tier tier-3">
-                          <span className="prize-rank">{t('extend.competition.thirdPlace')}</span>
-                          <span className="prize-tier-amount">$15,000</span>
-                        </div>
+                        <h3 className="text-[28px] md:text-4xl font-black text-white flex-1">{t('extend.competition.tradingVolume')}</h3>
+                      </div>
+                      <div className="text-5xl md:text-[64px] font-black text-orange-400 leading-none mb-5 md:mb-6">
+                        500,000 <span className="text-orange-500">USDT</span>
+                      </div>
+                      <div className="text-2xl md:text-[32px] font-bold text-gray-400 mt-5 md:mt-6 pt-5 md:pt-6 border-t-[3px] border-orange-500/20">
+                        <span className="font-black text-orange-400 text-[32px] md:text-[40px]">500</span> WINNERS
                       </div>
                       
-                      {/* Other Prizes */}
-                      <div className="regular-prizes">
-                        <div className="prize-tier">
-                          <span className="prize-rank">4-10</span>
-                          <span className="prize-tier-amount">$7,000</span>
+                      {/* Prize Breakdown */}
+                      <div className="mt-6 space-y-3">
+                        <div className="flex justify-between items-center py-2 px-3 bg-orange-500/10 rounded-lg border border-orange-500/20">
+                          <span className="text-orange-400 font-bold text-sm md:text-base">{t('extend.competition.firstPlace')}</span>
+                          <span className="text-orange-400 font-black text-lg md:text-xl">$40,000</span>
                         </div>
-                        <div className="prize-tier">
-                          <span className="prize-rank">11-30</span>
-                          <span className="prize-tier-amount">$4,000</span>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/50 rounded-lg border border-gray-700/50">
+                          <span className="text-gray-300 font-bold text-sm md:text-base">{t('extend.competition.secondPlace')}</span>
+                          <span className="text-gray-300 font-black text-lg md:text-xl">$25,000</span>
                         </div>
-                        <div className="prize-tier">
-                          <span className="prize-rank">31-100</span>
-                          <span className="prize-tier-amount">$2,000</span>
+                        <div className="flex justify-between items-center py-2 px-3 bg-orange-600/10 rounded-lg border border-orange-600/20">
+                          <span className="text-orange-500 font-bold text-sm md:text-base">{t('extend.competition.thirdPlace')}</span>
+                          <span className="text-orange-500 font-black text-lg md:text-xl">$15,000</span>
                         </div>
-                        <div className="prize-tier">
-                          <span className="prize-rank">101-200</span>
-                          <span className="prize-tier-amount">$1,000</span>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
+                          <span className="text-gray-400 font-medium text-sm">4-10</span>
+                          <span className="text-gray-400 font-bold text-base">$7,000</span>
                         </div>
-                        <div className="prize-tier">
-                          <span className="prize-rank">201-500</span>
-                          <span className="prize-tier-amount">$170</span>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
+                          <span className="text-gray-400 font-medium text-sm">11-30</span>
+                          <span className="text-gray-400 font-bold text-base">$4,000</span>
+                        </div>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
+                          <span className="text-gray-400 font-medium text-sm">31-100</span>
+                          <span className="text-gray-400 font-bold text-base">$2,000</span>
+                        </div>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
+                          <span className="text-gray-400 font-medium text-sm">101-200</span>
+                          <span className="text-gray-400 font-bold text-base">$1,000</span>
+                        </div>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
+                          <span className="text-gray-400 font-medium text-sm">201-500</span>
+                          <span className="text-gray-400 font-bold text-base">$170</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* ROI Competition */}
-                  <div className="competition-section special-competition">
-                    <h3 className="competition-title">2️⃣ {t('extend.competition.roiCompetition')} – 500,000 USDT (500 Winners)</h3>
-                    <div className="prize-list">
-                      {/* Top 3 Prizes */}
-                      <div className="top-prizes">
-                        <div className="prize-tier tier-1">
-                          <span className="prize-rank">{t('extend.competition.firstPlace')}</span>
-                          <span className="prize-tier-amount">$30,000</span>
+                  <div className="bg-black border-[3px] border-orange-500/30 rounded-[20px] md:rounded-3xl p-8 md:p-10 relative overflow-hidden hover:border-orange-500/60 hover:-translate-y-0.5 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(251,146,60,0.2)]">
+                    <div className="absolute -top-1/2 -right-1/2 w-[200%] h-[200%] bg-gradient-radial from-orange-500/10 to-transparent pointer-events-none"></div>
+                    <div className="relative">
+                      <div className="flex items-center gap-4 mb-4 md:mb-5 min-h-[120px]">
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <span className="text-black font-black text-2xl md:text-[28px]">2</span>
                         </div>
-                        <div className="prize-tier tier-2">
-                          <span className="prize-rank">{t('extend.competition.secondPlace')}</span>
-                          <span className="prize-tier-amount">$20,000</span>
-                        </div>
-                        <div className="prize-tier tier-3">
-                          <span className="prize-rank">{t('extend.competition.thirdPlace')}</span>
-                          <span className="prize-tier-amount">$10,000</span>
-                        </div>
+                        <h3 className="text-[28px] md:text-4xl font-black text-white flex-1">{t('extend.competition.roiCompetition')}</h3>
+                      </div>
+                      <div className="text-5xl md:text-[64px] font-black text-orange-400 leading-none mb-5 md:mb-6">
+                        500,000 <span className="text-orange-500">USDT</span>
+                      </div>
+                      <div className="text-2xl md:text-[32px] font-bold text-gray-400 mt-5 md:mt-6 pt-5 md:pt-6 border-t-[3px] border-orange-500/20">
+                        <span className="font-black text-orange-400 text-[32px] md:text-[40px]">500</span> WINNERS
                       </div>
                       
-                      {/* Other Prizes */}
-                      <div className="regular-prizes">
-                        <div className="prize-tier">
-                          <span className="prize-rank">4-10</span>
-                          <span className="prize-tier-amount">$5,000</span>
+                      {/* Prize Breakdown */}
+                      <div className="mt-6 space-y-3">
+                        <div className="flex justify-between items-center py-2 px-3 bg-orange-500/10 rounded-lg border border-orange-500/20">
+                          <span className="text-orange-400 font-bold text-sm md:text-base">{t('extend.competition.firstPlace')}</span>
+                          <span className="text-orange-400 font-black text-lg md:text-xl">$30,000</span>
                         </div>
-                        <div className="prize-tier">
-                          <span className="prize-rank">11-30</span>
-                          <span className="prize-tier-amount">$3,000</span>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/50 rounded-lg border border-gray-700/50">
+                          <span className="text-gray-300 font-bold text-sm md:text-base">{t('extend.competition.secondPlace')}</span>
+                          <span className="text-gray-300 font-black text-lg md:text-xl">$20,000</span>
                         </div>
-                        <div className="prize-tier">
-                          <span className="prize-rank">31-100</span>
-                          <span className="prize-tier-amount">$2,000</span>
+                        <div className="flex justify-between items-center py-2 px-3 bg-orange-600/10 rounded-lg border border-orange-600/20">
+                          <span className="text-orange-500 font-bold text-sm md:text-base">{t('extend.competition.thirdPlace')}</span>
+                          <span className="text-orange-500 font-black text-lg md:text-xl">$10,000</span>
                         </div>
-                        <div className="prize-tier">
-                          <span className="prize-rank">101-200</span>
-                          <span className="prize-tier-amount">$1,000</span>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
+                          <span className="text-gray-400 font-medium text-sm">4-10</span>
+                          <span className="text-gray-400 font-bold text-base">$5,000</span>
                         </div>
-                        <div className="prize-tier">
-                          <span className="prize-rank">201-500</span>
-                          <span className="prize-tier-amount">$170</span>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
+                          <span className="text-gray-400 font-medium text-sm">11-30</span>
+                          <span className="text-gray-400 font-bold text-base">$3,000</span>
+                        </div>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
+                          <span className="text-gray-400 font-medium text-sm">31-100</span>
+                          <span className="text-gray-400 font-bold text-base">$2,000</span>
+                        </div>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
+                          <span className="text-gray-400 font-medium text-sm">101-200</span>
+                          <span className="text-gray-400 font-bold text-base">$1,000</span>
+                        </div>
+                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
+                          <span className="text-gray-400 font-medium text-sm">201-500</span>
+                          <span className="text-gray-400 font-bold text-base">$170</span>
                         </div>
                       </div>
                     </div>

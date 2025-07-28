@@ -50,6 +50,8 @@
   "extend.competition.notice2": "ADEN reserves the right to disqualify participants who engage in fraudulent or manipulative activities such as wash trading, market manipulation, bulk account registration, etc.",
   "extend.competition.notice3": "Obtaining rewards through abnormal methods is prohibited, and violators may have their reward eligibility revoked and accounts blocked.",
   "extend.competition.notice4": "ADEN reserves the final interpretation rights for this event.",
+  "extend.competition.startPeriod": "Start Period",
+  "extend.competition.endPeriod": "End Period",
   "common.demo_trading": "Demo",
   "common.trading": "Trading",
   "common.portfolio": "Assets",

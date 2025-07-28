@@ -106,6 +106,8 @@
   "extend.competition.notice2": "ADEN은 워시 트레이딩, 시장 조작, 계정 일괄 등록 등 사기적이거나 조작적인 행위를 한 참가자를 실격시킬 권리를 보유합니다.",
   "extend.competition.notice3": "비정상적인 방법으로 보상을 받는 것은 금지되며, 위반 시 보상 자격이 박탈되고 계정이 차단될 수 있습니다.",
   "extend.competition.notice4": "ADEN은 이벤트에 대한 최종 해석권을 보유합니다.",
+  "extend.competition.startPeriod": "시작기간",
+  "extend.competition.endPeriod": "종료기간",
   "common.demo_trading": "모의투자",
   "common.trading": "거래",
   "common.portfolio": "자산",
