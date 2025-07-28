@@ -179,15 +179,15 @@ export const useOrderlyConfig = () => {
       href: menu.href,
       target: menu.target,
       icon: isMobile && typeof menu.icon === 'string' ? (
-        <img 
-          src={menu.icon} 
-          alt="menu icon" 
-          style={{ 
-            width: '16px', 
-            height: '16px', 
+        <img
+          src={menu.icon}
+          alt="menu icon"
+          style={{
+            width: '16px',
+            height: '16px',
             marginRight: '6px',
             borderRadius: '50%'
-          }} 
+          }}
         />
       ) : menu.icon,
     }));
@@ -250,7 +250,7 @@ export const useOrderlyConfig = () => {
                   </Link>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                  <LanguageToggle />
+                  {/* <LanguageToggle /> */}
                   {components.scanQRCode}
                   {components.linkDevice}
                   {components.chainMenu}
@@ -264,7 +264,7 @@ export const useOrderlyConfig = () => {
                   {components.mainNav}
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <LanguageToggle />
+                  {/* <LanguageToggle /> */}
                   {components.accountSummary}
                   {components.linkDevice}
                   {components.subAccount}
