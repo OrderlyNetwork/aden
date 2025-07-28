@@ -385,3 +385,7 @@ html[data-lang="ko"] #oui-deposit-form>div:first-child::after {
 .oui-bg-danger-darken.oui-text-primary-contrast {
   color: white;
 }
+
+[id*="-trigger-accountId"] {
+  display: none !important;
+}
