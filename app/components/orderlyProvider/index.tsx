@@ -60,7 +60,7 @@ const LocaleProviderWithLanguages = lazy(async () => {
     try {
       // Load main language file
       const mainResponse = await fetch(
-        `${import.meta.env.VITE_BASE_URL ?? ""}/locales/${trimmedCode}.json?v=faf6ce92`
+        `${import.meta.env.VITE_BASE_URL ?? ""}/locales/${trimmedCode}.json?v=0b4d4cd6`
       );
       if (!mainResponse.ok) {
         throw new Error(
@@ -74,7 +74,7 @@ const LocaleProviderWithLanguages = lazy(async () => {
       try {
         const extendedResponse = await fetch(
           `${import.meta.env.VITE_BASE_URL ?? ""
-          }/locales/extend/${trimmedCode}.json?v=faf6ce92`
+          }/locales/extend/${trimmedCode}.json?v=0b4d4cd6`
         );
         if (extendedResponse.ok) {
           extendedData = await extendedResponse.json();
