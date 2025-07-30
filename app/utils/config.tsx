@@ -44,7 +44,7 @@ const ALL_MENU_ITEMS: MainNavItem[] = [
   { name: "Trading", href: "/", translationKey: "common.trading" },
   { name: "Portfolio", href: "/portfolio", translationKey: "common.portfolio" },
   { name: "Markets", href: "/markets", translationKey: "common.markets" },
-  // { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
+  { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
   // { name: "Referral", href: "/referral", translationKey: "affiliate.referral" },
 ];
 
@@ -53,7 +53,7 @@ const DEFAULT_ENABLED_MENUS: MainNavItem[] = [
   { name: "Trading", href: "/", translationKey: "common.trading" },
   { name: "Portfolio", href: "/portfolio", translationKey: "common.portfolio" },
   { name: "Markets", href: "/markets", translationKey: "common.markets" },
-  // { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
+  { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
   { name: "Community", href: "/demo_trading/BTCUSDT", translationKey: "common.demo_trading" },
   // { name: "Referral", href: "/referral", translationKey: "affiliate.referral" },
   { name: "Competition", href: "/competition", translationKey: "extend.competition.menuItem", icon: "https://assets.coingecko.com/coins/images/325/standard/Tether.png?1696501661" },

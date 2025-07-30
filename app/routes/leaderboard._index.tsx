@@ -1,5 +1,5 @@
 import { MetaFunction } from "@remix-run/node";
-import { LeaderboardWidget } from "@orderly.network/trading-leaderboard";
+import { LeaderboardPage } from "@orderly.network/trading-leaderboard";
 import { generatePageTitle } from "@/utils/utils";
 
 // export const meta: MetaFunction = () => {
@@ -7,5 +7,9 @@ import { generatePageTitle } from "@/utils/utils";
 // };
 
 export default function MarketsPage() {
-  return <LeaderboardWidget />;
+  return <LeaderboardPage
+    campaignId={118}
+    backgroundSrc="./back.webm"
+
+  />;
 }
