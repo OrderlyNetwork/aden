@@ -54,7 +54,6 @@
   "assetHistory.withdrawals": "출금",
   "assetHistory.deposits": "입금",
   "assetHistory.transferHistory": "전송 내역",
-
   "extend.links": "벅스코인",
   "extend.pageTitle": "DeFi: DEX 거래소 아덴",
   "extend.competition": "대회",
@@ -94,6 +93,7 @@
   "extend.competition.of": "/",
   "extend.competition.maliciousTrading": "악의적인 거래 행위는 즉시 실격 처리됩니다",
   "extend.competition.hourlyUpdate": "매시간 업데이트",
+  "extend.competition.minutes123123Update": "5 - 15 분마다 업데이트",
   "extend.competition.rank": "순위",
   "extend.competition.user": "사용자",
   "extend.competition.volume": "거래량",

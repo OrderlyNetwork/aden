@@ -52,7 +52,6 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         const result = await getCampaignRanking(campaignId, sortBy, currentPage, ENTRIES_PER_PAGE, activeTab === 'roi' ? minVolume : undefined);
 
         if (result.success) {
-          console.log('Fetched campaign ranking:', result.data);
           // Filter out specific addresses (case-insensitive)
           const excludedAddresses = [
             '0x597af8301018d223290c8d3e026b7bedc37626c0',
@@ -310,7 +309,11 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       {/* Info text */}
       <div className="mb-6 text-sm text-gray-400">
         <p>{t('extend.competition.maliciousTrading')}</p>
-        <p>{t('extend.competition.hourlyUpdate')}</p>
+        {activeTab === 'roi' ? (
+          <p>{t('extend.competition.hourlyUpdate')}</p>
+        ) : (
+          <p>{t('extend.competition.minutes123123Update')}</p>
+        )}
         {minVolume > 0 && activeTab === 'roi' && (
           <p>{t('extend.competition.minVolumeRequirement', { amount: formatCurrency(minVolume) })}</p>
         )}
