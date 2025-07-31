@@ -33,6 +33,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   const { account } = useAccount();
   const [activeTab, setActiveTab] = useState<'volume' | 'roi'>('volume');
   const [data, setData] = useState<CampaignRankingData[]>([]);
+  const [allRowsData, setAllRowsData] = useState<CampaignRankingData[]>([]);
   const [userStats, setUserStats] = useState<UserStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -40,41 +41,82 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+  // Fetch all leaderboard data robustly
+  const fetchAllPages = async () => {
+    setLoading(true);
+    setError(null);
+    let allRows: CampaignRankingData[] = [];
+    let page = 1;
+    let recordsPerPage = 500;
+    let hasMore = true;
+    let meta = null;
+    let stopFetching = false;
+    try {
+      while (hasMore && !stopFetching) {
+        const result = await getCampaignRanking(
+          campaignId,
+          "volume",
+          page,
+          recordsPerPage,
+          activeTab === 'roi' ? minVolume : undefined
+        );
+        if (!result.success) {
+          setError('Failed to fetch leaderboard data');
+          break;
+        }
+        if (!meta) meta = result.data.meta;
+        const rows = result.data.rows;
+        // Check for volume = 0 in this page
+        let threshHoldVolume = 0
+        if (activeTab === 'roi') {
+          threshHoldVolume = 100000;
+        }
+        const threshHoldVolumeIndex = rows.findIndex(r => r.volume <= minVolume);
+        if (threshHoldVolumeIndex !== -1) {
+          // Only include up to the first entry with volume = 0
+          allRows = allRows.concat(rows.slice(0, threshHoldVolumeIndex));
+          stopFetching = true;
+        } else {
+          allRows = allRows.concat(rows);
+          hasMore = rows.length === recordsPerPage;
+          page++;
+        }
+      }
+      // Filter out specific addresses (case-insensitive) and any row with volume <= 0
+      const excludedAddresses = [
+        '0x597af8301018d223290c8d3e026b7bedc37626c0',
+        '0xfc1b9ebf9fb2c81c87e7d4573ffd25580a2cce72',
+      ];
+      let filteredRows = allRows.filter((row: any) =>
+        !excludedAddresses.includes(row.address.toLowerCase()) && row.volume > 0
+      );
+      // Sort by roi descending if activeTab is 'roi'
+      if (activeTab === 'roi') {
+        filteredRows = filteredRows.slice().sort((a, b) => (b.roi ?? 0) - (a.roi ?? 0));
+      }
+      setAllRowsData(filteredRows);
+      setTotalPages(Math.max(1, Math.ceil(filteredRows.length / ENTRIES_PER_PAGE)));
+      // Set data for the current page
+      setData(filteredRows.slice((currentPage - 1) * ENTRIES_PER_PAGE, currentPage * ENTRIES_PER_PAGE));
+    } catch (err) {
+      setError('Error loading leaderboard data');
+      console.error('Error fetching campaign ranking:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
 
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
+    fetchAllPages();
+  }, [campaignId, sortBy, minVolume, activeTab, currentPage]);
 
-        const result = await getCampaignRanking(campaignId, sortBy, currentPage, ENTRIES_PER_PAGE, activeTab === 'roi' ? minVolume : undefined);
-
-        if (result.success) {
-          // Filter out specific addresses (case-insensitive)
-          const excludedAddresses = [
-            '0x597af8301018d223290c8d3e026b7bedc37626c0',
-            '0xfc1b9ebf9fb2c81c87e7d4573ffd25580a2cce72',
-          ];
-          const filteredRows = result.data.rows.filter((row: any) =>
-            !excludedAddresses.includes(row.address.toLowerCase())
-          );
-          setData(filteredRows);
-          setTotalPages(Math.ceil(result.data.meta.total / ENTRIES_PER_PAGE));
-        } else {
-          setError('Failed to fetch leaderboard data');
-        }
-      } catch (err) {
-        setError('Error loading leaderboard data');
-        console.error('Error fetching campaign ranking:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [campaignId, sortBy, currentPage, minVolume, activeTab]);
+  // Update data when currentPage or allRowsData changes
+  useEffect(() => {
+    setData(allRowsData.slice((currentPage - 1) * ENTRIES_PER_PAGE, currentPage * ENTRIES_PER_PAGE));
+  }, [allRowsData, currentPage]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -90,6 +132,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         );
 
         if (userResult.success) {
+          // console.log('User stats fetched successfully:', userResult.data);
           setUserStats(userResult.data);
         }
       } catch (error) {
