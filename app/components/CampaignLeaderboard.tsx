@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { 
-  useReactTable, 
-  getCoreRowModel, 
-  getSortedRowModel, 
+import {
+  useReactTable,
+  getCoreRowModel,
+  getSortedRowModel,
   flexRender,
   type ColumnDef,
   type SortingState
@@ -24,9 +24,9 @@ interface CampaignLeaderboardProps {
 
 const ENTRIES_PER_PAGE = 10;
 
-const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({ 
-  campaignId, 
-  userAddress, 
+const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
+  campaignId,
+  userAddress,
   minVolume = 0
 }) => {
   const { t } = useTranslation();
@@ -48,11 +48,20 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       try {
         setLoading(true);
         setError(null);
-        
+
         const result = await getCampaignRanking(campaignId, sortBy, currentPage, ENTRIES_PER_PAGE, activeTab === 'roi' ? minVolume : undefined);
-        
+
         if (result.success) {
-          setData(result.data.rows);
+          console.log('Fetched campaign ranking:', result.data);
+          // Filter out specific addresses (case-insensitive)
+          const excludedAddresses = [
+            '0x597af8301018d223290c8d3e026b7bedc37626c0',
+            '0xfc1b9ebf9fb2c81c87e7d4573ffd25580a2cce72',
+          ];
+          const filteredRows = result.data.rows.filter((row: any) =>
+            !excludedAddresses.includes(row.address.toLowerCase())
+          );
+          setData(filteredRows);
           setTotalPages(Math.ceil(result.data.meta.total / ENTRIES_PER_PAGE));
         } else {
           setError('Failed to fetch leaderboard data');
@@ -71,16 +80,16 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   useEffect(() => {
     const fetchUserData = async () => {
       if (!account?.accountId || !account?.address) return;
-      
+
       try {
         const userResult = await getUserStats(
-          campaignId, 
+          campaignId,
           account.accountId,
           account.address,
-          activeTab, 
+          activeTab,
           activeTab === 'roi' ? minVolume : undefined
         );
-        
+
         if (userResult.success) {
           setUserStats(userResult.data);
         }
@@ -123,30 +132,30 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   };
 
   const GoldMedal = () => (
-    <svg style={{height: '1.75rem'}} width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2 L12 6 M10 4 L14 4" stroke="#FFD700" strokeWidth="1" fill="none"/>
-      <circle cx="12" cy="12" r="8" fill="#FFD700" stroke="#B8860B" strokeWidth="1"/>
-      <circle cx="12" cy="12" r="6" fill="#FFF3B0" stroke="#FFD700" strokeWidth="0.5"/>
+    <svg style={{ height: '1.75rem' }} width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2 L12 6 M10 4 L14 4" stroke="#FFD700" strokeWidth="1" fill="none" />
+      <circle cx="12" cy="12" r="8" fill="#FFD700" stroke="#B8860B" strokeWidth="1" />
+      <circle cx="12" cy="12" r="6" fill="#FFF3B0" stroke="#FFD700" strokeWidth="0.5" />
       <text x="12" y="15" textAnchor="middle" fontWeight="bold" fontSize="8" fill="#B8860B">1</text>
-      <circle cx="10" cy="10" r="2" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="10" cy="10" r="2" fill="#FFFFFF" opacity="0.3" />
     </svg>
   );
   const SilverMedal = () => (
-    <svg style={{height: '1.75rem'}} width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2 L12 6 M10 4 L14 4" stroke="#C0C0C0" strokeWidth="1" fill="none"/>
-      <circle cx="12" cy="12" r="8" fill="#C0C0C0" stroke="#A0A0A0" strokeWidth="1"/>
-      <circle cx="12" cy="12" r="6" fill="#F0F0F0" stroke="#C0C0C0" strokeWidth="0.5"/>
+    <svg style={{ height: '1.75rem' }} width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2 L12 6 M10 4 L14 4" stroke="#C0C0C0" strokeWidth="1" fill="none" />
+      <circle cx="12" cy="12" r="8" fill="#C0C0C0" stroke="#A0A0A0" strokeWidth="1" />
+      <circle cx="12" cy="12" r="6" fill="#F0F0F0" stroke="#C0C0C0" strokeWidth="0.5" />
       <text x="12" y="15" textAnchor="middle" fontWeight="bold" fontSize="8" fill="#888">2</text>
-      <circle cx="10" cy="10" r="2" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="10" cy="10" r="2" fill="#FFFFFF" opacity="0.3" />
     </svg>
   );
   const BronzeMedal = () => (
-    <svg style={{height: '1.75rem'}} width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2 L12 6 M10 4 L14 4" stroke="#CD7F32" strokeWidth="1" fill="none"/>
-      <circle cx="12" cy="12" r="8" fill="#CD7F32" stroke="#8B5C2A" strokeWidth="1"/>
-      <circle cx="12" cy="12" r="6" fill="#F7CBA0" stroke="#CD7F32" strokeWidth="0.5"/>
+    <svg style={{ height: '1.75rem' }} width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2 L12 6 M10 4 L14 4" stroke="#CD7F32" strokeWidth="1" fill="none" />
+      <circle cx="12" cy="12" r="8" fill="#CD7F32" stroke="#8B5C2A" strokeWidth="1" />
+      <circle cx="12" cy="12" r="6" fill="#F7CBA0" stroke="#CD7F32" strokeWidth="0.5" />
       <text x="12" y="15" textAnchor="middle" fontWeight="bold" fontSize="8" fill="#8B5C2A">3</text>
-      <circle cx="10" cy="10" r="2" fill="#FFFFFF" opacity="0.3"/>
+      <circle cx="10" cy="10" r="2" fill="#FFFFFF" opacity="0.3" />
     </svg>
   );
 
@@ -280,21 +289,19 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       <div className="flex gap-4 mb-6">
         <button
           onClick={() => setActiveTab('volume')}
-          className={`px-6 py-3 font-bold text-sm uppercase tracking-wider border transition-all duration-200 ${
-            activeTab === 'volume'
-              ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-black border-orange-500'
-              : 'bg-gray-800 text-gray-300 border-gray-600 hover:bg-gray-700 hover:border-orange-500'
-          }`}
+          className={`px-6 py-3 font-bold text-sm uppercase tracking-wider border transition-all duration-200 ${activeTab === 'volume'
+            ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-black border-orange-500'
+            : 'bg-gray-800 text-gray-300 border-gray-600 hover:bg-gray-700 hover:border-orange-500'
+            }`}
         >
           {t('extend.competition.tradingVolumeShort')}
         </button>
         <button
           onClick={() => setActiveTab('roi')}
-          className={`px-6 py-3 font-bold text-sm uppercase tracking-wider border transition-all duration-200 ${
-            activeTab === 'roi'
-              ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-black border-orange-500'
-              : 'bg-gray-800 text-gray-300 border-gray-600 hover:bg-gray-700 hover:border-orange-500'
-          }`}
+          className={`px-6 py-3 font-bold text-sm uppercase tracking-wider border transition-all duration-200 ${activeTab === 'roi'
+            ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-black border-orange-500'
+            : 'bg-gray-800 text-gray-300 border-gray-600 hover:bg-gray-700 hover:border-orange-500'
+            }`}
         >
           {t('extend.competition.roi')}
         </button>
@@ -371,86 +378,85 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                   </div>
                 </td>
               </tr>
-                          ) : (
-                <>
-                  {/* User stats row - always first */}
-                  {userStats && (
-                    <tr className="bg-yellow-500/10 border-b border-yellow-500/30">
-                      <td className="px-4 py-2 text-sm truncate" style={{ width: 80 }}>
-                        <div className="flex items-center justify-center">
-                          <span className="text-lg font-bold text-yellow-400">
-                            {userStats.rank ? userStats.rank.toString() : '-'}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="px-4 py-2 text-sm truncate" style={{ width: 200 }}>
-                        <div className="flex items-center gap-2">
-                          <span className="font-mono text-sm text-yellow-400">
-                            {account?.address ? formatAddress(account.address) : '-'}
-                          </span>
-                          <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
-                            ({t('extend.competition.you')})
-                          </span>
-                        </div>
-                      </td>
-                      <td className="px-4 py-2 text-sm truncate" style={{ width: 180 }}>
-                        <span className="font-mono text-yellow-400">{formatCurrency(userStats.volume)}</span>
-                      </td>
-                      <td className="px-4 py-2 text-sm truncate" style={{ width: 120 }}>
-                        <span className={`font-mono ${calculateUserROI(userStats) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                          {formatPercentage(calculateUserROI(userStats))}
+            ) : (
+              <>
+                {/* User stats row - always first */}
+                {userStats && (
+                  <tr className="bg-yellow-500/10 border-b border-yellow-500/30">
+                    <td className="px-4 py-2 text-sm truncate" style={{ width: 80 }}>
+                      <div className="flex items-center justify-center">
+                        <span className="text-lg font-bold text-yellow-400">
+                          {userStats.rank ? userStats.rank.toString() : '-'}
                         </span>
-                      </td>
-                      <td className="px-4 py-2 text-sm truncate" style={{ width: 150 }}>
-                        <span className={`font-mono ${userStats.pnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                          {formatCurrency(userStats.pnl)}
+                      </div>
+                    </td>
+                    <td className="px-4 py-2 text-sm truncate" style={{ width: 200 }}>
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-sm text-yellow-400">
+                          {account?.address ? formatAddress(account.address) : '-'}
                         </span>
-                      </td>
-                    </tr>
-                  )}
-                  
-                  {/* Regular leaderboard rows */}
-                  {table.getRowModel().rows.map(row => {
-                    const isUser = isCurrentUser(row.original.address);
-                    
-                    return (
-                      <tr
-                        key={row.id}
-                        className={`border-b border-gray-800 transition-colors ${
-                          isUser 
-                            ? 'bg-yellow-500/10 border-yellow-500/30' 
-                            : getRowStyling(row.index) || 'hover:bg-gray-800/50'
+                        <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
+                          ({t('extend.competition.you')})
+                        </span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-2 text-sm truncate" style={{ width: 180 }}>
+                      <span className="font-mono text-yellow-400">{formatCurrency(userStats.volume)}</span>
+                    </td>
+                    <td className="px-4 py-2 text-sm truncate" style={{ width: 120 }}>
+                      <span className={`font-mono ${calculateUserROI(userStats) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                        {formatPercentage(calculateUserROI(userStats))}
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 text-sm truncate" style={{ width: 150 }}>
+                      <span className={`font-mono ${userStats.pnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                        {formatCurrency(userStats.pnl)}
+                      </span>
+                    </td>
+                  </tr>
+                )}
+
+                {/* Regular leaderboard rows */}
+                {table.getRowModel().rows.map(row => {
+                  const isUser = isCurrentUser(row.original.address);
+
+                  return (
+                    <tr
+                      key={row.id}
+                      className={`border-b border-gray-800 transition-colors ${isUser
+                        ? 'bg-yellow-500/10 border-yellow-500/30'
+                        : getRowStyling(row.index) || 'hover:bg-gray-800/50'
                         }`}
-                      >
-                        {row.getVisibleCells().map(cell => (
-                          <td
-                            key={cell.id}
-                            className="px-4 py-2 text-sm truncate"
-                            style={{ width: cell.column.getSize() }}
-                          >
-                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                          </td>
-                        ))}
-                      </tr>
-                    );
-                  })}
-                  
-                  {/* Fill remaining rows with invisible placeholders */}
-                  {Array.from({ length: Math.max(0, ENTRIES_PER_PAGE - data.length - (userStats ? 1 : 0)) }).map((_, index) => (
-                    <tr key={`placeholder-${index}`} className="border-b border-gray-800 invisible">
-                      {Array.from({ length: 5 }).map((_, cellIndex) => (
+                    >
+                      {row.getVisibleCells().map(cell => (
                         <td
-                          key={`placeholder-cell-${index}-${cellIndex}`}
-                          className="px-4 py-2 text-lg"
-                          style={{ width: cellIndex === 0 ? 80 : cellIndex === 1 ? 200 : cellIndex === 2 ? 180 : cellIndex === 3 ? 120 : 150 }}
+                          key={cell.id}
+                          className="px-4 py-2 text-sm truncate"
+                          style={{ width: cell.column.getSize() }}
                         >
-                          &nbsp;
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
                         </td>
                       ))}
                     </tr>
-                  ))}
-                </>
-              )}
+                  );
+                })}
+
+                {/* Fill remaining rows with invisible placeholders */}
+                {Array.from({ length: Math.max(0, ENTRIES_PER_PAGE - data.length - (userStats ? 1 : 0)) }).map((_, index) => (
+                  <tr key={`placeholder-${index}`} className="border-b border-gray-800 invisible">
+                    {Array.from({ length: 5 }).map((_, cellIndex) => (
+                      <td
+                        key={`placeholder-cell-${index}-${cellIndex}`}
+                        className="px-4 py-2 text-lg"
+                        style={{ width: cellIndex === 0 ? 80 : cellIndex === 1 ? 200 : cellIndex === 2 ? 180 : cellIndex === 3 ? 120 : 150 }}
+                      >
+                        &nbsp;
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </>
+            )}
           </tbody>
         </table>
       </div>
