@@ -41,6 +41,7 @@
     "@solana/wallet-adapter-base": "^0.9.24",
     "@solana/wallet-adapter-wallets": "^0.19.36",
     "@tanstack/query-core": "^5.79.0",
+    "@tanstack/react-table": "^8.21.3",
     "@web3-onboard/walletconnect": "^2.6.2",
     "isbot": "^4.1.0",
     "lucide-react": "^0.523.0",

@@ -5,6 +5,7 @@ import { Scaffold } from "@orderly.network/ui-scaffold";
 import { useOrderlyConfig } from "@/utils/config";
 import { useNav } from "@/hooks/useNav";
 import { useTranslation } from "@orderly.network/i18n";
+import CampaignLeaderboard from "@/components/CampaignLeaderboard";
 
 export const meta: MetaFunction = () => {
   return [
@@ -711,13 +712,6 @@ function CompetitionContent() {
             margin-bottom: 5px;
         }
 
-        .table-container {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            min-height: 400px;
-            position: relative;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -1390,9 +1384,9 @@ function CompetitionContent() {
                       
                       {/* Prize Breakdown */}
                       <div className="mt-6 space-y-3">
-                        <div className="flex justify-between items-center py-2 px-3 bg-orange-500/10 rounded-lg border border-orange-500/20">
-                          <span className="text-orange-400 font-bold text-sm md:text-base">{t('extend.competition.firstPlace')}</span>
-                          <span className="text-orange-400 font-black text-lg md:text-xl">$40,000</span>
+                        <div className="flex justify-between items-center py-2 px-3 bg-yellow-600/30 rounded-lg border border-yellow-300">
+                          <span className="text-yellow-200 font-bold text-sm md:text-base">{t('extend.competition.firstPlace')}</span>
+                          <span className="text-yellow-200 font-black text-lg md:text-xl">$40,000</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/50 rounded-lg border border-gray-700/50">
                           <span className="text-gray-300 font-bold text-sm md:text-base">{t('extend.competition.secondPlace')}</span>
@@ -1445,9 +1439,9 @@ function CompetitionContent() {
                       
                       {/* Prize Breakdown */}
                       <div className="mt-6 space-y-3">
-                        <div className="flex justify-between items-center py-2 px-3 bg-orange-500/10 rounded-lg border border-orange-500/20">
-                          <span className="text-orange-400 font-bold text-sm md:text-base">{t('extend.competition.firstPlace')}</span>
-                          <span className="text-orange-400 font-black text-lg md:text-xl">$30,000</span>
+                        <div className="flex justify-between items-center py-2 px-3 bg-yellow-600/30 rounded-lg border border-yellow-300">
+                          <span className="text-yellow-200 font-bold text-sm md:text-base">{t('extend.competition.firstPlace')}</span>
+                          <span className="text-yellow-200 font-black text-lg md:text-xl">$30,000</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/50 rounded-lg border border-gray-700/50">
                           <span className="text-gray-300 font-bold text-sm md:text-base">{t('extend.competition.secondPlace')}</span>
@@ -1487,28 +1481,7 @@ function CompetitionContent() {
             {/* Leaderboard */}
             <section className="leaderboard-section">
               <div className="leaderboard-container">
-                <div className="leaderboard-tabs">
-                  <div className="leaderboard-tab">{t('extend.competition.tradingVolumeShort')}</div>
-                </div>
-                <div className="leaderboard-info">
-                  <p>{t('extend.competition.maliciousTrading')}</p>
-                  <p>{t('extend.competition.hourlyUpdate')}</p>
-                </div>
-                <div className="table-container">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>{t('extend.competition.rank')}</th>
-                        <th>{t('extend.competition.user')}</th>
-                        <th>{t('extend.competition.volume')}</th>
-                      </tr>
-                    </thead>
-                  </table>
-                  <div className="no-data">
-                    <div className="no-data-icon">-</div>
-                    <p className="no-data-text">{t('extend.competition.leaderboardComing')}</p>
-                  </div>
-                </div>
+                <CampaignLeaderboard campaignId={118} minVolume={100_000} />
               </div>
             </section>
 
