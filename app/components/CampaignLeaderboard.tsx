@@ -70,17 +70,19 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
 
   useEffect(() => {
     const fetchUserData = async () => {
-      if (!account?.accountId) return;
+      if (!account?.accountId || !account?.address) return;
       
       try {
-        const result = await getUserStats(
+        const userResult = await getUserStats(
           campaignId, 
-          account.accountId, 
+          account.accountId,
+          account.address,
           activeTab, 
           activeTab === 'roi' ? minVolume : undefined
         );
-        if (result.success) {
-          setUserStats(result.data);
+        
+        if (userResult.success) {
+          setUserStats(userResult.data);
         }
       } catch (error) {
         console.error('Error fetching user stats:', error);
@@ -88,7 +90,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
     };
 
     fetchUserData();
-  }, [account?.accountId, campaignId, activeTab, minVolume]);
+  }, [account?.accountId, account?.address, campaignId, activeTab, minVolume]);
 
   const [sorting, setSorting] = useState<SortingState>([
     { id: activeTab, desc: true }
@@ -376,7 +378,9 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                     <tr className="bg-yellow-500/10 border-b border-yellow-500/30">
                       <td className="px-4 py-2 text-sm truncate" style={{ width: 80 }}>
                         <div className="flex items-center justify-center">
-                          <span className="text-lg font-bold text-yellow-400">?</span>
+                          <span className="text-lg font-bold text-yellow-400">
+                            {userStats.rank ? userStats.rank.toString() : '-'}
+                          </span>
                         </div>
                       </td>
                       <td className="px-4 py-2 text-sm truncate" style={{ width: 200 }}>
@@ -452,41 +456,43 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       </div>
 
       {/* Pagination Controls */}
-      <div className="flex justify-between items-center mt-6 text-sm text-gray-400">
-        <div className="flex gap-2">
-          <button
-            onClick={() => setCurrentPage(1)}
-            disabled={currentPage === 1}
-            className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            &lt;&lt;
-          </button>
-          <button
-            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-            disabled={currentPage === 1}
-            className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            &lt;
-          </button>
-          <button
-            onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-            disabled={currentPage === totalPages}
-            className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            &gt;
-          </button>
-          <button
-            onClick={() => setCurrentPage(totalPages)}
-            disabled={currentPage === totalPages}
-            className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            &gt;&gt;
-          </button>
+      {data.length > 0 && (
+        <div className="flex justify-between items-center mt-6 text-sm text-gray-400">
+          <div className="flex gap-2">
+            <button
+              onClick={() => setCurrentPage(1)}
+              disabled={currentPage === 1}
+              className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              &lt;&lt;
+            </button>
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+              disabled={currentPage === 1}
+              className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              &lt;
+            </button>
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+              disabled={currentPage === totalPages}
+              className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              &gt;
+            </button>
+            <button
+              onClick={() => setCurrentPage(totalPages)}
+              disabled={currentPage === totalPages}
+              className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              &gt;&gt;
+            </button>
+          </div>
+          <span>
+            {t('extend.competition.page')} {currentPage} {t('extend.competition.of')} {totalPages}
+          </span>
         </div>
-        <span>
-          {t('extend.competition.page')} {currentPage} {t('extend.competition.of')} {totalPages}
-        </span>
-      </div>
+      )}
     </div>
   );
 };

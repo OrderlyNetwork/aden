@@ -26,6 +26,7 @@ export interface UserStats {
   total_transfer_out: number;
   new_invited_referee: number;
   new_traded_referee: number;
+  rank?: number | null;
 }
 
 export interface UserStatsResponse {
@@ -85,30 +86,64 @@ export const getCampaignRanking = async (
 export const getUserStats = async (
   campaignId: number,
   accountId: string,
+  address: string,
   sortBy: "volume" | "roi" = "volume",
   minVolume?: number
 ): Promise<UserStatsResponse> => {
   try {
-    const params = new URLSearchParams({
-      campaign_id: campaignId.toString(),
-      account_id: accountId,
-      sort_by: sortBy,
-    });
+    const [userResponse, rankingResponse] = await Promise.all([
+      fetch(
+        `https://api.orderly.org/v1/public/campaign/user?${new URLSearchParams({
+          campaign_id: campaignId.toString(),
+          account_id: accountId,
+          sort_by: sortBy,
+          ...(minVolume &&
+            minVolume > 0 && { min_volume: minVolume.toString() }),
+        })}`
+      ),
+      fetch(
+        `https://api.orderly.org/v1/public/campaign/ranking?${new URLSearchParams(
+          {
+            campaign_id: campaignId.toString(),
+            sort_by: sortBy,
+            page: "1",
+            size: "500",
+            ...(minVolume &&
+              minVolume > 0 && { min_volume: minVolume.toString() }),
+          }
+        )}`
+      ),
+    ]);
 
-    if (minVolume && minVolume > 0) {
-      params.append("min_volume", minVolume.toString());
+    if (!userResponse.ok) {
+      throw new Error(`HTTP error! status: ${userResponse.status}`);
     }
 
-    const response = await fetch(
-      `https://api.orderly.org/v1/public/campaign/user?${params.toString()}`
-    );
+    const userData = await userResponse.json();
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    if (rankingResponse.ok) {
+      const rankingData = await rankingResponse.json();
+      const userRank = rankingData.data.rows.findIndex(
+        (row: CampaignRankingData) =>
+          row.account_id.toLowerCase() === accountId.toLowerCase()
+      );
+
+      return {
+        ...userData,
+        data: {
+          ...userData.data,
+          rank: userRank >= 0 ? userRank + 1 : null,
+        },
+      };
     }
 
-    const data = await response.json();
-    return data;
+    return {
+      ...userData,
+      data: {
+        ...userData.data,
+        rank: null,
+      },
+    };
   } catch (error) {
     console.error("Error fetching user stats:", error);
     throw new Error("Failed to fetch user stats data");
