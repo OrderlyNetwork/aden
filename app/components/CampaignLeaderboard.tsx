@@ -71,7 +71,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         if (activeTab === 'roi') {
           threshHoldVolume = 100000;
         }
-        const threshHoldVolumeIndex = rows.findIndex(r => r.volume <= minVolume);
+        const threshHoldVolumeIndex = rows.findIndex(r => r.volume <= threshHoldVolume);
         if (threshHoldVolumeIndex !== -1) {
           // Only include up to the first entry with volume = 0
           allRows = allRows.concat(rows.slice(0, threshHoldVolumeIndex));
