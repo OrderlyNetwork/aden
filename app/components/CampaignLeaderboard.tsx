@@ -224,7 +224,10 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   };
 
   const calculateUserROI = (stats: UserStats) => {
+    console.log('Calculating user ROI:', stats);
     if (stats.start_account_value + stats.total_deposit_amount === 0) return 0;
+    if (stats.pnl === 0) return 0;
+    if (stats.volume === 0) return 0;
     return (stats.pnl / (stats.start_account_value + stats.total_deposit_amount)) * 100;
   };
 
