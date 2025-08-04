@@ -17,7 +17,7 @@ const excludedAddresses = [
   //Aden internal account
   '0x597af8301018d223290c8d3e026b7bedc37626c0',
   '0xfc1b9ebf9fb2c81c87e7d4573ffd25580a2cce72',
-  // Aden internal account
+  // Malicious account
   "0x934faff57fd4f50a6bab8d9868da851809cc1f69"
 ];
 
