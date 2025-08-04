@@ -52,7 +52,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
     setError(null);
     let allRows: CampaignRankingData[] = [];
     let page = 1;
-    let recordsPerPage = 500;
+    const recordsPerPage = 500;
     let hasMore = true;
     let meta = null;
     let stopFetching = false;
@@ -92,8 +92,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
           await new Promise(resolve => setTimeout(resolve, 200));
         }
       }
-
-      let filteredRows = allRows.filter((row: any) =>
+      let filteredRows = allRows.filter((row: CampaignRankingData) =>
         !excludedAddresses.includes(row.address.toLowerCase()) && row.volume > 0
       );
       if (activeTab === 'roi') {
@@ -166,6 +165,10 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   const formatAddress = (address: string) => {
     if (!address) return '-';
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
+  };
+
+  const getDashboardUrl = (address: string) => {
+    return `https://orderly-dashboard.orderly.network/address/${address}?broker_id=aden`;
   };
 
   const formatCurrency = (value: number) => {
@@ -272,14 +275,19 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         };
         return (
           <div className="flex items-center gap-2">
-            <span className="font-mono text-sm">
+            <a
+              href={getDashboardUrl(value)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200 underline"
+            >
               {formatAddress(value)}
-              {isCurrentUser(value) && (
-                <span className="ml-2 text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
-                  (You)
-                </span>
-              )}
-            </span>
+            </a>
+            {isCurrentUser(value) && (
+              <span className="ml-2 text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
+                (You)
+              </span>
+            )}
             <button
               onClick={handleCopy}
               className="ml-1 p-1 rounded hover:bg-gray-700 focus:outline-none"
@@ -507,9 +515,18 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                     </td>
                     <td className="px-4 py-2 text-sm truncate" style={{ width: 200 }}>
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-sm text-yellow-400">
-                          {account?.address ? formatAddress(account.address) : '-'}
-                        </span>
+                        {account?.address ? (
+                          <a
+                            href={getDashboardUrl(account.address)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-sm text-yellow-400 hover:text-yellow-300 transition-colors duration-200 underline"
+                          >
+                            {formatAddress(account.address)}
+                          </a>
+                        ) : (
+                          <span className="font-mono text-sm text-yellow-400">-</span>
+                        )}
                         <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
                           ({t('extend.competition.you')})
                         </span>
