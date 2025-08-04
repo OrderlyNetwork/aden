@@ -163,8 +163,7 @@ export const getUserStatsNoRanking = async (
       fetch(
         `https://api.orderly.org/v1/public/campaign/user?${new URLSearchParams({
           campaign_id: campaignId.toString(),
-          // account_id: accountId,
-          address: "0x88dc86676f58421b52a158422d2297cea847770c",
+          account_id: accountId,
           sort_by: sortBy,
           ...(minVolume &&
             minVolume > 0 && { min_volume: minVolume.toString() }),
