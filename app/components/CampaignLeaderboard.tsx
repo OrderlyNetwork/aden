@@ -261,6 +261,12 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       accessorKey: 'address',
       cell: ({ getValue }) => {
         const value = getValue() as string;
+        const [copied, setCopied] = React.useState(false);
+        const handleCopy = () => {
+          navigator.clipboard.writeText(value);
+          setCopied(true);
+          setTimeout(() => setCopied(false), 1200);
+        };
         return (
           <div className="flex items-center gap-2">
             <span className="font-mono text-sm">
@@ -271,6 +277,18 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                 </span>
               )}
             </span>
+            <button
+              onClick={handleCopy}
+              className="ml-1 p-1 rounded hover:bg-gray-700 focus:outline-none"
+              title="Copy address"
+              style={{ lineHeight: 0 }}
+            >
+              {copied ? (
+                <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M4 8l3 3 5-5" stroke="#ff9800" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              ) : (
+                <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><rect x="3" y="5" width="8" height="8" rx="2" stroke="#ff9800" strokeWidth="1.5" /><rect x="5" y="3" width="8" height="8" rx="2" stroke="#ffb347" strokeWidth="1.5" /></svg>
+              )}
+            </button>
           </div>
         );
       },
