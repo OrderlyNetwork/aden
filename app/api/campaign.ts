@@ -61,6 +61,7 @@ export const getCampaignRanking = async (
       sort_by: sortBy,
       page: page.toString(),
       size: size.toString(),
+      aggregate_by: "address"
     });
 
     if (minVolume && minVolume > 0) {

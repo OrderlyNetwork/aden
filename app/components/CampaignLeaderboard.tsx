@@ -15,7 +15,6 @@ import { useTranslation } from '@orderly.network/i18n';
 
 
 
-
 interface CampaignLeaderboardProps {
   campaignId: number;
   userAddress?: string;
@@ -42,7 +41,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   const [totalPages, setTotalPages] = useState(1);
 
   // Fetch all leaderboard data robustly
-  const fetchAllPages = async () => {
+  const fetchAllData = async () => {
     setLoading(true);
     setError(null);
     let allRows: CampaignRankingData[] = [];
@@ -66,6 +65,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         }
         if (!meta) meta = result.data.meta;
         const rows = result.data.rows;
+        console.log(`Fetched page ${page} with ${rows.length} rows`);
         // Check for volume = 0 in this page
         let threshHoldVolume = 0
         if (activeTab === 'roi') {
@@ -81,8 +81,11 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
           hasMore = rows.length === recordsPerPage;
           page++;
         }
+        // Wait 0.2s before next loop to avoid hammering the API
+        if (hasMore && !stopFetching) {
+          await new Promise(resolve => setTimeout(resolve, 200));
+        }
       }
-      // Filter out specific addresses (case-insensitive) and any row with volume <= 0
       const excludedAddresses = [
         '0x597af8301018d223290c8d3e026b7bedc37626c0',
         '0xfc1b9ebf9fb2c81c87e7d4573ffd25580a2cce72',
@@ -90,13 +93,11 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       let filteredRows = allRows.filter((row: any) =>
         !excludedAddresses.includes(row.address.toLowerCase()) && row.volume > 0
       );
-      // Sort by roi descending if activeTab is 'roi'
       if (activeTab === 'roi') {
         filteredRows = filteredRows.slice().sort((a, b) => (b.roi ?? 0) - (a.roi ?? 0));
       }
       setAllRowsData(filteredRows);
       setTotalPages(Math.max(1, Math.ceil(filteredRows.length / ENTRIES_PER_PAGE)));
-      // Set data for the current page
       setData(filteredRows.slice((currentPage - 1) * ENTRIES_PER_PAGE, currentPage * ENTRIES_PER_PAGE));
     } catch (err) {
       setError('Error loading leaderboard data');
@@ -106,17 +107,23 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
     }
   };
 
-
-
-
+  // Update data when currentPage or allRowsData changes
   useEffect(() => {
-    fetchAllPages();
-  }, [campaignId, sortBy, minVolume, activeTab, currentPage]);
+    console.log('Updating data for current page:', currentPage, 'with active tab:', activeTab);
+    setData(allRowsData.slice((currentPage - 1) * ENTRIES_PER_PAGE, currentPage * ENTRIES_PER_PAGE));
+  }, [allRowsData, currentPage]);
 
   // Update data when currentPage or allRowsData changes
   useEffect(() => {
-    setData(allRowsData.slice((currentPage - 1) * ENTRIES_PER_PAGE, currentPage * ENTRIES_PER_PAGE));
-  }, [allRowsData, currentPage]);
+    console.log('Updating data for current page:', currentPage, 'with active tab:', activeTab);
+    let rows = allRowsData;
+    fetchAllData();
+    if (activeTab === 'roi') {
+      rows = rows.slice().sort((a, b) => (b.roi ?? 0) - (a.roi ?? 0));
+    }
+    setAllRowsData(rows);
+    setData(rows.slice((currentPage - 1) * ENTRIES_PER_PAGE, currentPage * ENTRIES_PER_PAGE));
+  }, [activeTab]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -132,7 +139,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         );
 
         if (userResult.success) {
-          // console.log('User stats fetched successfully:', userResult.data);
+          console.log('User stats fetched successfully:', userResult.data);
           setUserStats(userResult.data);
         }
       } catch (error) {
@@ -349,6 +356,40 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
             }`}
         >
           {t('extend.competition.roi')}
+        </button>
+        <button
+          onClick={fetchAllData}
+          className={`flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors text-orange-500 hover:text-orange-400 ${loading ? 'opacity-50 pointer-events-none' : ''}`}
+          title="Refresh leaderboard"
+          style={{ background: 'none', border: 'none', padding: 0, marginLeft: 8, height: 32, width: 32, lineHeight: 0 }}
+          disabled={loading}
+          tabIndex={0}
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={loading ? 'animate-spin' : ''}
+            style={{ display: 'block' }}
+          >
+            <defs>
+              <linearGradient id="refresh-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#ff9800" />
+                <stop offset="1" stopColor="#ffb347" />
+              </linearGradient>
+            </defs>
+            <circle
+              cx="12"
+              cy="12"
+              r="9"
+              stroke="url(#refresh-gradient)"
+              strokeWidth="3"
+              strokeDasharray="42 16"
+              strokeLinecap="round"
+            />
+          </svg>
         </button>
       </div>
 
