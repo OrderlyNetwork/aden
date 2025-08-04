@@ -13,7 +13,13 @@ import { getCampaignRanking, getUserStats, getUserStatsNoRanking, type CampaignR
 import { useTranslation } from '@orderly.network/i18n';
 
 
-
+const excludedAddresses = [
+  //Aden internal account
+  '0x597af8301018d223290c8d3e026b7bedc37626c0',
+  '0xfc1b9ebf9fb2c81c87e7d4573ffd25580a2cce72',
+  // Aden internal account
+  "0x934faff57fd4f50a6bab8d9868da851809cc1f69"
+];
 
 interface CampaignLeaderboardProps {
   campaignId: number;
@@ -86,10 +92,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
           await new Promise(resolve => setTimeout(resolve, 200));
         }
       }
-      const excludedAddresses = [
-        '0x597af8301018d223290c8d3e026b7bedc37626c0',
-        '0xfc1b9ebf9fb2c81c87e7d4573ffd25580a2cce72',
-      ];
+
       let filteredRows = allRows.filter((row: any) =>
         !excludedAddresses.includes(row.address.toLowerCase()) && row.volume > 0
       );
