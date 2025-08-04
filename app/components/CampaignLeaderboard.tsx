@@ -89,6 +89,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       const excludedAddresses = [
         '0x597af8301018d223290c8d3e026b7bedc37626c0',
         '0xfc1b9ebf9fb2c81c87e7d4573ffd25580a2cce72',
+        '0x934faff57fd4f50a6bab8d9868da851809cc1f69'
       ];
       let filteredRows = allRows.filter((row: CampaignRankingData) =>
         !excludedAddresses.includes(row.address.toLowerCase()) && row.volume > 0
