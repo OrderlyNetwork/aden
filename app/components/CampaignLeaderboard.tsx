@@ -9,7 +9,7 @@ import {
 } from '@tanstack/react-table';
 import { useAccount } from '@orderly.network/hooks';
 
-import { getCampaignRanking, getUserStats, type CampaignRankingData, type UserStats } from '@/api/campaign';
+import { getCampaignRanking, getUserStats, getUserStatsNoRanking, type CampaignRankingData, type UserStats } from '@/api/campaign';
 import { useTranslation } from '@orderly.network/i18n';
 
 
@@ -130,7 +130,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       if (!account?.accountId || !account?.address) return;
 
       try {
-        const userResult = await getUserStats(
+        const userResult = await getUserStatsNoRanking(
           campaignId,
           account.accountId,
           account.address,
@@ -231,7 +231,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   };
 
   const calculateUserROI = (stats: UserStats) => {
-    console.log('Calculating user ROI:', stats);
+    // console.log('Calculating user ROI:', stats);
     if (stats.start_account_value + stats.total_deposit_amount === 0) return 0;
     if (stats.pnl === 0) return 0;
     if (stats.volume === 0) return 0;

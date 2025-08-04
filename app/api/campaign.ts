@@ -150,3 +150,43 @@ export const getUserStats = async (
     throw new Error("Failed to fetch user stats data");
   }
 };
+
+export const getUserStatsNoRanking = async (
+  campaignId: number,
+  accountId: string,
+  address: string,
+  sortBy: "volume" | "roi" = "volume",
+  minVolume?: number
+): Promise<UserStatsResponse> => {
+  try {
+    const [userResponse] = await Promise.all([
+      fetch(
+        `https://api.orderly.org/v1/public/campaign/user?${new URLSearchParams({
+          campaign_id: campaignId.toString(),
+          // account_id: accountId,
+          address: "0x88dc86676f58421b52a158422d2297cea847770c",
+          sort_by: sortBy,
+          ...(minVolume &&
+            minVolume > 0 && { min_volume: minVolume.toString() }),
+        })}`
+      ),
+    ]);
+
+    if (!userResponse.ok) {
+      throw new Error(`HTTP error! status: ${userResponse.status}`);
+    }
+
+    const userData = await userResponse.json();
+
+    return {
+      ...userData,
+      data: {
+        ...userData.data,
+        rank: null,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching user stats:", error);
+    throw new Error("Failed to fetch user stats data");
+  }
+};
