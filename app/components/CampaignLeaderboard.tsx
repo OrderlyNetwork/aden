@@ -476,7 +476,11 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                     <td className="px-4 py-2 text-sm truncate" style={{ width: 80 }}>
                       <div className="flex items-center justify-center">
                         <span className="text-lg font-bold text-yellow-400">
-                          {userStats.rank ? userStats.rank.toString() : '-'}
+                          {/* Show user's rank based on index in allRowsData */}
+                          {(() => {
+                            const idx = allRowsData.findIndex(row => row.address.toLowerCase() === (account?.address?.toLowerCase() || ''));
+                            return idx !== -1 ? (idx + 1).toString() : '-';
+                          })()}
                         </span>
                       </div>
                     </td>
