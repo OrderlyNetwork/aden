@@ -15,7 +15,8 @@
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "remix-serve ./build/server/index.js",
     "typecheck": "tsc",
-    "update-locale-version": "tsx scripts/update-locale-version.ts"
+    "update-locale-version": "tsx scripts/update-locale-version.ts",
+    "merge-locales": "node scripts/merge-locales.cjs"
   },
   "dependencies": {
     "@orderly.network/affiliate": "2.5.4-internal-fix-approve.2",
