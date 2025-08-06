@@ -17,8 +17,11 @@ const excludedAddresses = [
   //Aden internal account
   '0x597af8301018d223290c8d3e026b7bedc37626c0',
   '0xfc1b9ebf9fb2c81c87e7d4573ffd25580a2cce72',
-  // Malicious account
-  "0x934faff57fd4f50a6bab8d9868da851809cc1f69"
+  // MM accounts
+  "0x934faff57fd4f50a6bab8d9868da851809cc1f69",
+  "0x9d58a3d09ecc1828d6eb46bc24f3e6dc9902537a",
+  "0x6be62c4113efb9f31216b138b21a142171c2c196",
+  "0x327859010ca2a471b9a05b45d461f4cc33e716e8",
 ];
 
 interface CampaignLeaderboardProps {
