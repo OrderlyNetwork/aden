@@ -39,6 +39,8 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   const [activeTab, setActiveTab] = useState<'volume' | 'roi'>('volume');
   const [data, setData] = useState<CampaignRankingData[]>([]);
   const [allRowsData, setAllRowsData] = useState<CampaignRankingData[]>([]);
+  // Store raw leaderboard data for later use
+  const [allRowsRaw, setAllRowsRaw] = useState<CampaignRankingData[]>([]);
   const [userStats, setUserStats] = useState<UserStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -73,10 +75,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         const rows = result.data.rows;
         console.log(`Fetched page ${page} with ${rows.length} rows`);
         // Check for volume = 0 in this page
-        let threshHoldVolume = 0
-        if (activeTab === 'roi') {
-          threshHoldVolume = 100000;
-        }
+        let threshHoldVolume = 0;
         const threshHoldVolumeIndex = rows.findIndex(r => r.volume <= threshHoldVolume);
         if (threshHoldVolumeIndex !== -1) {
           // Only include up to the first entry with volume = 0
@@ -92,10 +91,15 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
           await new Promise(resolve => setTimeout(resolve, 200));
         }
       }
+      // Save raw leaderboard data for later use
+      setAllRowsRaw(allRows);
       let filteredRows = allRows.filter((row: CampaignRankingData) =>
         !excludedAddresses.includes(row.address.toLowerCase()) && row.volume > 0
       );
       if (activeTab === 'roi') {
+        filteredRows = filteredRows.filter(row =>
+          row.volume >= 100000
+        );
         filteredRows = filteredRows.slice().sort((a, b) => (b.roi ?? 0) - (a.roi ?? 0));
       }
       setAllRowsData(filteredRows);
@@ -237,7 +241,17 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   };
 
   const calculateUserROI = (stats: UserStats) => {
-    // console.log('Calculating user ROI:', stats);
+    // Find the user's entry in allRowsData by address
+    if (!account?.address) return 0;
+    const entry = account?.address
+      ? allRowsData.find(row => row.address.toLowerCase() === account.address!.toLowerCase())
+      : undefined;
+    if (entry && typeof entry.roi === 'number') {
+      // ROI is already in percentage (e.g., 0.1234 for 12.34%)
+      console.log('Using pre-calculated ROI from entry:', entry.roi);
+      return entry.roi * 100;
+    }
+    // Fallback: calculate ROI manually if not found
     if (stats.start_account_value + stats.total_deposit_amount === 0) return 0;
     if (stats.pnl === 0) return 0;
     if (stats.volume === 0) return 0;
