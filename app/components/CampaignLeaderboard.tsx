@@ -131,10 +131,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   }, [account?.accountId, account?.address, campaignId, activeTab, minVolume]);
 
   useEffect(() => {
-    // Reset block index and leaderboard data when tab changes
     setCurrentBlockIndex(-1);
-    setData([]);
-    setTotalPages(1);
     setError(null);
   }, [activeTab]);
 
