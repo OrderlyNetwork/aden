@@ -28,10 +28,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   const { t } = useTranslation();
   const { account } = useAccount();
   const [activeTab, setActiveTab] = useState<'volume' | 'roi'>('volume');
-  // Caches for 500 rows per tab
-  // Cache structure: { rows: CampaignRankingData[], total: number }
-  const [volumeCache, setVolumeCache] = useState<{ rows: CampaignRankingData[]; total: number }>({ rows: [], total: 0 });
-  const [roiCache, setRoiCache] = useState<{ rows: CampaignRankingData[]; total: number }>({ rows: [], total: 0 });
+  const [cache, setCache] = useState<{ rows: CampaignRankingData[]; total: number }>({ rows: [], total: 0 });
   const [data, setData] = useState<CampaignRankingData[]>([]);
   const [userStats, setUserStats] = useState<UserStats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -52,7 +49,6 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       try {
         setLoading(true);
         setError(null);
-
         // Calculate cache block: 1-500, 501-1000, etc.
         const blockIndex = Math.floor((currentPage - 1) * ENTRIES_PER_PAGE / CACHE_SIZE);
         const blockStartRank = blockIndex * CACHE_SIZE + 1;
@@ -61,11 +57,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         const pageStart = (currentPage - 1) * ENTRIES_PER_PAGE;
         const pageEnd = pageStart + ENTRIES_PER_PAGE;
         const blockOffset = pageStart - (blockStartRank - 1);
-        // Select cache and setter
-        const cache = activeTab === 'roi' ? roiCache : volumeCache;
-        const setCache = activeTab === 'roi' ? setRoiCache : setVolumeCache;
-
-        // Update currentBlockIndex if changed
+        // Use single cache
         if (blockIndex !== currentBlockIndex) {
           setCurrentBlockIndex(blockIndex);
           // Fetch 500 rows for the block
@@ -76,18 +68,15 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
             CACHE_SIZE,
             activeTab === 'roi' ? minVolume : 0.000001
           );
-
           if (result.success) {
             setCache({ rows: result.data.rows, total: result.data.meta.total });
             setData(result.data.rows.slice(blockOffset, blockOffset + ENTRIES_PER_PAGE));
             setTotalPages(Math.ceil(result.data.meta.total / ENTRIES_PER_PAGE));
-            return
+            return;
           } else {
             setError('Failed to fetch leaderboard data');
           }
-
         }
-
         let cachedRows = cache.rows.slice(blockOffset, blockOffset + ENTRIES_PER_PAGE);
         if (cachedRows.length === ENTRIES_PER_PAGE) {
           setData(cachedRows);
@@ -102,9 +91,8 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         setLoading(false);
       }
     };
-
     fetchData();
-  }, [campaignId, sortBy, currentPage, minVolume, activeTab]);
+  }, [campaignId, sortBy, currentPage, minVolume, activeTab, currentBlockIndex, cache]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -132,7 +120,11 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
 
   useEffect(() => {
     setCurrentBlockIndex(-1);
+    setCache({ rows: [], total: 0 });
+    setData([]);
+    setTotalPages(1);
     setError(null);
+    setCurrentPage(1);
   }, [activeTab]);
 
   // Keep jumpToValue in sync with currentPage
