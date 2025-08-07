@@ -28,6 +28,10 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   const { t } = useTranslation();
   const { account } = useAccount();
   const [activeTab, setActiveTab] = useState<'volume' | 'roi'>('volume');
+  // Caches for 500 rows per tab
+  // Cache structure: { rows: CampaignRankingData[], total: number }
+  const [volumeCache, setVolumeCache] = useState<{ rows: CampaignRankingData[]; total: number }>({ rows: [], total: 0 });
+  const [roiCache, setRoiCache] = useState<{ rows: CampaignRankingData[]; total: number }>({ rows: [], total: 0 });
   const [data, setData] = useState<CampaignRankingData[]>([]);
   const [userStats, setUserStats] = useState<UserStats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -35,11 +39,13 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   const [sortBy, setSortBy] = useState<'volume' | 'roi'>('volume');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const CACHE_SIZE = 500;
   const [sorting, setSorting] = useState<SortingState>([
     { id: activeTab, desc: true }
   ]);
   // For jump-to input box
   const [jumpToValue, setJumpToValue] = useState<string>(currentPage.toString());
+  const [currentBlockIndex, setCurrentBlockIndex] = useState(-1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,14 +53,47 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         setLoading(true);
         setError(null);
 
-        const result = await getCampaignRanking(campaignId, sortBy, currentPage, ENTRIES_PER_PAGE, activeTab === 'roi' ? minVolume : 0.000001);
+        // Calculate cache block: 1-500, 501-1000, etc.
+        const blockIndex = Math.floor((currentPage - 1) * ENTRIES_PER_PAGE / CACHE_SIZE);
+        const blockStartRank = blockIndex * CACHE_SIZE + 1;
+        const blockEndRank = blockStartRank + CACHE_SIZE - 1;
+        const fetchPage = Math.ceil(blockStartRank / CACHE_SIZE);
+        const pageStart = (currentPage - 1) * ENTRIES_PER_PAGE;
+        const pageEnd = pageStart + ENTRIES_PER_PAGE;
+        const blockOffset = pageStart - (blockStartRank - 1);
+        // Select cache and setter
+        const cache = activeTab === 'roi' ? roiCache : volumeCache;
+        const setCache = activeTab === 'roi' ? setRoiCache : setVolumeCache;
 
-        if (result.success) {
-          console.log('Fetched campaign ranking:', result.data);
-          setData(result.data.rows);
-          setTotalPages(Math.ceil(result.data.meta.total / ENTRIES_PER_PAGE));
-        } else {
-          setError('Failed to fetch leaderboard data');
+        // Update currentBlockIndex if changed
+        if (blockIndex !== currentBlockIndex) {
+          setCurrentBlockIndex(blockIndex);
+          // Fetch 500 rows for the block
+          const result = await getCampaignRanking(
+            campaignId,
+            sortBy,
+            fetchPage,
+            CACHE_SIZE,
+            activeTab === 'roi' ? minVolume : 0.000001
+          );
+
+          if (result.success) {
+            setCache({ rows: result.data.rows, total: result.data.meta.total });
+            setData(result.data.rows.slice(blockOffset, blockOffset + ENTRIES_PER_PAGE));
+            setTotalPages(Math.ceil(result.data.meta.total / ENTRIES_PER_PAGE));
+            return
+          } else {
+            setError('Failed to fetch leaderboard data');
+          }
+
+        }
+
+        let cachedRows = cache.rows.slice(blockOffset, blockOffset + ENTRIES_PER_PAGE);
+        if (cachedRows.length === ENTRIES_PER_PAGE) {
+          setData(cachedRows);
+          setTotalPages(Math.ceil(cache.total / ENTRIES_PER_PAGE));
+          setLoading(false);
+          return;
         }
       } catch (err) {
         setError('Error loading leaderboard data');
@@ -92,8 +131,11 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   }, [account?.accountId, account?.address, campaignId, activeTab, minVolume]);
 
   useEffect(() => {
-    // Removed: setCurrentPage(1); and setSorting([{ id: activeTab, desc: true }]);
-    // Now handled in tab button onClick
+    // Reset block index and leaderboard data when tab changes
+    setCurrentBlockIndex(-1);
+    setData([]);
+    setTotalPages(1);
+    setError(null);
   }, [activeTab]);
 
   // Keep jumpToValue in sync with currentPage
