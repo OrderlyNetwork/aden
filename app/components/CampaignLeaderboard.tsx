@@ -9,20 +9,8 @@ import {
 } from '@tanstack/react-table';
 import { useAccount } from '@orderly.network/hooks';
 
-import { getCampaignRanking, getUserStats, getUserStatsNoRanking, type CampaignRankingData, type UserStats } from '@/api/campaign';
+import { getCampaignRanking, getUserStats, type CampaignRankingData, type UserStats } from '@/api/campaign';
 import { useTranslation } from '@orderly.network/i18n';
-
-
-const excludedAddresses = [
-  //Aden internal account
-  '0x597af8301018d223290c8d3e026b7bedc37626c0',
-  '0xfc1b9ebf9fb2c81c87e7d4573ffd25580a2cce72',
-  // MM accounts
-  "0x934faff57fd4f50a6bab8d9868da851809cc1f69",
-  "0x9d58a3d09ecc1828d6eb46bc24f3e6dc9902537a",
-  "0x6be62c4113efb9f31216b138b21a142171c2c196",
-  "0x327859010ca2a471b9a05b45d461f4cc33e716e8",
-];
 
 interface CampaignLeaderboardProps {
   campaignId: number;
@@ -41,105 +29,50 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   const { account } = useAccount();
   const [activeTab, setActiveTab] = useState<'volume' | 'roi'>('volume');
   const [data, setData] = useState<CampaignRankingData[]>([]);
-  const [allRowsData, setAllRowsData] = useState<CampaignRankingData[]>([]);
-  // Store raw leaderboard data for later use
-  const [allRowsRaw, setAllRowsRaw] = useState<CampaignRankingData[]>([]);
   const [userStats, setUserStats] = useState<UserStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<'volume' | 'roi'>('volume');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [sorting, setSorting] = useState<SortingState>([
+    { id: activeTab, desc: true }
+  ]);
+  // For jump-to input box
+  const [jumpToValue, setJumpToValue] = useState<string>(currentPage.toString());
 
-  // Fetch all leaderboard data robustly
-  const fetchAllData = async () => {
-    setLoading(true);
-    setError(null);
-    let allRows: CampaignRankingData[] = [];
-    let page = 1;
-    const recordsPerPage = 500;
-    let hasMore = true;
-    let meta = null;
-    let stopFetching = false;
-    try {
-      while (hasMore && !stopFetching) {
-        const result = await getCampaignRanking(
-          campaignId,
-          "volume",
-          page,
-          recordsPerPage,
-          activeTab === 'roi' ? minVolume : undefined
-        );
-        if (!result.success) {
-          setError('Failed to fetch leaderboard data');
-          break;
-        }
-        if (!meta) meta = result.data.meta;
-        const rows = result.data.rows;
-        console.log(`Fetched page ${page} with ${rows.length} rows`);
-        // Check for volume = 0 in this page
-        let threshHoldVolume = 0;
-        const threshHoldVolumeIndex = rows.findIndex(r => r.volume <= threshHoldVolume);
-        if (threshHoldVolumeIndex !== -1) {
-          // Only include up to the first entry with volume = 0
-          allRows = allRows.concat(rows.slice(0, threshHoldVolumeIndex));
-          stopFetching = true;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const result = await getCampaignRanking(campaignId, sortBy, currentPage, ENTRIES_PER_PAGE, activeTab === 'roi' ? minVolume : undefined);
+
+        if (result.success) {
+          console.log('Fetched campaign ranking:', result.data);
+          setData(result.data.rows);
+          setTotalPages(Math.ceil(result.data.meta.total / ENTRIES_PER_PAGE));
         } else {
-          allRows = allRows.concat(rows);
-          hasMore = rows.length === recordsPerPage;
-          page++;
+          setError('Failed to fetch leaderboard data');
         }
-        // Wait 0.2s before next loop to avoid hammering the API
-        if (hasMore && !stopFetching) {
-          await new Promise(resolve => setTimeout(resolve, 200));
-        }
+      } catch (err) {
+        setError('Error loading leaderboard data');
+        console.error('Error fetching campaign ranking:', err);
+      } finally {
+        setLoading(false);
       }
-      // Save raw leaderboard data for later use
-      setAllRowsRaw(allRows);
-      let filteredRows = allRows.filter((row: CampaignRankingData) =>
-        !excludedAddresses.includes(row.address.toLowerCase()) && row.volume > 0
-      );
-      if (activeTab === 'roi') {
-        filteredRows = filteredRows.filter(row =>
-          row.volume >= 100000
-        );
-        filteredRows = filteredRows.slice().sort((a, b) => (b.roi ?? 0) - (a.roi ?? 0));
-      }
-      setAllRowsData(filteredRows);
-      setTotalPages(Math.max(1, Math.ceil(filteredRows.length / ENTRIES_PER_PAGE)));
-      setData(filteredRows.slice((currentPage - 1) * ENTRIES_PER_PAGE, currentPage * ENTRIES_PER_PAGE));
-    } catch (err) {
-      setError('Error loading leaderboard data');
-      console.error('Error fetching campaign ranking:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
 
-  // Update data when currentPage or allRowsData changes
-  useEffect(() => {
-    console.log('Updating data for current page:', currentPage, 'with active tab:', activeTab);
-    setData(allRowsData.slice((currentPage - 1) * ENTRIES_PER_PAGE, currentPage * ENTRIES_PER_PAGE));
-  }, [allRowsData, currentPage]);
-
-  // Update data when currentPage or allRowsData changes
-  useEffect(() => {
-    console.log('Updating data for current page:', currentPage, 'with active tab:', activeTab);
-    let rows = allRowsData;
-    fetchAllData();
-    if (activeTab === 'roi') {
-      rows = rows.slice().sort((a, b) => (b.roi ?? 0) - (a.roi ?? 0));
-    }
-    setAllRowsData(rows);
-    setData(rows.slice((currentPage - 1) * ENTRIES_PER_PAGE, currentPage * ENTRIES_PER_PAGE));
-  }, [activeTab]);
+    fetchData();
+  }, [campaignId, sortBy, currentPage, minVolume, activeTab]);
 
   useEffect(() => {
     const fetchUserData = async () => {
       if (!account?.accountId || !account?.address) return;
 
       try {
-        const userResult = await getUserStatsNoRanking(
+        const userResult = await getUserStats(
           campaignId,
           account.accountId,
           account.address,
@@ -148,7 +81,6 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         );
 
         if (userResult.success) {
-          console.log('User stats fetched successfully:', userResult.data);
           setUserStats(userResult.data);
         }
       } catch (error) {
@@ -159,15 +91,15 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
     fetchUserData();
   }, [account?.accountId, account?.address, campaignId, activeTab, minVolume]);
 
-  const [sorting, setSorting] = useState<SortingState>([
-    { id: activeTab, desc: true }
-  ]);
-
   useEffect(() => {
-    setSortBy(activeTab);
     setCurrentPage(1);
     setSorting([{ id: activeTab, desc: true }]);
   }, [activeTab]);
+
+  // Keep jumpToValue in sync with currentPage
+  useEffect(() => {
+    setJumpToValue(currentPage.toString());
+  }, [currentPage]);
 
   const formatAddress = (address: string) => {
     if (!address) return '-';
@@ -244,20 +176,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   };
 
   const calculateUserROI = (stats: UserStats) => {
-    // Find the user's entry in allRowsData by address
-    if (!account?.address) return 0;
-    const entry = account?.address
-      ? allRowsData.find(row => row.address.toLowerCase() === account.address!.toLowerCase())
-      : undefined;
-    if (entry && typeof entry.roi === 'number') {
-      // ROI is already in percentage (e.g., 0.1234 for 12.34%)
-      console.log('Using pre-calculated ROI from entry:', entry.roi);
-      return entry.roi * 100;
-    }
-    // Fallback: calculate ROI manually if not found
     if (stats.start_account_value + stats.total_deposit_amount === 0) return 0;
-    if (stats.pnl === 0) return 0;
-    if (stats.volume === 0) return 0;
     return (stats.pnl / (stats.start_account_value + stats.total_deposit_amount)) * 100;
   };
 
@@ -386,7 +305,10 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       {/* Tabs */}
       <div className="flex gap-4 mb-6">
         <button
-          onClick={() => setActiveTab('volume')}
+          onClick={() => {
+            setSortBy('volume');
+            setActiveTab('volume');
+          }}
           className={`px-6 py-3 font-bold text-sm uppercase tracking-wider border transition-all duration-200 ${activeTab === 'volume'
             ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-black border-orange-500'
             : 'bg-gray-800 text-gray-300 border-gray-600 hover:bg-gray-700 hover:border-orange-500'
@@ -395,47 +317,16 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
           {t('extend.competition.tradingVolumeShort')}
         </button>
         <button
-          onClick={() => setActiveTab('roi')}
+          onClick={() => {
+            setSortBy('roi');
+            setActiveTab('roi');
+          }}
           className={`px-6 py-3 font-bold text-sm uppercase tracking-wider border transition-all duration-200 ${activeTab === 'roi'
             ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-black border-orange-500'
             : 'bg-gray-800 text-gray-300 border-gray-600 hover:bg-gray-700 hover:border-orange-500'
             }`}
         >
           {t('extend.competition.roi')}
-        </button>
-        <button
-          onClick={fetchAllData}
-          className={`flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors text-orange-500 hover:text-orange-400 ${loading ? 'opacity-50 pointer-events-none' : ''}`}
-          title="Refresh leaderboard"
-          style={{ background: 'none', border: 'none', padding: 0, marginLeft: 8, height: 32, width: 32, lineHeight: 0 }}
-          disabled={loading}
-          tabIndex={0}
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className={loading ? 'animate-spin' : ''}
-            style={{ display: 'block' }}
-          >
-            <defs>
-              <linearGradient id="refresh-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#ff9800" />
-                <stop offset="1" stopColor="#ffb347" />
-              </linearGradient>
-            </defs>
-            <circle
-              cx="12"
-              cy="12"
-              r="9"
-              stroke="url(#refresh-gradient)"
-              strokeWidth="3"
-              strokeDasharray="42 16"
-              strokeLinecap="round"
-            />
-          </svg>
         </button>
       </div>
 
@@ -522,11 +413,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                     <td className="px-4 py-2 text-sm truncate" style={{ width: 80 }}>
                       <div className="flex items-center justify-center">
                         <span className="text-lg font-bold text-yellow-400">
-                          {/* Show user's rank based on index in allRowsData */}
-                          {(() => {
-                            const idx = allRowsData.findIndex(row => row.address.toLowerCase() === (account?.address?.toLowerCase() || ''));
-                            return idx !== -1 ? (idx + 1).toString() : '-';
-                          })()}
+                          {userStats.rank ? userStats.rank.toString() : '-'}
                         </span>
                       </div>
                     </td>
@@ -612,40 +499,74 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
 
       {/* Pagination Controls */}
       {data.length > 0 && (
-        <div className="flex justify-between items-center mt-6 text-sm text-gray-400">
-          <div className="flex gap-2">
-            <button
-              onClick={() => setCurrentPage(1)}
-              disabled={currentPage === 1}
-              className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              &lt;&lt;
-            </button>
-            <button
-              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-              disabled={currentPage === 1}
-              className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              &lt;
-            </button>
-            <button
-              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              &gt;
-            </button>
-            <button
-              onClick={() => setCurrentPage(totalPages)}
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              &gt;&gt;
-            </button>
+        <div className="flex flex-col gap-2 mt-6 text-sm text-gray-400">
+          <div className="flex justify-between items-center">
+            <div className="flex gap-2">
+              <button
+                onClick={() => setCurrentPage(1)}
+                disabled={currentPage === 1}
+                className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                &lt;&lt;
+              </button>
+              <button
+                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                disabled={currentPage === 1}
+                className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                &lt;
+              </button>
+              <button
+                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                disabled={currentPage === totalPages}
+                className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                &gt;
+              </button>
+              <button
+                onClick={() => setCurrentPage(totalPages)}
+                disabled={currentPage === totalPages}
+                className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                &gt;&gt;
+              </button>
+            </div>
+            {/* Merged jump-to input with page display */}
+            <div className="flex items-center gap-2">
+              <span>{t('extend.competition.page')}</span>
+              <input
+                id="jump-to-page"
+                type="number"
+                min={1}
+                max={totalPages}
+                value={jumpToValue}
+                onChange={e => setJumpToValue(e.target.value)}
+                onBlur={e => {
+                  let page = Number(e.target.value);
+                  if (isNaN(page) || page < 1 || page > totalPages) {
+                    setJumpToValue(currentPage.toString());
+                    return;
+                  }
+                  setCurrentPage(page);
+                  setJumpToValue(page.toString());
+                }}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') {
+                    let page = Number(jumpToValue);
+                    if (isNaN(page) || page < 1 || page > totalPages) {
+                      setJumpToValue(currentPage.toString());
+                      return;
+                    }
+                    setCurrentPage(page);
+                    setJumpToValue(page.toString());
+                  }
+                }}
+                className="w-16 px-2 py-1 rounded-md border border-gray-600 bg-gray-900 text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-400 mx-1"
+                style={{ textAlign: 'center' }}
+              />
+              <span>{t('extend.competition.of')} {totalPages}</span>
+            </div>
           </div>
-          <span>
-            {t('extend.competition.page')} {currentPage} {t('extend.competition.of')} {totalPages}
-          </span>
         </div>
       )}
     </div>
