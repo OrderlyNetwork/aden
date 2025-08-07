@@ -47,7 +47,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         setLoading(true);
         setError(null);
 
-        const result = await getCampaignRanking(campaignId, sortBy, currentPage, ENTRIES_PER_PAGE, activeTab === 'roi' ? minVolume : undefined);
+        const result = await getCampaignRanking(campaignId, sortBy, currentPage, ENTRIES_PER_PAGE, activeTab === 'roi' ? minVolume : 0.000001);
 
         if (result.success) {
           console.log('Fetched campaign ranking:', result.data);
@@ -77,7 +77,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
           account.accountId,
           account.address,
           activeTab,
-          activeTab === 'roi' ? minVolume : undefined
+          activeTab === 'roi' ? minVolume : 0.000001
         );
 
         if (userResult.success) {
