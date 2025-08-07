@@ -92,8 +92,8 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   }, [account?.accountId, account?.address, campaignId, activeTab, minVolume]);
 
   useEffect(() => {
-    setCurrentPage(1);
-    setSorting([{ id: activeTab, desc: true }]);
+    // Removed: setCurrentPage(1); and setSorting([{ id: activeTab, desc: true }]);
+    // Now handled in tab button onClick
   }, [activeTab]);
 
   // Keep jumpToValue in sync with currentPage
@@ -308,11 +308,14 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
           onClick={() => {
             setSortBy('volume');
             setActiveTab('volume');
+            setSorting([{ id: 'volume', desc: true }]);
+            setCurrentPage(1);
           }}
+          disabled={loading}
           className={`px-6 py-3 font-bold text-sm uppercase tracking-wider border transition-all duration-200 ${activeTab === 'volume'
             ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-black border-orange-500'
             : 'bg-gray-800 text-gray-300 border-gray-600 hover:bg-gray-700 hover:border-orange-500'
-            }`}
+            } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           {t('extend.competition.tradingVolumeShort')}
         </button>
@@ -320,11 +323,14 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
           onClick={() => {
             setSortBy('roi');
             setActiveTab('roi');
+            setSorting([{ id: 'roi', desc: true }]);
+            setCurrentPage(1);
           }}
+          disabled={loading}
           className={`px-6 py-3 font-bold text-sm uppercase tracking-wider border transition-all duration-200 ${activeTab === 'roi'
             ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-black border-orange-500'
             : 'bg-gray-800 text-gray-300 border-gray-600 hover:bg-gray-700 hover:border-orange-500'
-            }`}
+            } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           {t('extend.competition.roi')}
         </button>
@@ -504,29 +510,29 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
             <div className="flex gap-2">
               <button
                 onClick={() => setCurrentPage(1)}
-                disabled={currentPage === 1}
-                className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={currentPage === 1 || loading}
+                className={`px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 &lt;&lt;
               </button>
               <button
                 onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                disabled={currentPage === 1}
-                className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={currentPage === 1 || loading}
+                className={`px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 &lt;
               </button>
               <button
                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                disabled={currentPage === totalPages}
-                className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={currentPage === totalPages || loading}
+                className={`px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 &gt;
               </button>
               <button
                 onClick={() => setCurrentPage(totalPages)}
-                disabled={currentPage === totalPages}
-                className="px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={currentPage === totalPages || loading}
+                className={`px-3 py-1 rounded-md border border-gray-600 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 &gt;&gt;
               </button>
@@ -561,8 +567,9 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                     setJumpToValue(page.toString());
                   }
                 }}
-                className="w-16 px-2 py-1 rounded-md border border-gray-600 bg-gray-900 text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-400 mx-1"
+                className={`w-16 px-2 py-1 rounded-md border border-gray-600 bg-gray-900 text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-400 mx-1 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                 style={{ textAlign: 'center' }}
+                disabled={loading}
               />
               <span>{t('extend.competition.of')} {totalPages}</span>
             </div>
