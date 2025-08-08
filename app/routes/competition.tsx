@@ -64,11 +64,11 @@ function CompetitionContent() {
     // Handle video loading
     const video = document.querySelector('.hero-video-bg') as HTMLVideoElement;
     if (video) {
-      video.addEventListener('error', function() {
+      video.addEventListener('error', function () {
         video.style.display = 'none';
       });
 
-      video.play().catch(function(error) {
+      video.play().catch(function (error) {
         console.log('Video autoplay failed:', error);
         video.style.display = 'none';
       });
@@ -86,7 +86,7 @@ function CompetitionContent() {
           const target = entry.target as HTMLElement;
           target.style.opacity = '0';
           target.style.transform = 'translateY(20px)';
-          
+
           setTimeout(() => {
             target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             target.style.opacity = '1';
@@ -1238,7 +1238,7 @@ function CompetitionContent() {
 
         `
       }} />
-      
+
       <div className="competition-page">
         <div className="main-container">
           {/* Hero Section */}
@@ -1248,26 +1248,26 @@ function CompetitionContent() {
               <source src="./back.webm" type="video/webm" />
               Your browser does not support the video tag.
             </video>
-            
+
             <div className="hero-bg-overlay"></div>
-            
+
             {/* ADEN Logo Animation */}
             <div className="floating-logos">
               <img className="logo-float" src="./adentextlogo.svg" alt="ADEN" />
               <img className="logo-float" src="./adentextlogo.svg" alt="ADEN" />
               <img className="logo-float" src="./adentextlogo.svg" alt="ADEN" />
-              <img className="logo-float" style={{width: '180px', top: '25%', left: '-180px', animationDelay: '9s', animationDuration: '22s'}} src="./adentextlogo.svg" alt="ADEN" />
-              <img className="logo-float" style={{width: '240px', bottom: '30%', right: '-240px', animation: 'float-diagonal-reverse 28s infinite ease-in-out', animationDelay: '12s'}} src="./adentextlogo.svg" alt="ADEN" />
-              <img className="logo-float" style={{width: '160px', top: '70%', left: '-160px', animation: 'float-zigzag 20s infinite ease-in-out', animationDelay: '15s', opacity: 0.025}} src="./adentextlogo.svg" alt="ADEN" />
-              <img className="logo-float" style={{width: '200px', top: '50%', right: '-200px', animation: 'float-circle 35s infinite linear', animationDelay: '18s', opacity: 0.02}} src="./adentextlogo.svg" alt="ADEN" />
+              <img className="logo-float" style={{ width: '180px', top: '25%', left: '-180px', animationDelay: '9s', animationDuration: '22s' }} src="./adentextlogo.svg" alt="ADEN" />
+              <img className="logo-float" style={{ width: '240px', bottom: '30%', right: '-240px', animation: 'float-diagonal-reverse 28s infinite ease-in-out', animationDelay: '12s' }} src="./adentextlogo.svg" alt="ADEN" />
+              <img className="logo-float" style={{ width: '160px', top: '70%', left: '-160px', animation: 'float-zigzag 20s infinite ease-in-out', animationDelay: '15s', opacity: 0.025 }} src="./adentextlogo.svg" alt="ADEN" />
+              <img className="logo-float" style={{ width: '200px', top: '50%', right: '-200px', animation: 'float-circle 35s infinite linear', animationDelay: '18s', opacity: 0.02 }} src="./adentextlogo.svg" alt="ADEN" />
             </div>
-            
+
             <div className="hero-content">
               <h1 className="hero-title">{t('extend.competition.title')}</h1>
               <p className="hero-subtitle">{t('extend.competition.subtitle')}</p>
               <div className="prize-amount">$1,000,000</div>
-              <p style={{fontSize: '24px', color: 'var(--text-secondary)', marginTop: '-20px', letterSpacing: '2px'}}>{t('extend.competition.prizePool')}</p>
-              
+              <p style={{ fontSize: '24px', color: 'var(--text-secondary)', marginTop: '-20px', letterSpacing: '2px' }}>{t('extend.competition.prizePool')}</p>
+
               <div className="countdown-wrapper">
                 <div className="countdown-title">{countdownTitle}</div>
                 <div className="countdown countdown-inline">
@@ -1281,8 +1281,8 @@ function CompetitionContent() {
                 </div>
                 <div className="countdown-labels">
                   <span className="countdown-label">{t('extend.competition.days')}</span>
-                  <span className="countdown-label" style={{margin: '0 18px'}}>{t('extend.competition.hours')}</span>
-                  <span className="countdown-label" style={{margin: '0 18px'}}>{t('extend.competition.minutes')}</span>
+                  <span className="countdown-label" style={{ margin: '0 18px' }}>{t('extend.competition.hours')}</span>
+                  <span className="countdown-label" style={{ margin: '0 18px' }}>{t('extend.competition.minutes')}</span>
                   <span className="countdown-label">{t('extend.competition.seconds')}</span>
                 </div>
               </div>
@@ -1381,7 +1381,7 @@ function CompetitionContent() {
                       <div className="text-2xl md:text-[32px] font-bold text-gray-400 mt-5 md:mt-6 pt-5 md:pt-6 border-t-[3px] border-orange-500/20">
                         <span className="font-black text-orange-400 text-[32px] md:text-[40px]">500</span> WINNERS
                       </div>
-                      
+
                       {/* Prize Breakdown */}
                       <div className="mt-6 space-y-3">
                         <div className="flex justify-between items-center py-2 px-3 bg-yellow-600/30 rounded-lg border border-yellow-300">
@@ -1436,7 +1436,7 @@ function CompetitionContent() {
                       <div className="text-2xl md:text-[32px] font-bold text-gray-400 mt-5 md:mt-6 pt-5 md:pt-6 border-t-[3px] border-orange-500/20">
                         <span className="font-black text-orange-400 text-[32px] md:text-[40px]">500</span> WINNERS
                       </div>
-                      
+
                       {/* Prize Breakdown */}
                       <div className="mt-6 space-y-3">
                         <div className="flex justify-between items-center py-2 px-3 bg-yellow-600/30 rounded-lg border border-yellow-300">
@@ -1497,9 +1497,14 @@ function CompetitionContent() {
                   <div className="rule-number">2</div>
                   <div className="rule-text">{t('extend.competition.rule2')}</div>
                 </div>
+
                 <div className="rule-item">
                   <div className="rule-number">3</div>
-                  <div className="rule-text">{t('extend.competition.rule3')}</div>
+                  <div className="rule-text">
+                    {t('extend.competition.rule3').split('\n').map((line: string, idx: number) => (
+                      <div key={idx}>{line}</div>
+                    ))}
+                  </div>
                 </div>
                 <div className="rule-item">
                   <div className="rule-number">4</div>
@@ -1515,6 +1520,10 @@ function CompetitionContent() {
                 </div>
                 <div className="rule-item">
                   <div className="rule-number">7</div>
+                  <div className="rule-text">{t('extend.competition.rule7')}</div>
+                </div>
+                <div className="rule-item">
+                  <div className="rule-number">8</div>
                   <div className="rule-text">{t('extend.competition.rule7')}</div>
                 </div>
               </div>
