@@ -215,102 +215,170 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
     return userAddress && address.toLowerCase() === userAddress.toLowerCase();
   }, [userAddress]);
 
-  const columns = useMemo<ColumnDef<CampaignRankingData>[]>(() => [
-    {
-      header: t('extend.competition.rank'),
-      accessorFn: (row, index) => index,
-      cell: ({ row }) => (
-        <div className="flex items-center justify-center">
-          <span className="text-lg">
-            {getRankDisplay(row.index)}
-          </span>
-        </div>
-      ),
-      enableSorting: false,
-      size: 80,
-    },
-    {
-      header: t('extend.competition.user'),
-      accessorKey: 'address',
-      cell: ({ getValue }) => {
-        const value = getValue() as string;
-        const [copied, setCopied] = React.useState(false);
-        const handleCopy = () => {
-          navigator.clipboard.writeText(value);
-          setCopied(true);
-          setTimeout(() => setCopied(false), 1200);
-        };
-        return (
-          <div className="flex items-center gap-2">
-            <a
-              href={getDashboardUrl(value)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200 underline"
-            >
-              {formatAddress(value)}
-            </a>
-            {isCurrentUser(value) && (
-              <span className="ml-2 text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
-                (You)
+  const columns = useMemo<ColumnDef<CampaignRankingData>[]>(() => (
+    activeTab === 'volume'
+      ? [
+        {
+          header: t('extend.competition.rank'),
+          accessorFn: (row, index) => index,
+          cell: ({ row }) => (
+            <div className="flex items-center justify-center">
+              <span className="text-lg">{getRankDisplay(row.index)}</span>
+            </div>
+          ),
+          enableSorting: false,
+          size: 80,
+        },
+        {
+          header: t('extend.competition.user'),
+          accessorKey: 'address',
+          cell: ({ getValue }) => {
+            const value = getValue() as string;
+            const [copied, setCopied] = React.useState(false);
+            const handleCopy = () => {
+              navigator.clipboard.writeText(value);
+              setCopied(true);
+              setTimeout(() => setCopied(false), 1200);
+            };
+            return (
+              <div className="flex items-center gap-2">
+                <a
+                  href={getDashboardUrl(value)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200 underline"
+                >
+                  {formatAddress(value)}
+                </a>
+                {isCurrentUser(value) && (
+                  <span className="ml-2 text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
+                    (You)
+                  </span>
+                )}
+                <button
+                  onClick={handleCopy}
+                  className="ml-1 p-1 rounded hover:bg-gray-700 focus:outline-none"
+                  title="Copy address"
+                  style={{ lineHeight: 0 }}
+                >
+                  {copied ? (
+                    <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M4 8l3 3 5-5" stroke="#ff9800" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  ) : (
+                    <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><rect x="3" y="5" width="8" height="8" rx="2" stroke="#ff9800" strokeWidth="1.5" /><rect x="5" y="3" width="8" height="8" rx="2" stroke="#ffb347" strokeWidth="1.5" /></svg>
+                  )}
+                </button>
+              </div>
+            );
+          },
+          enableSorting: false,
+          size: 200,
+        },
+        {
+          header: t('extend.competition.volume'),
+          accessorKey: 'volume',
+          cell: ({ getValue }) => {
+            const value = getValue() as number;
+            return <span className="font-mono">{formatCurrency(value)}</span>;
+          },
+          size: 180,
+          enableSorting: false,
+        },
+      ]
+      : [
+        {
+          header: t('extend.competition.rank'),
+          accessorFn: (row, index) => index,
+          cell: ({ row }) => (
+            <div className="flex items-center justify-center">
+              <span className="text-lg">{getRankDisplay(row.index)}</span>
+            </div>
+          ),
+          enableSorting: false,
+          size: 80,
+        },
+        {
+          header: t('extend.competition.user'),
+          accessorKey: 'address',
+          cell: ({ getValue }) => {
+            const value = getValue() as string;
+            const [copied, setCopied] = React.useState(false);
+            const handleCopy = () => {
+              navigator.clipboard.writeText(value);
+              setCopied(true);
+              setTimeout(() => setCopied(false), 1200);
+            };
+            return (
+              <div className="flex items-center gap-2">
+                <a
+                  href={getDashboardUrl(value)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200 underline"
+                >
+                  {formatAddress(value)}
+                </a>
+                {isCurrentUser(value) && (
+                  <span className="ml-2 text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
+                    (You)
+                  </span>
+                )}
+                <button
+                  onClick={handleCopy}
+                  className="ml-1 p-1 rounded hover:bg-gray-700 focus:outline-none"
+                  title="Copy address"
+                  style={{ lineHeight: 0 }}
+                >
+                  {copied ? (
+                    <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M4 8l3 3 5-5" stroke="#ff9800" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  ) : (
+                    <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><rect x="3" y="5" width="8" height="8" rx="2" stroke="#ff9800" strokeWidth="1.5" /><rect x="5" y="3" width="8" height="8" rx="2" stroke="#ffb347" strokeWidth="1.5" /></svg>
+                  )}
+                </button>
+              </div>
+            );
+          },
+          enableSorting: false,
+          size: 200,
+        },
+        {
+          header: t('extend.competition.volume'),
+          accessorKey: 'volume',
+          cell: ({ getValue }) => {
+            const value = getValue() as number;
+            return <span className="font-mono">{formatCurrency(value)}</span>;
+          },
+          size: 180,
+          enableSorting: false,
+        },
+        {
+          header: t('extend.competition.roi'),
+          accessorKey: 'roi',
+          cell: ({ getValue }) => {
+            const value = getValue() as number;
+            return (
+              <span className={`font-mono ${value >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                {formatPercentage(value * 100)}
               </span>
-            )}
-            <button
-              onClick={handleCopy}
-              className="ml-1 p-1 rounded hover:bg-gray-700 focus:outline-none"
-              title="Copy address"
-              style={{ lineHeight: 0 }}
-            >
-              {copied ? (
-                <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M4 8l3 3 5-5" stroke="#ff9800" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              ) : (
-                <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><rect x="3" y="5" width="8" height="8" rx="2" stroke="#ff9800" strokeWidth="1.5" /><rect x="5" y="3" width="8" height="8" rx="2" stroke="#ffb347" strokeWidth="1.5" /></svg>
-              )}
-            </button>
-          </div>
-        );
-      },
-      enableSorting: false,
-      size: 200,
-    },
-    {
-      header: t('extend.competition.volume'),
-      accessorKey: 'volume',
-      cell: ({ getValue }) => {
-        const value = getValue() as number;
-        return <span className="font-mono">{formatCurrency(value)}</span>;
-      },
-      size: 180,
-      enableSorting: false,
-    },
-    {
-      header: t('extend.competition.roi'),
-      accessorKey: 'roi',
-      cell: ({ getValue }) => {
-        const value = getValue() as number;
-        return (
-          <span className={`font-mono ${value >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-            {formatPercentage(value * 100)}
-          </span>
-        );
-      },
-      size: 120,
-      enableSorting: false,
-    },
-    {
-      header: t('extend.competition.pnl'),
-      accessorKey: 'pnl',
-      cell: ({ getValue }) => {
-        const value = getValue() as number;
-        return (
-          <span className={`font-mono ${value >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-            {formatCurrency(value)}
-          </span>
-        );
-      },
-      size: 150,
-    },
-  ], [getRankDisplay, isCurrentUser, t]);
+            );
+          },
+          size: 120,
+          enableSorting: false,
+        },
+        {
+          header: t('extend.competition.pnl'),
+          accessorKey: 'pnl',
+          cell: ({ getValue }) => {
+            const value = getValue() as number;
+            return (
+              <span className={`font-mono ${value >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                {formatCurrency(value)}
+              </span>
+            );
+          },
+          size: 150,
+        },
+      ]
+  ), [getRankDisplay, isCurrentUser, t, activeTab]);
 
   const table = useReactTable({
     data,
@@ -476,16 +544,20 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                     <td className="px-4 py-2 text-sm truncate" style={{ width: 180 }}>
                       <span className="font-mono text-yellow-400">{formatCurrency(userStats.volume)}</span>
                     </td>
-                    <td className="px-4 py-2 text-sm truncate" style={{ width: 120 }}>
-                      <span className={`font-mono ${calculateUserROI(userStats) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                        {formatPercentage(calculateUserROI(userStats))}
-                      </span>
-                    </td>
-                    <td className="px-4 py-2 text-sm truncate" style={{ width: 150 }}>
-                      <span className={`font-mono ${userStats.pnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                        {formatCurrency(userStats.pnl)}
-                      </span>
-                    </td>
+                    {activeTab !== 'volume' && (
+                      <td className="px-4 py-2 text-sm truncate" style={{ width: 120 }}>
+                        <span className={`font-mono ${calculateUserROI(userStats) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          {formatPercentage(calculateUserROI(userStats))}
+                        </span>
+                      </td>
+                    )}
+                    {activeTab !== 'volume' && (
+                      <td className="px-4 py-2 text-sm truncate" style={{ width: 150 }}>
+                        <span className={`font-mono ${userStats.pnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          {formatCurrency(userStats.pnl)}
+                        </span>
+                      </td>
+                    )}
                   </tr>
                 )}
 
