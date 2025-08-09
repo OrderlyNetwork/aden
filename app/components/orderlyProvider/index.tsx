@@ -16,6 +16,7 @@ import {
 } from "@orderly.network/i18n";
 import { useLocation } from "@remix-run/react";
 import { useNav } from "@/hooks/useNav";
+import { useIpRestriction } from "@/api/useIpRestriction";
 
 
 const NETWORK_ID_KEY = "orderly_network_id";
@@ -158,6 +159,15 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
   const networkId = getNetworkId();
   const [isClient, setIsClient] = useState(false);
   const location = useLocation();
+  const { isRestricted } = useIpRestriction();
+
+  useEffect(() => {
+    if (isRestricted) {
+      // Block app entirely if restricted
+      document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#101014;color:#fff;font-size:2rem;font-weight:bold;">Service not available in your region.</div>';
+      document.body.style.background = '#101014';
+    }
+  }, [isRestricted]);
 
   // Enhanced ActiveNavigation logic with better DOM checking
   useEffect(() => {
