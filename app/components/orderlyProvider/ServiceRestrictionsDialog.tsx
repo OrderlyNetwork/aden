@@ -48,7 +48,7 @@ const ServiceRestrictionsDialog = () => {
 
 	const actions = {
 		primary: {
-			label: isRestricted ? "Agree and proceed" : "Agree",
+			label: isRestricted ? "IP Restricted" : "Agree and proceed",
 			onClick: handleAgree,
 			disabled: isRestricted
 		}
