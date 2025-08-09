@@ -3,14 +3,42 @@ import { SimpleDialog } from "@orderly.network/ui";
 
 const SERVICE_RESTRICTIONS_KEY = "aden_service_restrictions_accepted";
 
+function formatRegion(region: string): string {
+	return region?.replace(/\s+/g, "").toLowerCase();
+}
+
 const ServiceRestrictionsDialog = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [region, setRegion] = useState("");
+	const [isRestricted, setIsRestricted] = useState(false);
 
 	useEffect(() => {
 		const hasAccepted = localStorage.getItem(SERVICE_RESTRICTIONS_KEY);
 		if (!hasAccepted) {
 			setIsOpen(true);
 		}
+		// Fetch IP info
+		fetch("https://api.orderly.org/v1/ip_info")
+			.then((res) => res.json())
+			.then((data) => {
+				const userRegion = data?.data?.region || "";
+				const userIp = data?.data?.ip || "";
+				setRegion(userRegion);
+				// Get restricted regions from env
+				const envRegions = import.meta.env.VITE_CUSTOM_RESTRICTED_REGIONS || "";
+				const restrictedRegions = envRegions.split(",").map((r: string) => formatRegion(r));
+				// Get whitelisted IPs from env
+				const envWhitelistIps = import.meta.env.VITE_CUSTOM_WHITELISTED_IPS || "";
+				const whitelistIps = envWhitelistIps.split(",").map((ip: string) => ip.trim()).filter((ip: string) => ip.length > 0);
+				// If IP is whitelisted, do not restrict
+				if (whitelistIps.includes(userIp)) {
+					setIsRestricted(false);
+					return;
+				}
+				if (restrictedRegions.includes(formatRegion(userRegion))) {
+					setIsRestricted(true);
+				}
+			});
 	}, []);
 
 	const handleAgree = () => {
@@ -20,8 +48,9 @@ const ServiceRestrictionsDialog = () => {
 
 	const actions = {
 		primary: {
-			label: "Agree",
-			onClick: handleAgree
+			label: isRestricted ? "Agree and proceed" : "Agree",
+			onClick: handleAgree,
+			disabled: isRestricted
 		}
 	};
 
