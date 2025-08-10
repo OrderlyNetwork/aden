@@ -9,7 +9,6 @@ function preloadTradingViewScript() {
   document.head.appendChild(link);
 }
 preloadTradingViewScript();
-const [loading, setLoading] = React.useState(true);
 import React, { useEffect, useRef } from 'react';
 
 // --- Improved Script Loader ---
@@ -52,6 +51,7 @@ const loadTradingViewScript = () => {
 export default function TradingViewWidget({ symbol }: { symbol: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetRef = useRef<any>(null);
+  const [loading, setLoading] = React.useState(true);
 
   const initializeWidget = (containerId: string) => {
     if (!containerRef.current || !window.TradingView || !symbol) {
