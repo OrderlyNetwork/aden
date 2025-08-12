@@ -109,6 +109,7 @@ export const getUserStats = async (
             sort_by: sortBy,
             page: "1",
             size: "500",
+            aggregate_by: "address",
             ...(minVolume &&
               minVolume > 0 && { min_volume: minVolume.toString() }),
           }
