@@ -96,7 +96,7 @@ export const getUserStats = async (
       fetch(
         `https://api.orderly.org/v1/public/campaign/user?${new URLSearchParams({
           campaign_id: campaignId.toString(),
-          account_id: accountId,
+          address: address,
           sort_by: sortBy,
           ...(minVolume &&
             minVolume > 0 && { min_volume: minVolume.toString() }),
@@ -127,7 +127,7 @@ export const getUserStats = async (
       const rankingData = await rankingResponse.json();
       const userRank = rankingData.data.rows.findIndex(
         (row: CampaignRankingData) =>
-          row.account_id.toLowerCase() === accountId.toLowerCase()
+          row.address.toLowerCase() === address.toLowerCase()
       );
 
       return {
