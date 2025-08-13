@@ -12,5 +12,3 @@ Allow: /
 
 User-agent: *
 Allow: /
-
-Sitemap: https://aden.exchange/sitemap.xml
