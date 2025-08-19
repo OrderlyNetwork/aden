@@ -77,14 +77,14 @@ function ScriptMoveBGSCToTop() {
           found = true;
           if (tbody.firstChild !== bgscRow) {
             tbody.insertBefore(bgscRow, tbody.firstChild);
-            console.log(`Moved BGSC row in tbody #${idx}`);
+            // console.log(`Moved BGSC row in tbody #${idx}`);
           }
         }
       });
-      if (!found) {
-        console.log('No BGSC row found in any tbody');
-      }
-    }, 2000);
+      // if (!found) {
+      //   console.log('No BGSC row found in any tbody');
+      // }
+    }, 1300);
     return () => clearInterval(interval);
   }, []);
   return null;
