@@ -57,6 +57,35 @@ export default function PerpPage() {
         sharePnLConfig={config.tradingPage.sharePnLConfig}
       />
       <TradingPageModifiers />
+      {/* Move BGSC to top of table after render */}
+      <ScriptMoveBGSCToTop />
     </>
   );
+}
+
+
+// This component injects a useEffect to move BGSC row to the top of the table
+function ScriptMoveBGSCToTop() {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const tbodys = Array.from(document.querySelectorAll('tbody'));
+      let found = false;
+      tbodys.forEach((tbody, idx) => {
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        const bgscRow = rows.find(row => row.textContent && row.textContent.includes('BGSC'));
+        if (bgscRow) {
+          found = true;
+          if (tbody.firstChild !== bgscRow) {
+            tbody.insertBefore(bgscRow, tbody.firstChild);
+            console.log(`Moved BGSC row in tbody #${idx}`);
+          }
+        }
+      });
+      if (!found) {
+        console.log('No BGSC row found in any tbody');
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+  return null;
 }
