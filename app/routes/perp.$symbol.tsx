@@ -4,9 +4,15 @@ import { API } from "@orderly.network/types";
 import { TradingPage } from "@orderly.network/trading";
 import { updateSymbol } from "@/utils/storage";
 import { useOrderlyConfig } from "@/utils/config";
-import { useMarkPrice } from "@orderly.network/hooks";
+import {
+  useMarkets, useMarketsStore,
+  MarketsStorageKey,
+  MarketsType,
+  useMarkPrice
+} from "@orderly.network/hooks";
 import { useTranslation } from "@orderly.network/i18n";
 import { TradingPageModifiers } from '@/components/trading/TradingPageModifiers';
+
 
 export default function PerpPage() {
   const params = useParams();
@@ -16,6 +22,17 @@ export default function PerpPage() {
   const [searchParams] = useSearchParams();
   const { data: price } = useMarkPrice(symbol);
   const { i18n } = useTranslation();
+
+  const [markets, { favorites, updateFavorites }] = useMarkets(MarketsType.FAVORITES);
+  useEffect(() => {
+    const bgscSymbol = "PERP_BGSC_USDC";
+    const defaultTab = { name: "Popular", id: 1 };
+    if (!favorites.some(fav => fav.name === bgscSymbol)) {
+      updateFavorites([{ name: bgscSymbol, tabs: [defaultTab] }, ...favorites]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   useEffect(() => {
     updateSymbol(symbol);
