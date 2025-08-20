@@ -84,6 +84,7 @@ export default function PerpPage() {
 // This component injects a useEffect to move BGSC row to the top of the table
 function ScriptMoveBGSCToTop() {
   useEffect(() => {
+    // For market list
     const interval = setInterval(() => {
       const tbodys = Array.from(document.querySelectorAll('tbody'));
       let found = false;
@@ -98,9 +99,18 @@ function ScriptMoveBGSCToTop() {
           }
         }
       });
-      // if (!found) {
-      //   console.log('No BGSC row found in any tbody');
-      // }
+
+      // For market list (Logo only)
+      const parent = document.querySelector('.oui-box.oui-px-2.oui-flex.oui-flex-col');
+      if (!parent) return;
+
+      // Find the BGSC token div by its image src
+      const bgscDiv = Array.from(parent.children).find(div =>
+        div.querySelector('img[src="https://oss.orderly.network/static/symbol_logo/BGSC.png"]')
+      );
+      if (bgscDiv && parent.firstChild !== bgscDiv) {
+        parent.insertBefore(bgscDiv, parent.firstChild);
+      }
     }, 1300);
     return () => clearInterval(interval);
   }, []);
