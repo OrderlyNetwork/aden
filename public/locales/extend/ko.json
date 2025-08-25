@@ -62,6 +62,7 @@
   "extend.competition.subtitle": "거래량 챔피언십",
   "extend.competition.prizePool": "상금풀",
   "extend.competition.countdownStarts": "대회 시작까지",
+  "extend.competition.countdownEnds": "대회 종료까지",
   "extend.competition.countdownActive": "대회 진행중",
   "extend.competition.days": "일",
   "extend.competition.hours": "시간",

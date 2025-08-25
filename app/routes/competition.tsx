@@ -22,11 +22,11 @@ function CompetitionContent() {
     minutes: '00',
     seconds: '00'
   });
-  const [countdownTitle, setCountdownTitle] = useState(t('extend.competition.countdownStarts'));
+  const [countdownTitle, setCountdownTitle] = useState(t('extend.competition.countdownEnds'));
 
   useEffect(() => {
     function updateCountdown() {
-      const targetDate = new Date('2025-07-31T15:00:00Z');
+      const targetDate = new Date('2025-08-31T23:59:59Z');
       const now = new Date();
       const difference = targetDate.getTime() - now.getTime();
 
@@ -42,7 +42,7 @@ function CompetitionContent() {
           minutes: minutes.toString().padStart(2, '0'),
           seconds: seconds.toString().padStart(2, '0')
         });
-        setCountdownTitle(t('extend.competition.countdownStarts'));
+        setCountdownTitle(t('extend.competition.countdownEnds'));
       } else {
         setCountdownTitle(t('extend.competition.countdownActive'));
         setCountdown({
