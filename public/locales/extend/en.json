@@ -1,6 +1,7 @@
 {
   "extend.links": "Bugscoin",
   "extend.pageTitle": "ADEN - DeFi Crypto Futures Trading Platform",
+  "extend.vote.menuItem": "ADEN & Orderly Vote",
   "extend.competition": "Competition",
   "extend.competition.menuItem": "1,000,000",
   "extend.competition.title": "ADEN x Orderly Trading Competition",

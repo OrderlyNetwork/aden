@@ -57,6 +57,7 @@ const DEFAULT_ENABLED_MENUS: MainNavItem[] = [
   { name: "Community", href: "/demo_trading/BTCUSDT", translationKey: "common.demo_trading" },
   // { name: "Referral", href: "/referral", translationKey: "affiliate.referral" },
   { name: "Competition", href: "/competition", translationKey: "extend.competition.menuItem", icon: "https://assets.coingecko.com/coins/images/325/standard/Tether.png?1696501661" },
+  { name: "Vote for Aden&Orderly", href: "https://dappbay.bnbchain.org/campaign/5-year-annual-awards", translationKey: "extend.vote.menuItem", icon: "https://assets.coingecko.com/coins/images/825/standard/bnb-icon2_2x.png?1696501970", target: "_blank", },
 ];
 
 const getCustomMenuItems = (): MainNavItem[] => {
