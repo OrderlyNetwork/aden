@@ -26,7 +26,8 @@ function CompetitionContent() {
 
   useEffect(() => {
     function updateCountdown() {
-      const targetDate = new Date('2025-08-31T23:59:59Z');
+      //KST 2025/08/31 23:59:59
+      const targetDate = new Date(1756652400000);
       const now = new Date();
       const difference = targetDate.getTime() - now.getTime();
 

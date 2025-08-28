@@ -103,7 +103,7 @@
   "extend.competition.competitionRules": "대회 규칙",
   "extend.competition.notice": "공지사항",
   "extend.competition.startTrading": "거래 시작하기",
-  "extend.competition.rule1": "ADEN x Orderly 거래량 대회는 2025년 8월 1일 00:00 UTC부터 8월 31일 23:59 UTC까지 진행됩니다.",
+  "extend.competition.rule1": "ADEN x Orderly 거래량 대회는 2025년 8월 1일 00:00 KST부터 8월 31일 23:59 KST까지 진행됩니다.",
   "extend.competition.rule2": "거래량 = 대회 기간 중 Orderly 오더북에서 체결된 모든 종목의 누적 거래량",
   "extend.competition.rule3": "P&L (%) 계산 공식:\n- P&L (%) = 이익 / (초기 자산 + 입금액) * 100%\n- 이익 = [대회 종료 시 계좌 최종 자산(미실현 손익 포함) - 대회 시작 시 계좌 초기 자산(미실현 손익 포함) + 대회 기간 중 출금액 - 대회 기간 중 입금액]\n- 입금액 = 대회 기간 중 누적 입금(이체 포함)\n- 출금액 = 대회 기간 중 누적 출금(이체 포함)",
   "extend.competition.rule4": "대회 기간 동안 모든 거래에 대해 전세계 최초로 거래 수수료 0%를 제공합니다.",
