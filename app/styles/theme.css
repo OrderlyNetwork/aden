@@ -152,11 +152,6 @@ body>div.oui-scaffold-root.oui-font-semibold.oui-bg-base-10.oui-text-base-contra
   }
 }
 
-/* Hide the Orderly epoch reward card from mobile portfolio page */
-body>div.oui-box.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-h-full-screen.oui-bg-base-10>div>div.oui-box.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-5.oui-px-3>div:nth-child(3)>div:nth-child(2) {
-  display: none;
-}
-
 #changeLocaleButtonDiv {
   background: rgb(253, 180, 29);
   border-radius: 12px;
@@ -201,7 +196,7 @@ svg[class*="woofi"] {
 
 /* Hide affiliate and rebate summary on mobile for portfolio page */
 @media (max-width: 768px) {
-  body>div.oui-box.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-h-full-screen.oui-bg-base-10>div>div.oui-box.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-5.oui-px-3>div:nth-child(3) {
+  body>div.oui-box.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-h-full-screen.oui-bg-base-10>div>div.oui-box.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-items-center.oui-justify-start.oui-flex-nowrap.oui-gap-5.oui-px-3>div:nth-child(4) {
     display: none !important;
   }
 }
