@@ -4,16 +4,13 @@ on:
   push:
     branches:
       - main
-  # Allow manual triggers from GitHub UI
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -37,38 +34,8 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Extract repository name
-        run: echo "REPO_NAME=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_ENV
-
-      - name: Check for custom domain
-        id: check-custom-domain
-        run: |
-          if [ -f "CNAME" ]; then
-            echo "has_custom_domain=true" >> $GITHUB_OUTPUT
-            echo "Found custom domain: $(cat CNAME)"
-          else
-            echo "has_custom_domain=false" >> $GITHUB_OUTPUT
-            echo "No custom domain configured"
-          fi
-
-      - name: Build with repository base path
-        if: ${{ steps.check-custom-domain.outputs.has_custom_domain == 'false' }}
-        run: yarn build:spa
-        env:
-          # Set the base path for GitHub Pages using repo name
-          PUBLIC_PATH: /${{ env.REPO_NAME }}/
-          # Also set it as VITE environment variables
-          VITE_PUBLIC_PATH: /${{ env.REPO_NAME }}/
-          VITE_BASE_URL: /${{ env.REPO_NAME }}
-
-      - name: Build with root base path (for custom domain)
-        if: ${{ steps.check-custom-domain.outputs.has_custom_domain == 'true' }}
-        run: yarn build:spa
-        env:
-          # For custom domains, use root path
-          PUBLIC_PATH: /
-          VITE_PUBLIC_PATH: /
-          VITE_BASE_URL: ""
+      - name: Build
+        run: yarn build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
