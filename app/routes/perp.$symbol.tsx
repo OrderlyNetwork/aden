@@ -90,7 +90,7 @@ function ScriptMoveBGSCToTop() {
       let found = false;
       tbodys.forEach((tbody, idx) => {
         const rows = Array.from(tbody.querySelectorAll('tr'));
-        const bgscRow = rows.find(row => row.textContent && row.textContent.includes('BGSC'));
+        const bgscRow = rows.find(row => row.textContent && row.textContent.includes('BGSC') && !row.textContent.includes('BGSC-PERP'));
         if (bgscRow) {
           found = true;
           if (tbody.firstChild !== bgscRow) {
