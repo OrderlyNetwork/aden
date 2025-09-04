@@ -31,6 +31,10 @@ export default function PortfolioLayout() {
       href: "/portfolio/orders"
     },
     {
+      name: t("common.assets"),
+      href: "/portfolio/assets"
+    },
+    {
       name: t("portfolio.apiKeys"),
       href: "/portfolio/api-key"
     },
