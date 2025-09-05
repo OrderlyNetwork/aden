@@ -4,14 +4,27 @@
   font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
 
-html, body {
+html,
+body {
   font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
 
 /* Apply Pretendard to specific elements if needed */
-h1, h2, h3, h4, h5, h6, p, span, div, button, input, textarea, select {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+button,
+input,
+textarea,
+select {
   font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-} 
+}
 
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
@@ -42,8 +55,14 @@ h1, h2, h3, h4, h5, h6, p, span, div, button, input, textarea, select {
 }
 
 header span {
-    font-weight: 700 !important;
-    text-size: 13.52px;
-    line-height: 19.375px;
-    letter-spacing: normal;
+  font-weight: 700 !important;
+  text-size: 13.52px;
+  line-height: 19.375px;
+  letter-spacing: normal;
+}
+
+/* Hide the vault tab in portfolio page */
+/* Any element whose id contains both "radix" and "trigger-vaults" */
+[id*="radix-"][id*="-trigger-vaults"] {
+  display: none !important;
 }
