@@ -294,6 +294,12 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
         PERP_ETH_USDC: "0.1",
         PERP_SOL_USDC: "0.01",
       }}
+      notification={{
+        orderFilled: {
+          media: '/Coin.mp3',
+          defaultOpen: true,
+        },
+      }}
       onRouteChange={(option) => {
         onRouteChange(option as any);
       }}
