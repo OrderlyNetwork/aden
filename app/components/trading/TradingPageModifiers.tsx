@@ -11,7 +11,7 @@ export function TradingPageModifiers() {
         <>
             <FeeSectionModifier />
             <OrderHistoryHeaderModifier />
-            <ToastSoundModifier />
+            {/* <ToastSoundModifier /> */}
         </>
     );
 } 
