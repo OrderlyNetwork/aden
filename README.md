@@ -94,12 +94,9 @@ The application will be available at `http://localhost`.
 
 ### What the Docker container does:
 
-- **Landing Page**: Serves the landing page at the root `/`
-- **App Routes**: Serves the trading app at routes like `/markets`, `/portfolio`, etc.
+- **App Routes**: Serves the built Remix trading app at root and routes like `/markets`, `/portfolio`, etc.
 - **Static Assets**: Handles all CSS, JS, images, and other static files
-- **SPA Routing**: Properly routes single-page app navigation
-
-The container uses nginx to serve both the landing page and the built Remix application with proper routing configuration.
+- **SPA Routing**: Properly routes single-page app navigation by falling back to `/index.html`.
 
 ## Deployment
 
