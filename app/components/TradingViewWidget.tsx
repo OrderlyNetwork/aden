@@ -63,7 +63,7 @@ export default function TradingViewWidget({ symbol }: { symbol: string }) {
       containerRef.current.removeChild(containerRef.current.firstChild);
     }
 
-    const formattedSymbol = `BYBIT:${symbol}`;
+    const formattedSymbol = `BYBIT:${symbol}.P`;
 
     try {
       const tvWidget = new window.TradingView.widget({
