@@ -539,6 +539,45 @@
   resolved "https://registry.npmjs.org/@date-fns/utc/-/utc-1.2.0.tgz"
   integrity sha512-YLq+crMPJiBmIdkRmv9nZuZy1mVtMlDcUKlg4mvI0UsC/dZeIaGoGB5p/C4FrpeOhZ7zBTK03T58S0DFkRNMnw==
 
+"@dnd-kit/accessibility@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/accessibility/-/accessibility-3.1.1.tgz#3b4202bd6bb370a0730f6734867785919beac6af"
+  integrity sha512-2P+YgaXF+gRsIihwwY1gCsQSYnu9Zyj2py8kY5fFvUM1qm2WA2u639R6YNVfU4GWr+ZM5mqEsfHZZLoRONbemw==
+  dependencies:
+    tslib "^2.0.0"
+
+"@dnd-kit/core@^6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/core/-/core-6.3.1.tgz#4c36406a62c7baac499726f899935f93f0e6d003"
+  integrity sha512-xkGBRQQab4RLwgXxoqETICr6S5JlogafbhNsidmrkVv2YRs5MLwpjoF2qpiGjQt8S9AoxtIV603s0GIUpY5eYQ==
+  dependencies:
+    "@dnd-kit/accessibility" "^3.1.1"
+    "@dnd-kit/utilities" "^3.2.2"
+    tslib "^2.0.0"
+
+"@dnd-kit/modifiers@^9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/modifiers/-/modifiers-9.0.0.tgz#96a0280c77b10c716ef79d9792ce7ad04370771d"
+  integrity sha512-ybiLc66qRGuZoC20wdSSG6pDXFikui/dCNGthxv4Ndy8ylErY0N3KVxY2bgo7AWwIbxDmXDg3ylAFmnrjcbVvw==
+  dependencies:
+    "@dnd-kit/utilities" "^3.2.2"
+    tslib "^2.0.0"
+
+"@dnd-kit/sortable@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/sortable/-/sortable-10.0.0.tgz#1f9382b90d835cd5c65d92824fa9dafb78c4c3e8"
+  integrity sha512-+xqhmIIzvAYMGfBYYnbKuNicfSsk4RksY2XdmJhT+HAC01nix6fHCztU68jooFiMUB01Ky3F0FyOvhG/BZrWkg==
+  dependencies:
+    "@dnd-kit/utilities" "^3.2.2"
+    tslib "^2.0.0"
+
+"@dnd-kit/utilities@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/utilities/-/utilities-3.2.2.tgz#5a32b6af356dc5f74d61b37d6f7129a4040ced7b"
+  integrity sha512-+MKAJEOfaBe5SmV6t34p80MMKhjvUz0vRrvVJbPT0WElzaOJ/1xs+D+KDv+tD/NE5ujfrChEcshd4fLn0wpiqg==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ecies/ciphers@^0.2.3":
   version "0.2.3"
   resolved "https://registry.npmjs.org/@ecies/ciphers/-/ciphers-0.2.3.tgz"
@@ -2521,30 +2560,30 @@
   dependencies:
     which "^3.0.0"
 
-"@orderly.network/affiliate@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/affiliate/-/affiliate-2.6.4-internal-fix-tpsl-slider.4.tgz#05f075e49396f6f326ed5e5d382f71077df775bf"
-  integrity sha512-5gyqvZmpYkYP5FnTs6WrxUWk/ZEtDH05izmgestvpk6LsxBfWM8z5ae60g4Na6yN2D1ywssO4gMiHk47Qy4KZw==
+"@orderly.network/affiliate@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/affiliate/-/affiliate-2.7.2.tgz#eea7ba98af80ddb7589d966229499e43c58ea57c"
+  integrity sha512-gOh5aN0RWf7x/q6pfhNDUpSijEGVc12XXnlgzBvNIUWHNVBPiwnHF0TbnhYflCPWPP8kNkctsxz2ELO+dPTPcA==
   dependencies:
-    "@orderly.network/chart" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-scaffold" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/chart" "2.7.2"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/ui-scaffold" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     date-fns "^3.6.0"
 
-"@orderly.network/chart@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/chart/-/chart-2.6.4-internal-fix-tpsl-slider.4.tgz#f72d3f938a2b390ac69e9bc990e04534585f8157"
-  integrity sha512-uKxLWr1l+7jeO9DNy6Ob6b2sjjMjQv5oaGuMPXlc+nQ6uCVfNfr7d18+xtmZ/KyMA9szgUGgtZehoKyX60I0xA==
+"@orderly.network/chart@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/chart/-/chart-2.7.2.tgz#383d55a73a1d9e968ef8bf5a3afed2e07699bc66"
+  integrity sha512-WI5LUvMnfHSKYcXr0n+xoVFfX+HwBMfwIR4pDW7iP1ujqw9G6y3F4pjs3faGTQru7MIiWl0hTWM3L96qszpVBA==
   dependencies:
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     d3-array "^3.2.4"
     d3-axis "^3.0.0"
     d3-scale "^4.0.2"
@@ -2552,13 +2591,13 @@
     d3-shape "^3.2.0"
     recharts "^2.12.7"
 
-"@orderly.network/core@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/core/-/core-2.6.4-internal-fix-tpsl-slider.4.tgz#ae001ace40a3e7d9686a98aa4aa4c7e6a5565e9d"
-  integrity sha512-tRl6Ib+GuypyACPji2j+HtkNVXYME0wJO5AhDDw149WWtaAldQPJTz2i9qu2e2ORv8zfUOU6eiJP8CA8o4l1eg==
+"@orderly.network/core@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/core/-/core-2.7.2.tgz#96ac04ed04a31afa5679e2984cc7887fd40ce506"
+  integrity sha512-14U9IUHLB9tCKbFut83McGDRyj7BouZB6kLCXlw455qF/6Cexx4rqMrKX2kZGMH0OAhBczitHkObYFaUU9asRQ==
   dependencies:
     "@noble/ed25519" "^2.0.0"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/types" "2.7.2"
     "@solana/web3.js" "^1.95.3"
     bs58 "^5.0.0"
     ethers "^6.15.0"
@@ -2566,27 +2605,27 @@
     eventemitter3 "^5.0.1"
     lodash.merge "^4.6.2"
 
-"@orderly.network/default-evm-adapter@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/default-evm-adapter/-/default-evm-adapter-2.6.4-internal-fix-tpsl-slider.4.tgz#3faf27a4b7c7d34928fce37bf5c1a34688fee853"
-  integrity sha512-Z1X/bo/6JM65twge1s/jW6YVPm9CFQFhKPbzsGNoQPiSjPWRkcuBthOEe86HPAGh2MuMWK37DQV0R48W4+SJzA==
+"@orderly.network/default-evm-adapter@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/default-evm-adapter/-/default-evm-adapter-2.7.2.tgz#b94c298b3af857742b51522ab124b70c402fea7e"
+  integrity sha512-YqYdXcWajR7PBnsSsR3kBfls7/Xy4sXkMpcuSXFGISynLcr0OvPPOEganZ0QRIYO7/KlNkQKaHxQG+6RVjM2+A==
   dependencies:
     "@noble/ed25519" "^2.0.0"
-    "@orderly.network/core" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/core" "2.7.2"
+    "@orderly.network/types" "2.7.2"
     bs58 "^5.0.0"
 
-"@orderly.network/default-solana-adapter@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/default-solana-adapter/-/default-solana-adapter-2.6.4-internal-fix-tpsl-slider.4.tgz#c18c4dff3de4b53fccc87a2f98d7d24b7f55c91d"
-  integrity sha512-DOsoSRbkA1gAh+hgGN/OjbGF2xJmxzj0hoWtPLihKBOHLcV0cpDi1wJ7VrE/MgR5SDHDAjBjkTIaZk5jbMljlw==
+"@orderly.network/default-solana-adapter@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/default-solana-adapter/-/default-solana-adapter-2.7.2.tgz#cbd845cb3b94f59df06f12697f83d13de15e68f4"
+  integrity sha512-4o11RbJEYQPOGHLvq8ZZh0t+//dqw4pOkgWRyDJ/SwPuXPyCW+l1BSr0C3l9/kPc2bMHk4peDpRkToStsT9IuA==
   dependencies:
     "@coral-xyz/anchor" "0.29.0"
     "@layerzerolabs/lz-solana-sdk-v2" "2.3.45-oft-rc.0"
     "@layerzerolabs/lz-v2-utilities" "2.3.45-oft-rc.0"
     "@noble/ed25519" "^2.0.0"
-    "@orderly.network/core" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/core" "2.7.2"
+    "@orderly.network/types" "2.7.2"
     "@solana/spl-token" "0.4.8"
     "@solana/wallet-adapter-base" "0.9.23"
     "@solana/web3.js" "^1.95.3"
@@ -2594,21 +2633,21 @@
     ethereum-cryptography "2.2.1"
     ethers "^6.15.0"
 
-"@orderly.network/hooks@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/hooks/-/hooks-2.6.4-internal-fix-tpsl-slider.4.tgz#744df80fd21be36de68a4d874ffbc7c89881237f"
-  integrity sha512-0aV+8Mbu3tPiIr3PC7/T/E+acFFFNANIWUV1AfruNT7THupGkJ4aWmbDrRT7D5mcRn5cGgz66ShQ9Zri5fxT+g==
+"@orderly.network/hooks@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/hooks/-/hooks-2.7.2.tgz#d17013e6e0440abd4e9cce0de1b942644813af08"
+  integrity sha512-TsZr8iw+UfU8aEeIxUQvwLti7yO3uO4byYzjcVs3R0iVfaeiik3h9+cOFd46ahdaROqxX43kUzXrD2zxz2ISAw==
   dependencies:
     "@akamfoad/qr" "^0.4.0"
     "@amplitude/analytics-browser" "2.11.13"
-    "@orderly.network/core" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/default-evm-adapter" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/default-solana-adapter" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/net" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/perp" "4.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/web3-provider-ethers" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/core" "2.7.2"
+    "@orderly.network/default-evm-adapter" "2.7.2"
+    "@orderly.network/default-solana-adapter" "2.7.2"
+    "@orderly.network/net" "2.7.2"
+    "@orderly.network/perp" "4.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
+    "@orderly.network/web3-provider-ethers" "2.7.2"
     immer "^10.1.1"
     lodash "^4.17.21"
     ramda "^0.29.0"
@@ -2617,318 +2656,323 @@
     use-debounce "^9.0.4"
     zustand "^4.5.5"
 
-"@orderly.network/i18n@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/i18n/-/i18n-2.6.4-internal-fix-tpsl-slider.4.tgz#e999b195abcf248d3a26fbdc65ed4f02b2d81fd1"
-  integrity sha512-aJtKta9oKLrDBf6MuD7tsK6SEzNT+mi/4lhasqBMrPNz3i5ahHAY5/5bcMLTZVfXsTi9LYodZIXs1E47gCcz+g==
+"@orderly.network/i18n@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/i18n/-/i18n-2.7.2.tgz#c7fed4306a9442a93659ab7da5386cfaef12840d"
+  integrity sha512-yqNEs2/eeHmmzAOwukYul6h8XT0YGp5i9Chxxbq1onHNCHQkf5gIP4GpjJ7kc3J2VXGGZMNU6GHUjGR7NGWwjg==
   dependencies:
     i18next "^24.2.2"
     i18next-browser-languagedetector "^8.0.4"
     react-i18next "^15.4.1"
 
-"@orderly.network/markets@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/markets/-/markets-2.6.4-internal-fix-tpsl-slider.4.tgz#a925034875720c3232e901a95e2a7f70b3ceb1a3"
-  integrity sha512-7UrNTDsVTuuxD7dMET+TlY52wZXXSl1bzaYVvhZnmkH2I7PLvFPXo6eaik/X3meM/hm11brR4VQwT8Oa9qvIrA==
+"@orderly.network/markets@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/markets/-/markets-2.7.2.tgz#bde4b8f0200b517f2173d3bea4ed43c13c8e8707"
+  integrity sha512-1W84ovi8u0Pnu0AM6OIN1UPDaWDvd1z3EkWjAHbh/jgu/aDPRZyMIPXzWAiZ27t0kYCtKC4IZH1qZr32CcIQ3A==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-scaffold" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
-    embla-carousel-react "^8.2.0"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-scaffold" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     ramda "^0.31.3"
 
-"@orderly.network/net@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/net/-/net-2.6.4-internal-fix-tpsl-slider.4.tgz#063d2327ad767d939fd8af58b6e280e7090e6b14"
-  integrity sha512-D1uR7zPY16beY8s/jyFwM+iVvYm+2e7Qqtv738qkrLZmTcizn1gNKMJRG/oPjbDxxkRSOgfcBy+KTqOMp6Yzww==
+"@orderly.network/net@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/net/-/net-2.7.2.tgz#998123937286b988b9616292cefe82a17d33a11d"
+  integrity sha512-4Ugse/UsVwWVAkAMpEocIqE4/1uUrYZsnaAYiFPzpWG/15qNaAtljqZJA02KKjWoO/z8pQhfnvIP1r415nlJzQ==
   dependencies:
     eventemitter3 "^5.0.1"
 
-"@orderly.network/perp@4.6.4-internal-fix-tpsl-slider.4":
-  version "4.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/perp/-/perp-4.6.4-internal-fix-tpsl-slider.4.tgz#52b16ed672e3da046c78809a73b5e3c93fe5af95"
-  integrity sha512-blfCiqimJE/s8w6kn8m3pJbaDE8I+VABzpmabHDDMoZ8iQWDsgb8QN0bXQ9h6TPYzNHq+yXYWi3FXOBJDEqSJQ==
+"@orderly.network/perp@4.7.2":
+  version "4.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/perp/-/perp-4.7.2.tgz#015c0dc55526d0b1a7fce58cf001914db67846e4"
+  integrity sha512-a3CZMdO9lwywGh820WMHRwNpM59LlmnqUM+HNHbZ6Tm+KnKA2YHcinkeXV/FspQUS1QCr51A/IXvrkK2zOJDkg==
   dependencies:
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
 
-"@orderly.network/portfolio@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/portfolio/-/portfolio-2.6.4-internal-fix-tpsl-slider.4.tgz#9fd289f3a64d3030d565413f1fd6dccb81584944"
-  integrity sha512-Oml3LUi4SxXeFzEqtlHJ2VVStif3rjtKmqYYV85hPCpEmV7B3hta5Lj8dDx3a1e43auW4EZhXEv+w4+5r7sCPA==
+"@orderly.network/portfolio@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/portfolio/-/portfolio-2.7.2.tgz#111684dcc87c36dd054a407d4f8b95bb0662226f"
+  integrity sha512-df39sL1ilP/EaslHPKBpIdSmdo5TqK5moMFUQNL+2NDePmewkk6VLbzm9CLhcjh5tAGhUpIMEAbHYngwBb37vA==
   dependencies:
-    "@orderly.network/chart" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/perp" "4.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-chain-selector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-leverage" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-orders" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-positions" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-scaffold" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-share" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-transfer" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/chart" "2.7.2"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/perp" "4.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-chain-selector" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/ui-leverage" "2.7.2"
+    "@orderly.network/ui-orders" "2.7.2"
+    "@orderly.network/ui-positions" "2.7.2"
+    "@orderly.network/ui-scaffold" "2.7.2"
+    "@orderly.network/ui-share" "2.7.2"
+    "@orderly.network/ui-transfer" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     date-fns "^3.6.0"
     immer "^10.1.1"
     lodash "^4.17.21"
     ramda "^0.29.0"
 
-"@orderly.network/react-app@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/react-app/-/react-app-2.6.4-internal-fix-tpsl-slider.4.tgz#48caa04599f46e80df0689ebdc1bcee0868536ca"
-  integrity sha512-MHrYPfS985Q1jEPi9e56X4qB+jtpYco4gMFqp59SPsCZLzkAqagI53fMmzvOhOfEKSLx55PGILqf53bccvM5jA==
+"@orderly.network/react-app@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/react-app/-/react-app-2.7.2.tgz#84192db0b90e8dd0c4a911e43295d800b2e3e76c"
+  integrity sha512-UNdS+21vqQivzeLHDvZvomxvTaqIG4CethRfoRBkdvoTyMYban3aFYDHLb0MAwzCWUReZuDxURNzDMEQEPaxEg==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     date-fns "^3.6.0"
 
-"@orderly.network/trading-leaderboard@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/trading-leaderboard/-/trading-leaderboard-2.6.4-internal-fix-tpsl-slider.4.tgz#a515c2b88f88a7ad7d51a31c4a5092178b125623"
-  integrity sha512-w/W/dS6KtcFC1SGEATP+UEh6qL8IWsA6+JiIL2o6rPXpDDw7GO1xpC3PE6Db6eDOMGY7lSsBjL7Eq40kmKv0nQ==
+"@orderly.network/trading-leaderboard@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/trading-leaderboard/-/trading-leaderboard-2.7.2.tgz#6898858fc9278ba3d1b4dfdba0a9258a87579299"
+  integrity sha512-+9OdAuHDloQDaUAw/GoZh75YDkXbnbib/EXnPzNpmv71vYlC5laIfpf7mSe+1IVDJyXnK8jtQX8drvP6MJbmTQ==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     date-fns "^3.6.0"
-    embla-carousel-react "^8.2.0"
     ramda "^0.29.0"
 
-"@orderly.network/trading-rewards@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/trading-rewards/-/trading-rewards-2.6.4-internal-fix-tpsl-slider.4.tgz#26791f012f53cf90ce203423038dda7ed20b3008"
-  integrity sha512-a16KEETTwWr9OE5KE1rddlrYFyIa22AXQMn4CrTWs8OWOvqZLxEg1jvE8ukCI1RRo0V7ekPhYjBApC8LcdlSAw==
+"@orderly.network/trading-rewards@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/trading-rewards/-/trading-rewards-2.7.2.tgz#4fe8091b87c4f076ef5e01ea67c4fde4c9c3bc2b"
+  integrity sha512-ThK0aajT4VbefeZkzbWuPXzWY9amoGrlQspGG9OZYsQFBUeR3Nd/8EiCRZdznThRrJMIwIw2i+ma558N5NIeJw==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-scaffold" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/ui-scaffold" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     date-fns "^3.6.0"
     ramda "^0.31.3"
 
-"@orderly.network/trading@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/trading/-/trading-2.6.4-internal-fix-tpsl-slider.4.tgz#44dae6de1483bcd9c05c4807ec6ee8c56e97d79b"
-  integrity sha512-oU9ngpn46c97pUpAFtWrwCcn3WlFKzKtv5imOYf3fXOeWtptq+223omrWfzyK/KUhGnRnH9dHclRnT5LeiYnSA==
+"@orderly.network/trading@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/trading/-/trading-2.7.2.tgz#1c8216b1b87f08cd5153e6fd7d440616832b4c17"
+  integrity sha512-L+gnBglNwn/Tq0Rxkom+yjvPL8ujTQjNsthzPvLt6LeeeiGE2B0mDHc1BbeThn5nRaahtABU//Nt3ERHUD+FFg==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/markets" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-chain-selector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-leverage" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-order-entry" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-orders" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-positions" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-scaffold" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-share" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-tradingview" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-transfer" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@dnd-kit/core" "^6.3.1"
+    "@dnd-kit/modifiers" "^9.0.0"
+    "@dnd-kit/sortable" "^10.0.0"
+    "@dnd-kit/utilities" "^3.2.2"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/markets" "2.7.2"
+    "@orderly.network/portfolio" "2.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-chain-selector" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/ui-leverage" "2.7.2"
+    "@orderly.network/ui-order-entry" "2.7.2"
+    "@orderly.network/ui-orders" "2.7.2"
+    "@orderly.network/ui-positions" "2.7.2"
+    "@orderly.network/ui-scaffold" "2.7.2"
+    "@orderly.network/ui-share" "2.7.2"
+    "@orderly.network/ui-tradingview" "2.7.2"
+    "@orderly.network/ui-transfer" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     "@uiw/react-split" "^5.9.3"
 
-"@orderly.network/types@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/types/-/types-2.6.4-internal-fix-tpsl-slider.4.tgz#8cde5479644a6aae461fd5aafaefbfc757b0a229"
-  integrity sha512-nfxRdPH7fh7LdgcgUoqRLK9AVjLzZ04aZMDRJCPMjhH8dmAsGOoJmTO63k6UnXNa+sv/81oWOXFgHMCrrrzP5w==
+"@orderly.network/types@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/types/-/types-2.7.2.tgz#b206a25b943cc319834ac795e6dad1cab66afb8f"
+  integrity sha512-YSjBck2Jrzpnb/RuJpr+dEAKpY5D/mt93cFaMer8Ov/38unDmHeAGfszGCHgvLI4JV5GzV1UNeLHDW62aJBLsg==
   dependencies:
     superstruct "^2.0.2"
 
-"@orderly.network/ui-chain-selector@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-chain-selector/-/ui-chain-selector-2.6.4-internal-fix-tpsl-slider.4.tgz#9c939bbb916ccbd7a32beddb80062478435fdd4f"
-  integrity sha512-12Qd0GDuFrhwj64NzvQX77eSlMJZHf7mh5t7uotkU8LdlYCnQ6TCmfhrs12qj+KUUMtHKIyNTBniygaxSXoOYQ==
+"@orderly.network/ui-chain-selector@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-chain-selector/-/ui-chain-selector-2.7.2.tgz#ee7c7753097064e69e71994ad20bf9515d8ccb1a"
+  integrity sha512-eWzkMjMTWjUWDRBDKZv1KjmxkVrPXhEjQe20hW38rMmKg3cyCyDWnYapucZF8y5N8Xa4B6X1RLkUK3qwYai17A==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
 
-"@orderly.network/ui-connector@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-connector/-/ui-connector-2.6.4-internal-fix-tpsl-slider.4.tgz#148856d7836360a5af4e98d4a7a1e7b93710ce2b"
-  integrity sha512-pZIYPzrxTqOMudGsKtxwQ7ca7aZaHuEW8CBj6xbGAIWUofLXkVtX2RjCa7qmjz2kdcETm22wZCT3BOH6evLnYg==
+"@orderly.network/ui-connector@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-connector/-/ui-connector-2.7.2.tgz#6d38c901d4e88c1de51b9bf0db30b9016e529da6"
+  integrity sha512-VnFLuUqJdnPDBiiJ2L7lAxV/5WGRmHAKlSECFFZqoGBI/NKAel7UJdUvY/O/2xKTdrNMfmykn9rvBJVdAMLYtA==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-chain-selector" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-chain-selector" "2.7.2"
 
-"@orderly.network/ui-leverage@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-leverage/-/ui-leverage-2.6.4-internal-fix-tpsl-slider.4.tgz#fae364c48300645361d175513a5542ca07c5f686"
-  integrity sha512-nsFBLMJcPAfeEqKS79394KAXqc7grTucVXC9VSxM29zipFKumwXpJOyoE+nB0uYr7NV59Su1SWTvbF8MPr/IAw==
+"@orderly.network/ui-leverage@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-leverage/-/ui-leverage-2.7.2.tgz#ae6cee2fe16c2ddc1c8f8c7a3250db2b3a10650f"
+  integrity sha512-W1uPZTt0s8GvO/v5cV0qd+Wn4mHlj94cIqvR20socO7ZwtwQ8tpF8Ab4iVM5An1dyDJD4bPJCddFJNnQNXIDRw==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/perp" "4.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
 
-"@orderly.network/ui-order-entry@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-order-entry/-/ui-order-entry-2.6.4-internal-fix-tpsl-slider.4.tgz#20062ea4ab0e3f769cabb21330157ad3f55b1c89"
-  integrity sha512-Y6pDdQVg4GSFCorLsrJTIYJ92EUEd/r7H6m7OQQazor5C6MtIGJL4JK5J+xCd3wnT3IO2jJI2vLC1wa0V79mMQ==
+"@orderly.network/ui-order-entry@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-order-entry/-/ui-order-entry-2.7.2.tgz#0b5a509f6e3970c1c1842ca4965bdbed1764f57e"
+  integrity sha512-CizxpihwtlYQBCOakdzVkd0YXHtO28P9hbaVbbsytgLvM5DrWjFPiozeN87wUliOpFQuUxEs1lcFX8plLg4uwg==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/perp" "4.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-leverage" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-tpsl" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/perp" "4.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/ui-leverage" "2.7.2"
+    "@orderly.network/ui-tpsl" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     ramda "^0.31.3"
 
-"@orderly.network/ui-orders@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-orders/-/ui-orders-2.6.4-internal-fix-tpsl-slider.4.tgz#a7be92a74abe5a3af307feaca0a860d4fdf959e1"
-  integrity sha512-l6TNmGgLegH3N0BtNcqYorGW1vIjAkEvze7B9x+WBcwoYD+lnhgurnN/WgefPXWoce2fHCS+JrTNdmPwfu7ZiQ==
+"@orderly.network/ui-orders@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-orders/-/ui-orders-2.7.2.tgz#fd639b817e68145cb96459aa4736042758ef5fb4"
+  integrity sha512-mUF8MiuBTqLLsvJwWdSNklaaIpSUmkBdOhj5gQlktgYUJh2ji6LLa0h9GWlCVW/US52Ba47J6CnJ8047fCkVHg==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-share" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-tpsl" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/ui-share" "2.7.2"
+    "@orderly.network/ui-tpsl" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     date-fns "^3.6.0"
 
-"@orderly.network/ui-positions@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-positions/-/ui-positions-2.6.4-internal-fix-tpsl-slider.4.tgz#e928ecd8d36b5f6dab51ae8f53a12b74bc3b0160"
-  integrity sha512-LE/768GRbyTIUhFu/Zza9uuyZ4vWKm92hR86nhOvmmRgwugskNabRkUxD7yIVQqs8xbMnONNsU7Zm2s8O/0B4Q==
+"@orderly.network/ui-positions@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-positions/-/ui-positions-2.7.2.tgz#8f58a6a54c484a097a36e9bde780d3b69d135322"
+  integrity sha512-uVXib7m5uDKDD/ShKxmCvbpUO0iYX8TwWB3n982Dsd8db6I5fNh4kMNhkIgAcY50AH51oI4qRheP/NtNSUwnHA==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/perp" "4.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-share" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-tpsl" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/perp" "4.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/ui-leverage" "2.7.2"
+    "@orderly.network/ui-share" "2.7.2"
+    "@orderly.network/ui-tpsl" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     date-fns "^3.6.0"
     immer "^10.1.1"
     ramda "^0.29.0"
 
-"@orderly.network/ui-scaffold@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-scaffold/-/ui-scaffold-2.6.4-internal-fix-tpsl-slider.4.tgz#2dcca179676abb32655af49be87ba648c39f0411"
-  integrity sha512-1wuNU8sVUzfAi+6M1idHWPlPlACjVG2NulJ2VR7jV33zCJoVc/6bX73MKYa2nd6UQozkd9gppzUad58gL+61qg==
+"@orderly.network/ui-scaffold@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-scaffold/-/ui-scaffold-2.7.2.tgz#137ebd4cd8243ce80ca2dc523b35e6cb0902a73c"
+  integrity sha512-iFu9PzhGljdZu9gFCKJDPdTNYqWUvynI9ljBo8Fz39sC45R6tTrLKZcRApKNvGNxNJ6nsiGNh8b26l097SjndA==
   dependencies:
     "@akamfoad/qr" "^0.4.0"
     "@date-fns/utc" "1.2.0"
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-chain-selector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-chain-selector" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     date-fns "^3.6.0"
     immer "^10.1.1"
     jsqr "^1.4.0"
 
-"@orderly.network/ui-share@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-share/-/ui-share-2.6.4-internal-fix-tpsl-slider.4.tgz#a8439890e04da88fb2ff8dc637f7405779bc5f1e"
-  integrity sha512-dwy3I/G6j+D1qLX1guiGjneVAPkI+CjmfOlB6tnMMVwdiZWFWVviVtsuq9/f6IiQFgUuNPzb5QZVB6wYojBjAg==
+"@orderly.network/ui-share@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-share/-/ui-share-2.7.2.tgz#59a9afd49be8506264d20a2a5d45ffb01e7d3ccd"
+  integrity sha512-UHnzfkFD5mg5j9xB1Qa+BFL0Upa4vh93g1Enl8TJNT5NZ0yimXkyGaoRTxEQ8Zn3q/Dcxe2UmvF3nf5WVHMviQ==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
-    embla-carousel-react "^8.2.0"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
 
-"@orderly.network/ui-tpsl@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-tpsl/-/ui-tpsl-2.6.4-internal-fix-tpsl-slider.4.tgz#fd88035d5c097d04ef503eb61908b9a9e25b039e"
-  integrity sha512-CEZSJ+bQPHDm1dwngXA7iwbCInKWb5cukb4Vgi+GC3OqZ2jN5rG5nFmeYU9r4i7SNHMhB7WkpepH81lqhn5TiA==
+"@orderly.network/ui-tpsl@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-tpsl/-/ui-tpsl-2.7.2.tgz#926bcb23265ffed18682b985367d93acaec9b748"
+  integrity sha512-R+AH3RtL9omp3ezwYRPRofja18u6UYEuBKIwFDQAkB0OTo/+6tvrq6r59/sEK2ZlaKJ9lxp89suENTgZD2/H9A==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/perp" "4.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/perp" "4.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
 
-"@orderly.network/ui-tradingview@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-tradingview/-/ui-tradingview-2.6.4-internal-fix-tpsl-slider.4.tgz#3e9f64c823e0b629b1b2c71160ccad4f5d61c0e7"
-  integrity sha512-cD4o4WhkTf8EDdkUG3M+3+TLce2OavGpHENMckIBkI6oQgz0OiCxN20wijBINZUmfAeZL1n4cKwa2yCzMZjU+w==
+"@orderly.network/ui-tradingview@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-tradingview/-/ui-tradingview-2.7.2.tgz#e6b728c0b60e65dca491959f18a79436fff0cc19"
+  integrity sha512-vK51RpN9p3wK75kDLf4GPwese0+pBdaxOKKDyblULrgThKePCVGpmfN4EYTmMfJXeOx7uS6taxuKrhKtK/uOkA==
   dependencies:
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/net" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-positions" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/net" "2.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/ui-positions" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     date-fns "^3.6.0"
 
-"@orderly.network/ui-transfer@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui-transfer/-/ui-transfer-2.6.4-internal-fix-tpsl-slider.4.tgz#7bf84078519d7861fd20cb92d7f6dcf92d96812f"
-  integrity sha512-w/kK+FSWb1Ni3rMN8hw8dqfHNRMcxJPGxPKAxwFjx7QdZFmx8Df0YgBQ/TCsjO8HDSZOmZesE+pibBJnNmS60w==
+"@orderly.network/ui-transfer@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui-transfer/-/ui-transfer-2.7.2.tgz#908075661bc2e36a5df9c0d6411a26d2d70a37c7"
+  integrity sha512-eRwZ3FmRYs5uIhKY4Ug2GMAcqpSTyOYUsslJUTaV9dC7rhymnTt14vB7AurzIMwB+SI1cuQUsp6h2GaM3r1f3w==
   dependencies:
     "@layerzerolabs/scan-client" "^0.0.6"
-    "@orderly.network/core" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/default-solana-adapter" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/perp" "4.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/react-app" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-chain-selector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/core" "2.7.2"
+    "@orderly.network/default-solana-adapter" "2.7.2"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/perp" "4.7.2"
+    "@orderly.network/react-app" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-chain-selector" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     "@solana/web3.js" "^1.95.3"
     ethers "^6.15.0"
     ramda "^0.29.1"
 
-"@orderly.network/ui@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/ui/-/ui-2.6.4-internal-fix-tpsl-slider.4.tgz#3a2c6598070fcc87963f37c81704f24a09e66548"
-  integrity sha512-9WJ+IbHlzYLWNYvjVUGOBIMBH1O96B5gU+kFx71JrsGEaXlnYulXjLM2jpzlRIcll76k8kvzkCxClghx4QmpSw==
+"@orderly.network/ui@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/ui/-/ui-2.7.2.tgz#5ae3987865bd4e68bea8868d3847c9728b237f66"
+  integrity sha512-2ravXo8HUsNMWxeOScUYqJSojDm6KBsbqdnEvcUxsvQY82SNa8T3UhVX+YHdy5dqlcG43T40QfTprUDiOU1KvA==
   dependencies:
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/utils" "2.7.2"
     "@radix-ui/react-avatar" "^1.0.3"
     "@radix-ui/react-checkbox" "^1.0.4"
     "@radix-ui/react-collapsible" "^1.0.3"
@@ -2946,6 +2990,9 @@
     "@radix-ui/react-tooltip" "^1.0.6"
     "@tanstack/react-table" "^8.20.5"
     date-fns "^3.6.0"
+    embla-carousel-auto-scroll "^8.6.0"
+    embla-carousel-autoplay "^8.6.0"
+    embla-carousel-react "^8.6.0"
     ethereum-blockies-base64 "^1.0.2"
     ramda "^0.29.0"
     react-day-picker "^8.10.1"
@@ -2953,29 +3000,29 @@
     react-hot-toast "^2.4.1"
     tailwind-variants "^0.2.1"
 
-"@orderly.network/utils@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/utils/-/utils-2.6.4-internal-fix-tpsl-slider.4.tgz#d7193bac1b470cd9416c76267efbf3325a214a0e"
-  integrity sha512-s2dtt/qabRM5oZZdQUhBrWdLR4zd5JnhrL+HZ7DGgVMeaiBtc/6659iZMUTWqolPdrkAB9CEIqcWORaEmXdmOg==
+"@orderly.network/utils@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/utils/-/utils-2.7.2.tgz#e2fef85366d656ceb9f0c4c2d3df644741bf603a"
+  integrity sha512-jTnIwmC0MfDgRzdQXrXBeLW+RZDXMSlxtiGN9cMbMDwkPEJWwP7zgqjqBhQcnZWs5YSw4pdmg2osWILKC1HYaA==
   dependencies:
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/types" "2.7.2"
     dayjs "^1.11.9"
     decimal.js-light "^2.5.1"
 
-"@orderly.network/wallet-connector-privy@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/wallet-connector-privy/-/wallet-connector-privy-2.6.4-internal-fix-tpsl-slider.4.tgz#4e1ea440717b98764abdc595eed1a1498cc7b30c"
-  integrity sha512-xAcZNlRcj/eWrH/cqt3rBD4TdMN7ecSrqo8vnA2fhcUeJWmHHScwvaqmEtEhRah9qXpup+OZzEn7NyzNlFuZQw==
+"@orderly.network/wallet-connector-privy@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/wallet-connector-privy/-/wallet-connector-privy-2.7.2.tgz#6a3dfc5a7d6ede3c18b528981506e5919024145a"
+  integrity sha512-D2j9YvtpKI+O7iJyWLI9B/QZsbLMquTyC8E8eBc6UdM4cirLDhENrzC/QMvcxWGJZkPJHd4ee8AoYe3mRbmLrQ==
   dependencies:
     "@abstract-foundation/agw-client" "^1.6.2"
     "@abstract-foundation/agw-react" "^1.6.4"
-    "@orderly.network/core" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/i18n" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui-connector" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/core" "2.7.2"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/i18n" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/ui-connector" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     "@privy-io/react-auth" "^2.4.5"
     "@solana-mobile/wallet-adapter-mobile" "^2.1.4"
     "@solana/wallet-adapter-base" "^0.9.23"
@@ -2991,17 +3038,17 @@
     wagmi "^2.14.11"
     zustand "^4.5.5"
 
-"@orderly.network/wallet-connector@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/wallet-connector/-/wallet-connector-2.6.4-internal-fix-tpsl-slider.4.tgz#ade8980b1734f67787247d337a92a88da7d9217a"
-  integrity sha512-fjK4PkhCpmmhAoKE26q51p9AvSD822t+Cp1F5FciFZPN0auIMDfQr1Ux8O6jZLPcsGyb+YlTHyjJ/6x2RQGsqg==
+"@orderly.network/wallet-connector@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/wallet-connector/-/wallet-connector-2.7.2.tgz#b4a880bae111578bbe0b923c97908162b3d7f115"
+  integrity sha512-I5T2kGIyb4VbRMKhFl1rE1PXYfzvicCSp/DE2BvDk+uUjWrAyH4j+X3GThRdV/Zaj3j1HdQYovIWz7uKvMxBHA==
   dependencies:
     "@binance/w3w-blocknative-connector" "^1.1.7"
-    "@orderly.network/core" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/hooks" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/ui" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/utils" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/core" "2.7.2"
+    "@orderly.network/hooks" "2.7.2"
+    "@orderly.network/types" "2.7.2"
+    "@orderly.network/ui" "2.7.2"
+    "@orderly.network/utils" "2.7.2"
     "@solana-mobile/wallet-adapter-mobile" "^2.1.4"
     "@solana/spl-token" "0.4.8"
     "@solana/wallet-adapter-base" "^0.9.23"
@@ -3017,13 +3064,13 @@
     lodash "^4.17.21"
     rxjs "^7.5.5"
 
-"@orderly.network/web3-provider-ethers@2.6.4-internal-fix-tpsl-slider.4":
-  version "2.6.4-internal-fix-tpsl-slider.4"
-  resolved "http://npm.orderly.network/@orderly.network/web3-provider-ethers/-/web3-provider-ethers-2.6.4-internal-fix-tpsl-slider.4.tgz#c9a5c2ae6cfe56e21641dec61ab94520d897220a"
-  integrity sha512-T8nxnhUij2Ah+FBhMVC0TH3LLxSxn0gGJo1Gp8Nh7etJEOo+fcdkjoaVxb/1uIoLEkmaIg6yc/kLYkJpLnxdgA==
+"@orderly.network/web3-provider-ethers@2.7.2":
+  version "2.7.2"
+  resolved "http://npm.orderly.network/@orderly.network/web3-provider-ethers/-/web3-provider-ethers-2.7.2.tgz#e0675ad5dd476d429341a8315104a80734bdde82"
+  integrity sha512-rHME0T0gRwXWcvSmYZiOKpW3xP2Op8LReQ17mGtZs1+fhs2iv8mGnZELaH6nMFBOQCaffyKCpxc1IYandOXLwQ==
   dependencies:
-    "@orderly.network/default-evm-adapter" "2.6.4-internal-fix-tpsl-slider.4"
-    "@orderly.network/types" "2.6.4-internal-fix-tpsl-slider.4"
+    "@orderly.network/default-evm-adapter" "2.7.2"
+    "@orderly.network/types" "2.7.2"
     ethers "^6.15.0"
     ethers-decode-error "^2.1.3"
 
@@ -9222,7 +9269,17 @@ elliptic@6.6.1, elliptic@^6.4.0, elliptic@^6.5.3, elliptic@^6.5.4, elliptic@^6.5
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
-embla-carousel-react@^8.2.0:
+embla-carousel-auto-scroll@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/embla-carousel-auto-scroll/-/embla-carousel-auto-scroll-8.6.0.tgz#02f648acd8b184a0f3ae0f2b38a983afc16a2648"
+  integrity sha512-WT9fWhNXFpbQ6kP+aS07oF5IHYLZ1Dx4DkwgCY8Hv2ZyYd2KMCPfMV1q/cA3wFGuLO7GMgKiySLX90/pQkcOdQ==
+
+embla-carousel-autoplay@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/embla-carousel-autoplay/-/embla-carousel-autoplay-8.6.0.tgz#bc86c97de00d52ec34b05058736ef50af6e0d0e4"
+  integrity sha512-OBu5G3nwaSXkZCo1A6LTaFMZ8EpkYbwIaH+bPqdBnDGQ2fh4+NbzjXjs2SktoPNKCtflfVMc75njaDHOYXcrsA==
+
+embla-carousel-react@^8.6.0:
   version "8.6.0"
   resolved "https://registry.yarnpkg.com/embla-carousel-react/-/embla-carousel-react-8.6.0.tgz#b737042a32761c38d6614593653b3ac619477bd1"
   integrity sha512-0/PjqU7geVmo6F734pmPqpyHqiM99olvyecY7zdweCw+6tKEXnrE90pBiBbMMU8s5tICemzpQ3hi5EpxzGW+JA==
