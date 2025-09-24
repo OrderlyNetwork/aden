@@ -10,7 +10,7 @@ import CampaignLeaderboard from "@/components/CampaignLeaderboard";
 export const meta: MetaFunction = () => {
   return [
     { title: "ADEN Trading Competition" },
-    { name: "description", content: "ADEN x Orderly Trading Competition - $1,000,000 USDT Prize Pool" },
+    { name: "description", content: "ADEN x Orderly Trading Competition - $500,000 USDT Prize Pool" },
   ];
 };
 
@@ -26,8 +26,9 @@ function CompetitionContent() {
 
   useEffect(() => {
     function updateCountdown() {
-      //KST 2025/08/31 23:59:59
-      const targetDate = new Date(1756652400000);
+      //KST 2025/10/13 18:00
+      // in Timestamp is in milliseconds for 2025-10-13 18:00 KST (UTC+9)
+      const targetDate = new Date(1760346000000);
       const now = new Date();
       const difference = targetDate.getTime() - now.getTime();
 
@@ -43,7 +44,7 @@ function CompetitionContent() {
           minutes: minutes.toString().padStart(2, '0'),
           seconds: seconds.toString().padStart(2, '0')
         });
-        setCountdownTitle(t('extend.competition.countdownEnds'));
+        setCountdownTitle(t('extend.competition.countdownStarts'));
       } else {
         setCountdownTitle(t('extend.competition.countdownActive'));
         setCountdown({
@@ -1246,7 +1247,7 @@ function CompetitionContent() {
           <section className="hero-section">
             {/* Video Background */}
             <video className="hero-video-bg" autoPlay muted loop playsInline preload="auto">
-              <source src="./back.webm" type="video/webm" />
+              <source src="./background.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
@@ -1266,7 +1267,7 @@ function CompetitionContent() {
             <div className="hero-content">
               <h1 className="hero-title">{t('extend.competition.title')}</h1>
               <p className="hero-subtitle">{t('extend.competition.subtitle')}</p>
-              <div className="prize-amount">$1,000,000</div>
+              <div className="prize-amount">$500,000</div>
               <p style={{ fontSize: '24px', color: 'var(--text-secondary)', marginTop: '-20px', letterSpacing: '2px' }}>{t('extend.competition.prizePool')}</p>
 
               <div className="countdown-wrapper">
@@ -1319,7 +1320,7 @@ function CompetitionContent() {
                         <div className="timeline-date-left">
                           <p className="timeline-label">{t('extend.competition.startPeriod')}</p>
                           <p className="timeline-year">2025</p>
-                          <p className="timeline-month">08/01</p>
+                          <p className="timeline-month">10/13 18:00</p>
                         </div>
                         <div className="timeline-dot timeline-dot-start"></div>
                         <div className="timeline-spacer"></div>
@@ -1330,7 +1331,7 @@ function CompetitionContent() {
                         <div className="timeline-date-right">
                           <p className="timeline-label">{t('extend.competition.endPeriod')}</p>
                           <p className="timeline-year">2025</p>
-                          <p className="timeline-month">08/31</p>
+                          <p className="timeline-month">11/01 00:00</p>
                         </div>
                       </div>
                     </div>
@@ -1345,13 +1346,13 @@ function CompetitionContent() {
                 <div className="prize-header">
                   <div className="prize-info">
                     <div className="prize-label">{t('extend.competition.totalPrizePool')}</div>
-                    <div className="prize-total">$1,000,000</div>
+                    <div className="prize-total">$500,000</div>
                     <p className="prize-subtitle">{t('extend.competition.prizePoolDesc')}</p>
                   </div>
                   <div className="prize-stats">
                     <div className="prize-stat-item">
                       <span className="prize-stat-label">{t('extend.competition.totalWinners')}</span>
-                      <span className="prize-stat-value">1,000</span>
+                      <span className="prize-stat-value">500</span>
                     </div>
                     <div className="prize-stat-item">
                       <span className="prize-stat-label">{t('extend.competition.tradingFee')}</span>
@@ -1359,7 +1360,7 @@ function CompetitionContent() {
                     </div>
                     <div className="prize-stat-item">
                       <span className="prize-stat-label">{t('extend.competition.competitionPeriodDays')}</span>
-                      <span className="prize-stat-value">30 Days</span>
+                      <span className="prize-stat-value">19 Days</span>
                     </div>
                   </div>
                 </div>
@@ -1377,45 +1378,41 @@ function CompetitionContent() {
                         <h3 className="text-[28px] md:text-4xl font-black text-white flex-1">{t('extend.competition.tradingVolume')}</h3>
                       </div>
                       <div className="text-5xl md:text-[64px] font-black text-orange-400 leading-none mb-5 md:mb-6">
-                        500,000 <span className="text-orange-500">USDT</span>
+                        250,000 <span className="text-orange-500">USDT</span>
                       </div>
                       <div className="text-2xl md:text-[32px] font-bold text-gray-400 mt-5 md:mt-6 pt-5 md:pt-6 border-t-[3px] border-orange-500/20">
-                        <span className="font-black text-orange-400 text-[32px] md:text-[40px]">500</span> WINNERS
+                        <span className="font-black text-orange-400 text-[32px] md:text-[40px]">250</span> WINNERS
                       </div>
 
                       {/* Prize Breakdown */}
                       <div className="mt-6 space-y-3">
                         <div className="flex justify-between items-center py-2 px-3 bg-yellow-600/30 rounded-lg border border-yellow-300">
-                          <span className="text-yellow-200 font-bold text-sm md:text-base">{t('extend.competition.firstPlace')}</span>
-                          <span className="text-yellow-200 font-black text-lg md:text-xl">$40,000</span>
+                          <span className="text-yellow-200 font-bold text-sm md:text-base">1st place</span>
+                          <span className="text-yellow-200 font-black text-lg md:text-xl">$25,000</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/50 rounded-lg border border-gray-700/50">
-                          <span className="text-gray-300 font-bold text-sm md:text-base">{t('extend.competition.secondPlace')}</span>
-                          <span className="text-gray-300 font-black text-lg md:text-xl">$25,000</span>
+                          <span className="text-gray-300 font-bold text-sm md:text-base">2nd place</span>
+                          <span className="text-gray-300 font-black text-lg md:text-xl">$15,000</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-orange-600/10 rounded-lg border border-orange-600/20">
-                          <span className="text-orange-500 font-bold text-sm md:text-base">{t('extend.competition.thirdPlace')}</span>
-                          <span className="text-orange-500 font-black text-lg md:text-xl">$15,000</span>
+                          <span className="text-orange-500 font-bold text-sm md:text-base">3rd place</span>
+                          <span className="text-orange-500 font-black text-lg md:text-xl">$10,000</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
-                          <span className="text-gray-400 font-medium text-sm">4-10</span>
-                          <span className="text-gray-400 font-bold text-base">$7,000</span>
+                          <span className="text-gray-400 font-medium text-sm">4th - 10th</span>
+                          <span className="text-gray-400 font-bold text-base">$5,000 each</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
-                          <span className="text-gray-400 font-medium text-sm">11-30</span>
-                          <span className="text-gray-400 font-bold text-base">$4,000</span>
+                          <span className="text-gray-400 font-medium text-sm">11th - 50th</span>
+                          <span className="text-gray-400 font-bold text-base">$2,000 each</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
-                          <span className="text-gray-400 font-medium text-sm">31-100</span>
-                          <span className="text-gray-400 font-bold text-base">$2,000</span>
+                          <span className="text-gray-400 font-medium text-sm">51st - 100th</span>
+                          <span className="text-gray-400 font-bold text-base">$1,000 each</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
-                          <span className="text-gray-400 font-medium text-sm">101-200</span>
-                          <span className="text-gray-400 font-bold text-base">$1,000</span>
-                        </div>
-                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
-                          <span className="text-gray-400 font-medium text-sm">201-500</span>
-                          <span className="text-gray-400 font-bold text-base">$170</span>
+                          <span className="text-gray-400 font-medium text-sm">101st - 250th</span>
+                          <span className="text-gray-400 font-bold text-base">$233 each</span>
                         </div>
                       </div>
                     </div>
@@ -1432,45 +1429,41 @@ function CompetitionContent() {
                         <h3 className="text-[28px] md:text-4xl font-black text-white flex-1">{t('extend.competition.roiCompetition')}</h3>
                       </div>
                       <div className="text-5xl md:text-[64px] font-black text-orange-400 leading-none mb-5 md:mb-6">
-                        500,000 <span className="text-orange-500">USDT</span>
+                        250,000 <span className="text-orange-500">USDT</span>
                       </div>
                       <div className="text-2xl md:text-[32px] font-bold text-gray-400 mt-5 md:mt-6 pt-5 md:pt-6 border-t-[3px] border-orange-500/20">
-                        <span className="font-black text-orange-400 text-[32px] md:text-[40px]">500</span> WINNERS
+                        <span className="font-black text-orange-400 text-[32px] md:text-[40px]">250</span> WINNERS
                       </div>
 
                       {/* Prize Breakdown */}
                       <div className="mt-6 space-y-3">
                         <div className="flex justify-between items-center py-2 px-3 bg-yellow-600/30 rounded-lg border border-yellow-300">
-                          <span className="text-yellow-200 font-bold text-sm md:text-base">{t('extend.competition.firstPlace')}</span>
-                          <span className="text-yellow-200 font-black text-lg md:text-xl">$30,000</span>
+                          <span className="text-yellow-200 font-bold text-sm md:text-base">1st place</span>
+                          <span className="text-yellow-200 font-black text-lg md:text-xl">$25,000</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/50 rounded-lg border border-gray-700/50">
-                          <span className="text-gray-300 font-bold text-sm md:text-base">{t('extend.competition.secondPlace')}</span>
-                          <span className="text-gray-300 font-black text-lg md:text-xl">$20,000</span>
+                          <span className="text-gray-300 font-bold text-sm md:text-base">2nd place</span>
+                          <span className="text-gray-300 font-black text-lg md:text-xl">$15,000</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-orange-600/10 rounded-lg border border-orange-600/20">
-                          <span className="text-orange-500 font-bold text-sm md:text-base">{t('extend.competition.thirdPlace')}</span>
+                          <span className="text-orange-500 font-bold text-sm md:text-base">3rd place</span>
                           <span className="text-orange-500 font-black text-lg md:text-xl">$10,000</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
-                          <span className="text-gray-400 font-medium text-sm">4-10</span>
-                          <span className="text-gray-400 font-bold text-base">$5,000</span>
+                          <span className="text-gray-400 font-medium text-sm">4th - 10th</span>
+                          <span className="text-gray-400 font-bold text-base">$5,000 each</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
-                          <span className="text-gray-400 font-medium text-sm">11-30</span>
-                          <span className="text-gray-400 font-bold text-base">$3,000</span>
+                          <span className="text-gray-400 font-medium text-sm">11th - 50th</span>
+                          <span className="text-gray-400 font-bold text-base">$2,000 each</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
-                          <span className="text-gray-400 font-medium text-sm">31-100</span>
-                          <span className="text-gray-400 font-bold text-base">$2,000</span>
+                          <span className="text-gray-400 font-medium text-sm">51st - 100th</span>
+                          <span className="text-gray-400 font-bold text-base">$1,000 each</span>
                         </div>
                         <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
-                          <span className="text-gray-400 font-medium text-sm">101-200</span>
-                          <span className="text-gray-400 font-bold text-base">$1,000</span>
-                        </div>
-                        <div className="flex justify-between items-center py-2 px-3 bg-gray-800/30 rounded-lg">
-                          <span className="text-gray-400 font-medium text-sm">201-500</span>
-                          <span className="text-gray-400 font-bold text-base">$170</span>
+                          <span className="text-gray-400 font-medium text-sm">101st - 250th</span>
+                          <span className="text-gray-400 font-bold text-base">$233 each</span>
                         </div>
                       </div>
                     </div>
@@ -1482,7 +1475,7 @@ function CompetitionContent() {
             {/* Leaderboard */}
             <section className="leaderboard-section">
               <div className="leaderboard-container">
-                <CampaignLeaderboard campaignId={118} minVolume={100_000} />
+                {/* <CampaignLeaderboard campaignId={118} minVolume={100_000} /> */}
               </div>
             </section>
 
