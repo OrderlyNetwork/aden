@@ -26,9 +26,9 @@ function CompetitionContent() {
 
   useEffect(() => {
     function updateCountdown() {
-      //KST 2025/10/13 18:00
-      // in Timestamp is in milliseconds for 2025-10-13 18:00 KST (UTC+9)
-      const targetDate = new Date(1760346000000);
+      //KST 2025/10/15 18:00
+      // in Timestamp is in milliseconds for 2025-10-15 18:00 KST (UTC+9)
+      const targetDate = new Date(1760518800000);
       const now = new Date();
       const difference = targetDate.getTime() - now.getTime();
 
@@ -347,6 +347,22 @@ function CompetitionContent() {
                 0 2px 4px rgba(0,0,0,0.2),
                 0 0 20px rgba(253, 180, 29, 0.2);
             max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-title-l2 {
+            font-size: 50px;
+            font-weight: 900;
+            line-height: 110%;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            color: #fff;
+            text-shadow: 
+                0 2px 4px rgba(0,0,0,0.2),
+                0 0 20px rgba(253, 180, 29, 0.2);
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -1266,9 +1282,10 @@ function CompetitionContent() {
 
             <div className="hero-content">
               <h1 className="hero-title">{t('extend.competition.title')}</h1>
+              <h1 className="hero-title-l2">{t('extend.competition.title-l2')}</h1>
               <p className="hero-subtitle">{t('extend.competition.subtitle')}</p>
               <div className="prize-amount">$500,000</div>
-              <p style={{ fontSize: '24px', color: 'var(--text-secondary)', marginTop: '-20px', letterSpacing: '2px' }}>{t('extend.competition.prizePool')}</p>
+              <p style={{ fontSize: '24px', color: '#fff', marginTop: '-20px', letterSpacing: '2px' }}>{t('extend.competition.prizePool')}</p>
 
               <div className="countdown-wrapper">
                 <div className="countdown-title">{countdownTitle}</div>
@@ -1320,7 +1337,7 @@ function CompetitionContent() {
                         <div className="timeline-date-left">
                           <p className="timeline-label">{t('extend.competition.startPeriod')}</p>
                           <p className="timeline-year">2025</p>
-                          <p className="timeline-month">10/13 18:00</p>
+                          <p className="timeline-month">10/15 18:00</p>
                         </div>
                         <div className="timeline-dot timeline-dot-start"></div>
                         <div className="timeline-spacer"></div>
@@ -1360,7 +1377,7 @@ function CompetitionContent() {
                     </div>
                     <div className="prize-stat-item">
                       <span className="prize-stat-label">{t('extend.competition.competitionPeriodDays')}</span>
-                      <span className="prize-stat-value">19 Days</span>
+                      <span className="prize-stat-value">17 Days</span>
                     </div>
                   </div>
                 </div>
