@@ -1337,7 +1337,7 @@ function CompetitionContent() {
                         <div className="timeline-date-left">
                           <p className="timeline-label">{t('extend.competition.startPeriod')}</p>
                           <p className="timeline-year">2025</p>
-                          <p className="timeline-month">10/15 18:00</p>
+                          <p className="timeline-month">{t('extend.competition.startDate')}</p>
                         </div>
                         <div className="timeline-dot timeline-dot-start"></div>
                         <div className="timeline-spacer"></div>
@@ -1348,7 +1348,7 @@ function CompetitionContent() {
                         <div className="timeline-date-right">
                           <p className="timeline-label">{t('extend.competition.endPeriod')}</p>
                           <p className="timeline-year">2025</p>
-                          <p className="timeline-month">11/01 00:00</p>
+                          <p className="timeline-month">{t('extend.competition.endDate')}</p>
                         </div>
                       </div>
                     </div>
@@ -1597,4 +1597,4 @@ export default function Competition() {
       <CompetitionContent />
     </Scaffold>
   );
-} 
+}

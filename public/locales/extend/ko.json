@@ -871,5 +871,8 @@
   "post.reportSuccess": "신고가 성공적으로 접수되었습니다.",
   "post.reportError": "신고 접수 중 오류가 발생했습니다.",
   "post.reportPostConfirm": "이 게시글을 신고하시겠습니까?",
-  "post.reportCommentConfirm": "이 댓글을 신고하시겠습니까?"
+  "post.reportCommentConfirm": "이 댓글을 신고하시겠습니까?",
+  "extend.competition.timezone": "KST",
+  "extend.competition.startDate": "10/15 18:00",
+  "extend.competition.endDate": "11/01 00:00"
 }
