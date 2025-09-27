@@ -33,7 +33,7 @@
   "extend.competition.winners": "Winners",
   "extend.competition.tradingVolume": "Trading Volume Competition",
   "extend.competition.tradingVolumeShort": "Trading Volume",
-  "extend.competition.roiCompetition": "ROI Competition",
+  "extend.competition.pnlCompetition": "PNL Competition",
   "extend.competition.roi": "ROI",
   "extend.competition.pnl": "PnL",
   "extend.competition.you": "You",

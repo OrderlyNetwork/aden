@@ -1443,7 +1443,7 @@ function CompetitionContent() {
                         <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0">
                           <span className="text-black font-black text-2xl md:text-[28px]">2</span>
                         </div>
-                        <h3 className="text-[28px] md:text-4xl font-black text-white flex-1">{t('extend.competition.roiCompetition')}</h3>
+                        <h3 className="text-[28px] md:text-4xl font-black text-white flex-1">{t('extend.competition.pnlCompetition')}</h3>
                       </div>
                       <div className="text-5xl md:text-[64px] font-black text-orange-400 leading-none mb-5 md:mb-6">
                         250,000 <span className="text-orange-500">USDT</span>
