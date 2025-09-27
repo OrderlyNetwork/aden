@@ -49,7 +49,7 @@
   "extend.competition.competitionRules": "Competition Rules",
   "extend.competition.notice": "Notice",
   "extend.competition.startTrading": "Start Trading",
-  "extend.competition.rule1": "ADEN x Orderly Trading challenge runs from October 15, 2025 18:00 KST to November 1st, 2025 00:00 KST.",
+  "extend.competition.rule1": "ADEN x Orderly Trading challenge runs from October 15, 2025 09:00 UTC to October 31, 2025 15:00 UTC.",
   "extend.competition.rule2": "Trading Volume = Cumulative trading volume of any symbol executed on Orderly orderbook during the competition period",
   "extend.competition.rule3": "P&L Calculation Formula:\n- P&L = Account Final Equity - Account Initial Equity + Withdrawal amount during the competition - Deposit amount during the competition\n- Account Final Equity: Final account value including unrealized profits/losses\n- Account Initial Equity: Initial account value at competition start",
   "extend.competition.rule4": "During the competition period, we provide the world's first 0% trading fees for all trades.",
