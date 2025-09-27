@@ -1535,7 +1535,7 @@ function CompetitionContent() {
                 </div>
                 <div className="rule-item">
                   <div className="rule-number">8</div>
-                  <div className="rule-text">{t('extend.competition.rule7')}</div>
+                  <div className="rule-text">{t('extend.competition.rule8')}</div>
                 </div>
               </div>
             </section>
