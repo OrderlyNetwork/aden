@@ -9,7 +9,7 @@ import {
 } from '@tanstack/react-table';
 import { useAccount } from '@orderly.network/hooks';
 
-import { getCampaignRanking, getUserStats, type CampaignRankingData, type UserStats } from '@/api/campaign';
+import { getCampaignRanking_VolumePNL, getUserStats_volume_pnl, type CampaignRankingData, type UserStats } from '@/api/campaign';
 import { useTranslation } from '@orderly.network/i18n';
 
 interface CampaignLeaderboardProps {
@@ -27,13 +27,13 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
 }) => {
   const { t } = useTranslation();
   const { account } = useAccount();
-  const [activeTab, setActiveTab] = useState<'volume' | 'roi'>('volume');
+  const [activeTab, setActiveTab] = useState<'volume' | 'pnl'>('volume');
   const [cache, setCache] = useState<{ rows: CampaignRankingData[]; total: number }>({ rows: [], total: 0 });
   const [data, setData] = useState<CampaignRankingData[]>([]);
   const [userStats, setUserStats] = useState<UserStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [sortBy, setSortBy] = useState<'volume' | 'roi'>('volume');
+  const [sortBy, setSortBy] = useState<'volume' | 'pnl'>('volume');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const CACHE_SIZE = 500;
@@ -61,12 +61,12 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         if (blockIndex !== currentBlockIndex) {
           setCurrentBlockIndex(blockIndex);
           // Fetch 500 rows for the block
-          const result = await getCampaignRanking(
+          const result = await getCampaignRanking_VolumePNL(
             campaignId,
             sortBy,
             fetchPage,
             CACHE_SIZE,
-            activeTab === 'roi' ? minVolume : 0.000001
+            activeTab === 'pnl' ? minVolume : 0.000001
           );
           if (result.success) {
             setCache({ rows: result.data.rows, total: result.data.meta.total });
@@ -99,12 +99,12 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
       if (!account?.accountId || !account?.address) return;
 
       try {
-        const userResult = await getUserStats(
+        const userResult = await getUserStats_volume_pnl(
           campaignId,
           account.accountId,
           account.address,
           activeTab,
-          activeTab === 'roi' ? minVolume : 0.000001
+          activeTab === 'pnl' ? minVolume : 0.000001
         );
 
         if (userResult.success) {
@@ -209,6 +209,10 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
   const calculateUserROI = (stats: UserStats) => {
     if (stats.start_account_value + stats.total_deposit_amount === 0) return 0;
     return (stats.pnl / (stats.start_account_value + stats.total_deposit_amount)) * 100;
+  };
+
+  const calculateUserPNL = (stats: UserStats) => {
+    return stats.pnl;
   };
 
   const isCurrentUser = useCallback((address: string) => {
@@ -351,8 +355,8 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
           enableSorting: false,
         },
         {
-          header: t('extend.competition.roi'),
-          accessorKey: 'roi',
+          header: t('extend.competition.pnl'),
+          accessorKey: 'pnl',
           cell: ({ getValue }) => {
             const value = getValue() as number;
             return (
@@ -420,30 +424,30 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         </button>
         <button
           onClick={() => {
-            setSortBy('roi');
-            setActiveTab('roi');
-            setSorting([{ id: 'roi', desc: true }]);
+            setSortBy('pnl');
+            setActiveTab('pnl');
+            setSorting([{ id: 'pnl', desc: true }]);
             setCurrentPage(1);
           }}
           disabled={loading}
-          className={`px-6 py-3 font-bold text-sm uppercase tracking-wider border transition-all duration-200 ${activeTab === 'roi'
+          className={`px-6 py-3 font-bold text-sm uppercase tracking-wider border transition-all duration-200 ${activeTab === 'pnl'
             ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-black border-orange-500'
             : 'bg-gray-800 text-gray-300 border-gray-600 hover:bg-gray-700 hover:border-orange-500'
             } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
-          {t('extend.competition.roi')}
+          {t('extend.competition.pnl')}
         </button>
       </div>
 
       {/* Info text */}
       <div className="mb-6 text-sm text-gray-400">
         <p>{t('extend.competition.maliciousTrading')}</p>
-        {activeTab === 'roi' ? (
+        {activeTab === 'pnl' ? (
           <p>{t('extend.competition.hourlyUpdate')}</p>
         ) : (
           <p>{t('extend.competition.minutes123123Update')}</p>
         )}
-        {minVolume > 0 && activeTab === 'roi' && (
+        {minVolume > 0 && activeTab === 'pnl' && (
           <p>{t('extend.competition.minVolumeRequirement', { amount: formatCurrency(minVolume) })}</p>
         )}
       </div>
@@ -546,8 +550,8 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                     </td>
                     {activeTab !== 'volume' && (
                       <td className="px-4 py-2 text-sm truncate" style={{ width: 120 }}>
-                        <span className={`font-mono ${calculateUserROI(userStats) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                          {formatPercentage(calculateUserROI(userStats))}
+                        <span className={`font-mono ${calculateUserPNL(userStats) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          {formatPercentage(calculateUserPNL(userStats))}
                         </span>
                       </td>
                     )}
