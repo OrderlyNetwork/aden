@@ -345,30 +345,6 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
           size: 200,
         },
         {
-          header: t('extend.competition.volume'),
-          accessorKey: 'volume',
-          cell: ({ getValue }) => {
-            const value = getValue() as number;
-            return <span className="font-mono">{formatCurrency(value)}</span>;
-          },
-          size: 180,
-          enableSorting: false,
-        },
-        {
-          header: t('extend.competition.pnl'),
-          accessorKey: 'pnl',
-          cell: ({ getValue }) => {
-            const value = getValue() as number;
-            return (
-              <span className={`font-mono ${value >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                {formatPercentage(value * 100)}
-              </span>
-            );
-          },
-          size: 120,
-          enableSorting: false,
-        },
-        {
           header: t('extend.competition.pnl'),
           accessorKey: 'pnl',
           cell: ({ getValue }) => {
@@ -399,9 +375,8 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
     columnResizeMode: 'onChange',
   });
 
-
-
-
+  // Update the column count based on active tab
+  const getColumnCount = () => activeTab === 'volume' ? 3 : 3; // Both tabs now have 3 columns
 
   return (
     <div>
@@ -445,7 +420,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
         {activeTab === 'pnl' ? (
           <p>{t('extend.competition.hourlyUpdate')}</p>
         ) : (
-          <p>{t('extend.competition.minutes123123Update')}</p>
+          <p>{t('extend.competition.minutesUpdate')}</p>
         )}
         {minVolume > 0 && activeTab === 'pnl' && (
           <p>{t('extend.competition.minVolumeRequirement', { amount: formatCurrency(minVolume) })}</p>
@@ -480,11 +455,11 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                 {/* Empty rows to maintain table height */}
                 {Array.from({ length: ENTRIES_PER_PAGE + (userStats ? 1 : 0) }).map((_, index) => (
                   <tr key={`loading-placeholder-${index}`} className="border-b border-gray-800">
-                    {Array.from({ length: 5 }).map((_, cellIndex) => (
+                    {Array.from({ length: getColumnCount() }).map((_, cellIndex) => (
                       <td
                         key={`loading-placeholder-cell-${index}-${cellIndex}`}
                         className="px-4 py-2 text-lg"
-                        style={{ width: cellIndex === 0 ? 80 : cellIndex === 1 ? 200 : cellIndex === 2 ? 180 : cellIndex === 3 ? 120 : 150 }}
+                        style={{ width: cellIndex === 0 ? 80 : cellIndex === 1 ? 200 : 150 }}
                       >
                         &nbsp;
                       </td>
@@ -494,7 +469,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
               </>
             ) : error ? (
               <tr>
-                <td colSpan={5} className="px-4 py-8">
+                <td colSpan={getColumnCount()} className="px-4 py-8">
                   <div className="flex items-center justify-center text-red-400">
                     <div className="text-center">
                       <div className="text-2xl mb-2">⚠️</div>
@@ -505,7 +480,7 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
               </tr>
             ) : data.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-4 py-8">
+                <td colSpan={getColumnCount()} className="px-4 py-8">
                   <div className="flex items-center justify-center text-gray-400">
                     <div className="text-center">
                       <div className="text-4xl mb-4">📊</div>
@@ -545,17 +520,12 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                         </span>
                       </div>
                     </td>
-                    <td className="px-4 py-2 text-sm truncate" style={{ width: 180 }}>
-                      <span className="font-mono text-yellow-400">{formatCurrency(userStats.volume)}</span>
-                    </td>
-                    {activeTab !== 'volume' && (
-                      <td className="px-4 py-2 text-sm truncate" style={{ width: 120 }}>
-                        <span className={`font-mono ${calculateUserPNL(userStats) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                          {formatPercentage(calculateUserPNL(userStats))}
-                        </span>
+                    {activeTab === 'volume' && (
+                      <td className="px-4 py-2 text-sm truncate" style={{ width: 180 }}>
+                        <span className="font-mono text-yellow-400">{formatCurrency(userStats.volume)}</span>
                       </td>
                     )}
-                    {activeTab !== 'volume' && (
+                    {activeTab === 'pnl' && (
                       <td className="px-4 py-2 text-sm truncate" style={{ width: 150 }}>
                         <span className={`font-mono ${userStats.pnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                           {formatCurrency(userStats.pnl)}
@@ -593,11 +563,11 @@ const CampaignLeaderboard: React.FC<CampaignLeaderboardProps> = ({
                 {/* Fill remaining rows with invisible placeholders */}
                 {Array.from({ length: Math.max(0, ENTRIES_PER_PAGE - data.length - (userStats ? 1 : 0)) }).map((_, index) => (
                   <tr key={`placeholder-${index}`} className="border-b border-gray-800 invisible">
-                    {Array.from({ length: 5 }).map((_, cellIndex) => (
+                    {Array.from({ length: getColumnCount() }).map((_, cellIndex) => (
                       <td
                         key={`placeholder-cell-${index}-${cellIndex}`}
                         className="px-4 py-2 text-lg"
-                        style={{ width: cellIndex === 0 ? 80 : cellIndex === 1 ? 200 : cellIndex === 2 ? 180 : cellIndex === 3 ? 120 : 150 }}
+                        style={{ width: cellIndex === 0 ? 80 : cellIndex === 1 ? 200 : 150 }}
                       >
                         &nbsp;
                       </td>
