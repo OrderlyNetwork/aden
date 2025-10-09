@@ -1492,7 +1492,7 @@ function CompetitionContent() {
             {/* Leaderboard */}
             <section className="leaderboard-section">
               <div className="leaderboard-container">
-                {/* <CampaignLeaderboard campaignId={118} minVolume={100_000} /> */}
+                <CampaignLeaderboard campaignId={137} minVolume={0} />
               </div>
             </section>
 
