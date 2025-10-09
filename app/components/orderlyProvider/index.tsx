@@ -298,6 +298,7 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
         orderFilled: {
           media: '/Coin.mp3',
           defaultOpen: true,
+          displayInOrderEntry: true
         },
       }}
       onRouteChange={(option) => {
