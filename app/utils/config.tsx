@@ -245,7 +245,7 @@ export const useOrderlyConfig = () => {
                   </Link>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                  {/* <LanguageToggle /> */}
+                  <LanguageToggle />
                   {components.scanQRCode}
                   {components.linkDevice}
                   {components.chainMenu}
@@ -259,7 +259,7 @@ export const useOrderlyConfig = () => {
                   {components.mainNav}
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  {/* <LanguageToggle /> */}
+                  <LanguageToggle />
                   {components.accountSummary}
                   {components.linkDevice}
                   {components.subAccount}
