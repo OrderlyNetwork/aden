@@ -2560,30 +2560,30 @@
   dependencies:
     which "^3.0.0"
 
-"@orderly.network/affiliate@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/affiliate/-/affiliate-2.7.4.tgz#dad4e0ce71e53523a7d787399b38b3e3b12bec89"
-  integrity sha512-8ynIR9lkJsMxExumB78qkuCfVdEHC09J66GNLOJPa+dLExPtg8Y+rs3aUjt99KKBJKfRgliNBZvGKGz4H1DDFQ==
+"@orderly.network/affiliate@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/affiliate/-/affiliate-2.7.5-internal-fix-collateral-ratio.0.tgz#4041a90e6925badbe0453b9ce7384348f03ec1f7"
+  integrity sha512-cikD3R/U4Jje1mQCwKBXBm+tdYXhMQ2rnQvfrX1FM42VBR/Q55vHRdTLA4GlRQf32/iegWaBFcTOReILl52EOg==
   dependencies:
-    "@orderly.network/chart" "2.7.4"
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/ui-scaffold" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/chart" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-scaffold" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     date-fns "^3.6.0"
 
-"@orderly.network/chart@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/chart/-/chart-2.7.4.tgz#e39d2392f1acee7a195e85d06e4687635208f68d"
-  integrity sha512-TLogowiwX3gr0egliCXN2k913P1mJs2WtSgbOHCK9dDWYy5lx4zRSJdNwiMmXOy6W1Fyy/1XhahlFIZzlf2syw==
+"@orderly.network/chart@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/chart/-/chart-2.7.5-internal-fix-collateral-ratio.0.tgz#ac6aec6f7d70445f104c81b7b1aa21c41cfc2317"
+  integrity sha512-MxXLveOpkQZAvkVjR92jtOd2Wu+xB3fwRvb/jyJwmAyow/3XIMIeymYVmHg8D2XopQhws+7opx5953RPVRNLqg==
   dependencies:
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     d3-array "^3.2.4"
     d3-axis "^3.0.0"
     d3-scale "^4.0.2"
@@ -2591,13 +2591,13 @@
     d3-shape "^3.2.0"
     recharts "^2.12.7"
 
-"@orderly.network/core@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/core/-/core-2.7.4.tgz#49384a6c03159202f437693f95c7d37627394cbc"
-  integrity sha512-GIz7IhDka80nDTrDqIjuzCcXBL2ZnNcKiEg6kaFYkrewCQFSy18ROEFzCZD4ZWlVQHNQ5jNdyP/ffkM4trZTrg==
+"@orderly.network/core@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/core/-/core-2.7.5-internal-fix-collateral-ratio.0.tgz#36a684781a458075a0f037459228adf57987b648"
+  integrity sha512-Uxm6hHdRNaDNWN0oG8WvzOnI0jpA6wkLga39flgfEy8GQqdEf3in6GULDPPp0ayDQfyaFuAIWvDWkqTikelzsQ==
   dependencies:
     "@noble/ed25519" "^2.0.0"
-    "@orderly.network/types" "2.7.4"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
     "@solana/web3.js" "^1.95.3"
     bs58 "^5.0.0"
     ethers "^6.15.0"
@@ -2605,27 +2605,27 @@
     eventemitter3 "^5.0.1"
     lodash.merge "^4.6.2"
 
-"@orderly.network/default-evm-adapter@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/default-evm-adapter/-/default-evm-adapter-2.7.4.tgz#d247f2431ab2198086d6135ebfc8b92d8284758a"
-  integrity sha512-WbY11wYvLMqA9AjCgKQldu6QK2H6S8iSZR5o3NC8wF4b9azLQFwH+FV78RbwHC4UBtZe6sAtjHXZIBN8zW2UQw==
+"@orderly.network/default-evm-adapter@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/default-evm-adapter/-/default-evm-adapter-2.7.5-internal-fix-collateral-ratio.0.tgz#9e96338be85c0f4e4cdf44ad01a7e4d64b5fbbb5"
+  integrity sha512-Eqw2uxb4m4Aci7Yg64fab7ylMBo56pzpH2y0XYTd2pDZopJHHfZ1/Bf7drb+YE0JzLKw7FBbC8PsaUCzSpo34A==
   dependencies:
     "@noble/ed25519" "^2.0.0"
-    "@orderly.network/core" "2.7.4"
-    "@orderly.network/types" "2.7.4"
+    "@orderly.network/core" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
     bs58 "^5.0.0"
 
-"@orderly.network/default-solana-adapter@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/default-solana-adapter/-/default-solana-adapter-2.7.4.tgz#472cf5e34ce2eab18425b19851ebed7eefc7616b"
-  integrity sha512-4bEIz4VhNJTRr/e+k7iAcc/B4gUpupy1glM7GlTZzJN6Sf2eUpWt7LcGPU3cLehiGUXtUWY2f6aLMEKX0JYqMg==
+"@orderly.network/default-solana-adapter@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/default-solana-adapter/-/default-solana-adapter-2.7.5-internal-fix-collateral-ratio.0.tgz#91e5a30eff2a46b8ebe495d32d6e4210d4f16f91"
+  integrity sha512-FTZUkKj3HATjpx75BoEtR3w68OZUuV8ROLS9LGytgH9UTdsxY7V/zOrmXgtR8fZ643tbnNF1O6oVpuPJUyXlcg==
   dependencies:
     "@coral-xyz/anchor" "0.29.0"
     "@layerzerolabs/lz-solana-sdk-v2" "2.3.45-oft-rc.0"
     "@layerzerolabs/lz-v2-utilities" "2.3.45-oft-rc.0"
     "@noble/ed25519" "^2.0.0"
-    "@orderly.network/core" "2.7.4"
-    "@orderly.network/types" "2.7.4"
+    "@orderly.network/core" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
     "@solana/spl-token" "0.4.8"
     "@solana/wallet-adapter-base" "0.9.23"
     "@solana/web3.js" "^1.95.3"
@@ -2633,21 +2633,21 @@
     ethereum-cryptography "2.2.1"
     ethers "^6.15.0"
 
-"@orderly.network/hooks@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/hooks/-/hooks-2.7.4.tgz#283ca28ce2a465ece6284bcaba07c81246b788e0"
-  integrity sha512-tWLd+N6nq5dCuedrrNgI3GbBxs/UESfMhMgrmRfIK8dl6mZx5pf106laEu+oQ2K1OwHRse5fXyXXxQ5j0bZkMg==
+"@orderly.network/hooks@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/hooks/-/hooks-2.7.5-internal-fix-collateral-ratio.0.tgz#e47ec61f6e4737840663f8eba971b271ca0310eb"
+  integrity sha512-/mNC2fyorwjwXkCR/ZyiXS0mLfi5T2mpzBrEsMyfn324XTZfU4diibMqhMAcCatq7jC+c4Nat8Yqt00m3JrjYg==
   dependencies:
     "@akamfoad/qr" "^0.4.0"
     "@amplitude/analytics-browser" "2.11.13"
-    "@orderly.network/core" "2.7.4"
-    "@orderly.network/default-evm-adapter" "2.7.4"
-    "@orderly.network/default-solana-adapter" "2.7.4"
-    "@orderly.network/net" "2.7.4"
-    "@orderly.network/perp" "4.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
-    "@orderly.network/web3-provider-ethers" "2.7.4"
+    "@orderly.network/core" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/default-evm-adapter" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/default-solana-adapter" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/net" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/perp" "4.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/web3-provider-ethers" "2.7.5-internal-fix-collateral-ratio.0"
     immer "^10.1.1"
     lodash "^4.17.21"
     ramda "^0.29.0"
@@ -2656,324 +2656,324 @@
     use-debounce "^9.0.4"
     zustand "^4.5.5"
 
-"@orderly.network/i18n@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/i18n/-/i18n-2.7.4.tgz#a790f911ec29b3c3eba92b90e137b44bcfddce68"
-  integrity sha512-1M6USR5tf4utjKd7TfVQPnC50WitW9KtuhmNklR5KTKCToTiwP+eY5oH0ZC20qGGgkyDIB9q4U5GUpiSdk6WcQ==
+"@orderly.network/i18n@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/i18n/-/i18n-2.7.5-internal-fix-collateral-ratio.0.tgz#341bf498d08e48fb4680edf4e6d9ee40a060f985"
+  integrity sha512-woy0W3Yp0jjcm7XwzpydlEUMhWAhguyXPmOECBApo0mNX1fXPocpeZU5HxchfV57TYVrlhO/k+UGGpOIlwo5AA==
   dependencies:
     i18next "^24.2.2"
     i18next-browser-languagedetector "^8.0.4"
     react-i18next "^15.4.1"
 
-"@orderly.network/markets@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/markets/-/markets-2.7.4.tgz#2e9eb5e7379a01cd83fc17551d14265302668fe7"
-  integrity sha512-3JcORraian7SfdLKirRFgUHbcTCEsNkzW60wXpK1cTY2lRxvFp1Yg22fq8icrxdxcw4gsfFjaYH2dOKVSMdmqQ==
+"@orderly.network/markets@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/markets/-/markets-2.7.5-internal-fix-collateral-ratio.0.tgz#9e66e8e678cac409c8f3abc0cc699fac2ce94985"
+  integrity sha512-peWLjjVoy1t/uUjYWvX9vyukJC06M7L+TjqGW6dPFZ6XdRaol/UY2LKfvu+kSShjuN4d37LSGlOG49K12DbqZg==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-scaffold" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-scaffold" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     ramda "^0.31.3"
 
-"@orderly.network/net@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/net/-/net-2.7.4.tgz#f5b3596be5780e90e314229ea2fab891da57ed8d"
-  integrity sha512-TtWUSdJjEdM8ku6Ejp5t4z5l4yHn7kx1Engso2QchfxGfUu2JjxhpzqIIZbUW+9N930W5KaDRe7wwHoSdOIqcA==
+"@orderly.network/net@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/net/-/net-2.7.5-internal-fix-collateral-ratio.0.tgz#1d2c1fa4b4ac6c4715017e5647b12eb7d6f9386f"
+  integrity sha512-+NNSENAE3PM0l3L4BTwEU9HyiWx0cnVcI6W2U9CsfB0NYgId38kvOd8iGXc3lyvVwGLvjdnGLC5a97IU+9V7DA==
   dependencies:
     eventemitter3 "^5.0.1"
 
-"@orderly.network/perp@4.7.4":
-  version "4.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/perp/-/perp-4.7.4.tgz#8bfd39b0d317a04c28007bcdf2bb7784405795d7"
-  integrity sha512-BJdGox1xjlCk6Q9+GcT5c96ZC+55TSO3SntXpKGn3ZiCbE3e2JHrMT5ic6p0gdpH1JVk+7r4pMeO0CU2Zq9gmQ==
+"@orderly.network/perp@4.7.5-internal-fix-collateral-ratio.0":
+  version "4.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/perp/-/perp-4.7.5-internal-fix-collateral-ratio.0.tgz#d64e6e6f53ff557a5546629497d6cbd41141842d"
+  integrity sha512-B6EehiceSIuZb/FdOdOB901FQEExhzOQzwKzJ3KR7MDh8Lb3Z5vvK3oaABJ8NuPM9cJF6jnTZTZRJOZEDWkibQ==
   dependencies:
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
 
-"@orderly.network/portfolio@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/portfolio/-/portfolio-2.7.4.tgz#4eabdea6deb472824703e614664ccd74800043fd"
-  integrity sha512-yFrCPfSF/zeEOg57ynGOUC7FS/jiM0Y0fQ1gReIWMokVGEFPRKuc+guHSqhDMYIXaZ/I0aQY6J4Uqf84yucUWA==
+"@orderly.network/portfolio@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/portfolio/-/portfolio-2.7.5-internal-fix-collateral-ratio.0.tgz#1daf9ffcc84e3a1a3f373b4fa1ea00965cdc515d"
+  integrity sha512-1uNV5t0ylFJce82iMRNE1P2dZDE5LxyygQG1UKqZn+1XrOEkyOHNvWarPBClxZHlpVT6uMmufjVPDqjuffkU/Q==
   dependencies:
-    "@orderly.network/chart" "2.7.4"
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/perp" "4.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-chain-selector" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/ui-leverage" "2.7.4"
-    "@orderly.network/ui-orders" "2.7.4"
-    "@orderly.network/ui-positions" "2.7.4"
-    "@orderly.network/ui-scaffold" "2.7.4"
-    "@orderly.network/ui-share" "2.7.4"
-    "@orderly.network/ui-transfer" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/chart" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/perp" "4.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-chain-selector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-leverage" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-orders" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-positions" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-scaffold" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-share" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-transfer" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     date-fns "^3.6.0"
     immer "^10.1.1"
     lodash "^4.17.21"
     ramda "^0.29.0"
 
-"@orderly.network/react-app@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/react-app/-/react-app-2.7.4.tgz#6398f0c1f0052b5c03a8701fe0e92728a9ccfc5e"
-  integrity sha512-zdEMwRlQ/nbak/J4jhkmVQ0fs+CQp+eK5E2dyxKPeOWLBvz0iKtZ0LYMLdaeI5pEictgBAWYitTA4Df/Erh+iQ==
+"@orderly.network/react-app@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/react-app/-/react-app-2.7.5-internal-fix-collateral-ratio.0.tgz#300b3ba67c2e6ece2c0540579fd30fa41f48ae07"
+  integrity sha512-HhdhMaTPR1gh0dgrfyPt0Bi9E+6iRiOZsIja5dQF93Eysu6maqs9C6OQvbm94nbbpt3LYnbkZf8R7q5BXW3TKg==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     date-fns "^3.6.0"
 
-"@orderly.network/trading-leaderboard@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/trading-leaderboard/-/trading-leaderboard-2.7.4.tgz#30850200a813ceabd93cdab3d5f8444235b9e71a"
-  integrity sha512-2iSC00AQDu69wKWGfjlvexWR77o4GbhQqS8MNT3tBwjw7bygUN86oD+Ww68RFpzehOEG7+qVsF3T7lEVBkWOfA==
+"@orderly.network/trading-leaderboard@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/trading-leaderboard/-/trading-leaderboard-2.7.5-internal-fix-collateral-ratio.0.tgz#1a0ebfc345d5b80d39bbc0270aef15b745903b46"
+  integrity sha512-/fkvP0zWWuhh5ZfKuq3wjTYEoNthTVynWhz/8MsQ8v7BFh8izoPyMzIdPOkV+gDB1MHixd6FGv9SDQzYOZEfWg==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     date-fns "^3.6.0"
     ramda "^0.29.0"
 
-"@orderly.network/trading-rewards@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/trading-rewards/-/trading-rewards-2.7.4.tgz#5b545c5d1253538d483f0acb0aeb6133a6f62d7b"
-  integrity sha512-NQNLs3Lt5zMjK3gYUzn7mrJNkbgkJlg+bAd2tEKdVmpCW0vvMm2v/ccBsPRftN2bHzpdLsBENVzzUP6GwaExXQ==
+"@orderly.network/trading-rewards@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/trading-rewards/-/trading-rewards-2.7.5-internal-fix-collateral-ratio.0.tgz#c6ac531cf32b151c7aa8e8a0b7d2054558aafc80"
+  integrity sha512-OUTo6mbNsBTMp9DxT4LIvWj67R0O+PYzahFLlGzov9iQW6QNXzVsHE16r9pqB165H4HQoMDp48h8yCi4EV685w==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/ui-scaffold" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-scaffold" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     date-fns "^3.6.0"
     ramda "^0.31.3"
 
-"@orderly.network/trading@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/trading/-/trading-2.7.4.tgz#99adfac25210c498ded84cd418b0d35d19598ce1"
-  integrity sha512-29vRJaISOJqM5JJhhXw8/MW/D6SuBSQ3ati4OxvLKtaw1nu2lI3+GL7EFYPxRSJ5YDSTIwDvJXucb5TQXF/72g==
+"@orderly.network/trading@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/trading/-/trading-2.7.5-internal-fix-collateral-ratio.0.tgz#46514c38833605ad335559ee6320dcb5b6c38121"
+  integrity sha512-KcEX2rVW77P8t7fjd3e4GmEE+HAMad5AGCaYIcfbRA2TjNNPiCi98wkxPuFXFiqZ7z5f0zZbP5EqvLg3OBxPKQ==
   dependencies:
     "@dnd-kit/core" "^6.3.1"
     "@dnd-kit/modifiers" "^9.0.0"
     "@dnd-kit/sortable" "^10.0.0"
     "@dnd-kit/utilities" "^3.2.2"
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/markets" "2.7.4"
-    "@orderly.network/portfolio" "2.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-chain-selector" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/ui-leverage" "2.7.4"
-    "@orderly.network/ui-order-entry" "2.7.4"
-    "@orderly.network/ui-orders" "2.7.4"
-    "@orderly.network/ui-positions" "2.7.4"
-    "@orderly.network/ui-scaffold" "2.7.4"
-    "@orderly.network/ui-share" "2.7.4"
-    "@orderly.network/ui-tradingview" "2.7.4"
-    "@orderly.network/ui-transfer" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/markets" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/portfolio" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-chain-selector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-leverage" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-order-entry" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-orders" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-positions" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-scaffold" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-share" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-tradingview" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-transfer" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     "@uiw/react-split" "^5.9.3"
 
-"@orderly.network/types@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/types/-/types-2.7.4.tgz#08738b844b60f44f761b56fdbe45a8ddcb10d63c"
-  integrity sha512-rI0Kc5MfSPrJHmuR3vBlBqPTH5VST+zIsRWb6suVuGRzWfnSIHnn/3nPjcXTSnOtli2Cx3HssOvxMAGxvJWzQA==
+"@orderly.network/types@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/types/-/types-2.7.5-internal-fix-collateral-ratio.0.tgz#b0ec3f3e842183b5c38ba3fbe6263370c57f3526"
+  integrity sha512-baU109tCBWuU6lJYxrjR/6Yu7HNKXJ3fJLzs1fRhaZztbutOvvnHlgBUa6MlkHEm9h/q+LYC6cdL/SaBerVQ1Q==
   dependencies:
     superstruct "^2.0.2"
 
-"@orderly.network/ui-chain-selector@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-chain-selector/-/ui-chain-selector-2.7.4.tgz#f1311586e6da6351f82bcc09715c2359b33c387a"
-  integrity sha512-xAL7bZpRlzB+ZZYWKeVe/9ZylJjTXr+ptMv4UTdcKXkVrgceku3TSMRSMP7NHDsgw119kFLpC5vTfHb7xJSJZw==
+"@orderly.network/ui-chain-selector@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-chain-selector/-/ui-chain-selector-2.7.5-internal-fix-collateral-ratio.0.tgz#c52e6bd16479bc5be0f5bb3afbf15060a5738ca0"
+  integrity sha512-lvzggiqpc//+evXpAmoElD9ZrXCb9f6+68G881jWVHIjs1CWCNw7e2+UMIfIZ9ix2fAJqrvYCNMynh1D/Rm8Aw==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
 
-"@orderly.network/ui-connector@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-connector/-/ui-connector-2.7.4.tgz#99186daf47bf1b03514a63cfae5016863894a07d"
-  integrity sha512-S4CnxTw+kZuoMjisUqvV7ZubqgoyAmBHmhjUfSomMk5ozDCYxxrnq6q5KVGEQexOco/sdhfW4QjfiXE/idbB6A==
+"@orderly.network/ui-connector@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-connector/-/ui-connector-2.7.5-internal-fix-collateral-ratio.0.tgz#4aca9bffefb29e095371124eb8de05fe2b05ac91"
+  integrity sha512-VUx2WH0WRs52TzitZ6S8UmxxgLTRBFQHEx49X7lECpYQap0FCmXhV3xvP48QetIz/Q73fUQQlbXpQmH6HmVmdw==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-chain-selector" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-chain-selector" "2.7.5-internal-fix-collateral-ratio.0"
 
-"@orderly.network/ui-leverage@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-leverage/-/ui-leverage-2.7.4.tgz#a5dc45e887cb0df02d4955c0c843793d596b6cb7"
-  integrity sha512-ylmNfdmlJSyfQLxd20uFjjNFkPmC/ssJC1W4Uujn2tcO5KMAQUb6NS+5eFQ1AMniUKXjefF5KnvVfjJsQlMcig==
+"@orderly.network/ui-leverage@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-leverage/-/ui-leverage-2.7.5-internal-fix-collateral-ratio.0.tgz#c1f7ad0885f72d1de74d2f70e87cdb6c6846e1ba"
+  integrity sha512-zBp2rFhoeW0Mwx3g2P/jO01Qh+0ZSTQ4RA4s3IB8BTpHUGSfmVK3qE/bKj17XHmVnHJ/DEgUMps89g7MRO/bQg==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/perp" "4.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/perp" "4.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
 
-"@orderly.network/ui-order-entry@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-order-entry/-/ui-order-entry-2.7.4.tgz#e0ead042910eaaa623b15a5c585055daa1a1351a"
-  integrity sha512-/QwE8W82iVlIbnX9CIQMSs/NW2VFzKgtbSqTiifsWtBbbYvr5Tfx1rbgeeikrXR7oz8iATpKBB50xTJpm1Yhzw==
+"@orderly.network/ui-order-entry@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-order-entry/-/ui-order-entry-2.7.5-internal-fix-collateral-ratio.0.tgz#562408faf7795f9f79140dc5f460647b4b4b7420"
+  integrity sha512-l9L5axAi3Rlvc36IcJozym7Wn3vSZrnODPpxVYzLn3wzBulxfUIjdBlqYyKyktPpuWiCfE7GwjYtZJ0vbE+R5A==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/perp" "4.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/ui-leverage" "2.7.4"
-    "@orderly.network/ui-scaffold" "2.7.4"
-    "@orderly.network/ui-tpsl" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/perp" "4.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-leverage" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-scaffold" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-tpsl" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     ramda "^0.31.3"
 
-"@orderly.network/ui-orders@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-orders/-/ui-orders-2.7.4.tgz#22678a9e92f10dbc2638be7b198c49a2c0dd2129"
-  integrity sha512-bk0lkx7HKDyQ5R3l4EyRYyfEdxM89jTGGBIh2wRhPD4ehDKG7fS++kWvPD3PCrKy9ik9/KrSZ6EP7Qu6J7tamQ==
+"@orderly.network/ui-orders@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-orders/-/ui-orders-2.7.5-internal-fix-collateral-ratio.0.tgz#72d5452c79edad4b93ebd42aeacadf03d7960131"
+  integrity sha512-mAVM40DVrNrUVFM6q3E9VvWIs+UI6Cn4H0i0Fgi17aBDUEiVdHA6q4fJ7WZ6FN3HOPoITcbQHt11sQDp96LSgg==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/ui-share" "2.7.4"
-    "@orderly.network/ui-tpsl" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-share" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-tpsl" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     date-fns "^3.6.0"
 
-"@orderly.network/ui-positions@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-positions/-/ui-positions-2.7.4.tgz#afdb8cdc43b7d531cc825e24a836dd65ddd18481"
-  integrity sha512-nDUWA92OlKc5xCSUdbYe8Ne6pKp3/r+nq/ULqSGPAwsOSO9LlkzdTHIbtaNE3eol0q9/eVqO+x3X+SR12shk9g==
+"@orderly.network/ui-positions@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-positions/-/ui-positions-2.7.5-internal-fix-collateral-ratio.0.tgz#efa558edb7fef4d1874220b9ce6724e23ecc5d39"
+  integrity sha512-/6R7SVsJFcXk1/60FE3xsUcfqx1VTx1lE2c1XV4bZ1nby/kACGlwrLO1jzmlqy3UY8VLlXH0MnayvpGj/ilOOA==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/perp" "4.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/ui-leverage" "2.7.4"
-    "@orderly.network/ui-share" "2.7.4"
-    "@orderly.network/ui-tpsl" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/perp" "4.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-leverage" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-share" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-tpsl" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     date-fns "^3.6.0"
     immer "^10.1.1"
     ramda "^0.29.0"
 
-"@orderly.network/ui-scaffold@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-scaffold/-/ui-scaffold-2.7.4.tgz#516652adc41042afd7a12bb4e2aaa5961ee3c49e"
-  integrity sha512-1QkIMyLYVzI0BF8LgSiOA0UthlIE7djWUaUl1WoTCUQEfIuJ1mSF37LHdZemo5/qH93B9/3HApJk2cOsDsO2Ow==
+"@orderly.network/ui-scaffold@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-scaffold/-/ui-scaffold-2.7.5-internal-fix-collateral-ratio.0.tgz#99ca2d8824ca39107a992a0b0e766affd5886941"
+  integrity sha512-pK26dUxep0gCYUB+BSDzXUcvd2/xrMtVj1SjfY6SICiD4JCcL4Ro6R2UTzAupy3UYUecOYrdbElKCFKLQ3wjaw==
   dependencies:
     "@akamfoad/qr" "^0.4.0"
     "@date-fns/utc" "1.2.0"
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-chain-selector" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-chain-selector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     date-fns "^3.6.0"
     immer "^10.1.1"
     jsqr "^1.4.0"
 
-"@orderly.network/ui-share@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-share/-/ui-share-2.7.4.tgz#f349b00aa13a46ad085cfc4a0f96fe11c7e03be5"
-  integrity sha512-q43MwmaudmKq7ADJ25g9WBTzTOMrXihG/n4e6cMLiaQdq8a5ANI08je3rS8Gz9sXKEzXGWTUh2uUq+Exmc9Z5g==
+"@orderly.network/ui-share@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-share/-/ui-share-2.7.5-internal-fix-collateral-ratio.0.tgz#bff9f0bf48b5b2c39c4b3d5a78ae380b799ad13c"
+  integrity sha512-IQ+waD3CRq4p/1rqeZgyoxInQHKVZVPktME7x2GvU1RiuY4EZuI6JwU03lQpqAqkOeHHVZjMxOulyWIkL50SeA==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
 
-"@orderly.network/ui-tpsl@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-tpsl/-/ui-tpsl-2.7.4.tgz#50d11b10800b99612ec4f29495c4e46f3439fd81"
-  integrity sha512-UyZKIlXrwHDTXgnMd3PgYLYQTQSPUD9C+VcU6+7N5O23dfFZJettuRclVYHx+xoOrDFKAM1DLFHwcZ4DUu2GrA==
+"@orderly.network/ui-tpsl@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-tpsl/-/ui-tpsl-2.7.5-internal-fix-collateral-ratio.0.tgz#a40b16e4484bbb467c1ce48f35ff5307f6d7cc10"
+  integrity sha512-lslfVlmThBawsWtWJRydzQbLEtxioi3V4eQS3nnPp6eMIljJ1PaQF9/nXsMsfSIYhGh7oitizDH4KceRgnnRzQ==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/perp" "4.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/perp" "4.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
 
-"@orderly.network/ui-tradingview@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-tradingview/-/ui-tradingview-2.7.4.tgz#d11a1fb6a9fedd5a3f56e2b820f19c443fb6bc2b"
-  integrity sha512-FIZ2YAV78b6pbrIgs7GwTI/o8jvxchzDXUdaYGMehm9a/KQE35ba1xHG8xdcJuFOg8H4HERyzIG+MLu6tyiA+Q==
+"@orderly.network/ui-tradingview@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-tradingview/-/ui-tradingview-2.7.5-internal-fix-collateral-ratio.0.tgz#1687aea26693e41496ef354f64b898c41fc846d6"
+  integrity sha512-83jIw7GyU9E8+t74to79bIghFGL8EtsKWJun+KehxZU4frPqFo2w5Jp2REJuT0Dz/eHAgkgrv+rxwojx3zbkjg==
   dependencies:
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/net" "2.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/ui-positions" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/net" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-positions" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     date-fns "^3.6.0"
 
-"@orderly.network/ui-transfer@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui-transfer/-/ui-transfer-2.7.4.tgz#338c3c0f344b72d331086bc9ded5cf6fd819390c"
-  integrity sha512-+CAicNOkGde4nsXquGJwaa+DJC2RsNU+t7IlnPQoH/hFmkQFCEeZE3WgYblJtVZ3FWM2u4SVxxgOeyiCFYOinw==
+"@orderly.network/ui-transfer@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui-transfer/-/ui-transfer-2.7.5-internal-fix-collateral-ratio.0.tgz#3bd64371afa57547123ef8df942c3439eb189529"
+  integrity sha512-PgvuQlNLNtRjCmw5CsD9Ze3/8B1Qdrl/q85gqqT85NEcHdmj7eOFNl1k+oDFuCi5kYobi7kKwDv/0kxanjk3Cw==
   dependencies:
     "@layerzerolabs/scan-client" "^0.0.6"
-    "@orderly.network/core" "2.7.4"
-    "@orderly.network/default-solana-adapter" "2.7.4"
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/perp" "4.7.4"
-    "@orderly.network/react-app" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-chain-selector" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/core" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/default-solana-adapter" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/perp" "4.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/react-app" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-chain-selector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     "@solana/web3.js" "^1.95.3"
     ethers "^6.15.0"
     ramda "^0.29.1"
 
-"@orderly.network/ui@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/ui/-/ui-2.7.4.tgz#01e7779df2543f9016d80e94d968a8bce432c9dc"
-  integrity sha512-D4yPO5iWariFm4BvfwrPz+wjNJYhqTenw5A7m0IphAhMBmtlW0efu2KQC5M8QJ8LHzSq/3LuqDHv6fPOxXY9GQ==
+"@orderly.network/ui@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/ui/-/ui-2.7.5-internal-fix-collateral-ratio.0.tgz#15257f76fd79d441df7b6a5e2039aa66436bdcfe"
+  integrity sha512-7KzAOg+rfopolYLstwlUbkGpIcB2kB/bKX/JhXgY7R1pz2bSr0kcKQZxYrIsSSoHa32qhwLNwMnkWFcgbLP37Q==
   dependencies:
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     "@radix-ui/react-avatar" "^1.0.3"
     "@radix-ui/react-checkbox" "^1.0.4"
     "@radix-ui/react-collapsible" "^1.0.3"
@@ -3001,29 +3001,29 @@
     react-hot-toast "^2.4.1"
     tailwind-variants "^0.2.1"
 
-"@orderly.network/utils@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/utils/-/utils-2.7.4.tgz#bbe63a205f8b3735832c6c6c1966c80f05fff522"
-  integrity sha512-HVtLWOBQ7OF7C4j2vYK8NMN8m+CExpaGjyWF37WS/wdnP7ZKQ6F8KXcLl2n5GOUuEe7/Qvbls2Bp339PGkIBlA==
+"@orderly.network/utils@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/utils/-/utils-2.7.5-internal-fix-collateral-ratio.0.tgz#6a2dc67b9a142420c9c7149e6cc75d6b2fe5b589"
+  integrity sha512-qwXniQ/SpnbAMtHfrmx6CNRubW7A96eD8y0bUqcKdfGPKvIiURLICjlYxLRiKRJUHh3LrhZJzSttgIV68b7Ckw==
   dependencies:
-    "@orderly.network/types" "2.7.4"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
     dayjs "^1.11.9"
     decimal.js-light "^2.5.1"
 
-"@orderly.network/wallet-connector-privy@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/wallet-connector-privy/-/wallet-connector-privy-2.7.4.tgz#262cee490b2f4ea17a44f2a76c329d28e0dedf52"
-  integrity sha512-/eQlwo4xt2hZ05o6ZFjwgYcuS690eTRIrRcQ5q5IB6MunpFsYP/YwMUaQFfRQ2O5Ay0W9efTxkkskJ2GSkouGA==
+"@orderly.network/wallet-connector-privy@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/wallet-connector-privy/-/wallet-connector-privy-2.7.5-internal-fix-collateral-ratio.0.tgz#e7c15d1a7360a3cb7af54fb8e08ec34e3ada4c4a"
+  integrity sha512-BiAxC1aU2Y9cconjkDwgycAsWCRUuLCjVfFLsgcZ+Q4z4xrVEX1s+YE625VkPviWwImNmR7M7rD1DN1YbSEAvg==
   dependencies:
     "@abstract-foundation/agw-client" "^1.6.2"
     "@abstract-foundation/agw-react" "^1.6.4"
-    "@orderly.network/core" "2.7.4"
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/i18n" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/ui-connector" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/core" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/i18n" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui-connector" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     "@privy-io/react-auth" "^2.4.5"
     "@solana-mobile/wallet-adapter-mobile" "^2.1.4"
     "@solana/wallet-adapter-base" "^0.9.23"
@@ -3039,17 +3039,17 @@
     wagmi "^2.14.11"
     zustand "^4.5.5"
 
-"@orderly.network/wallet-connector@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/wallet-connector/-/wallet-connector-2.7.4.tgz#5ed9c07cc993675cb1e7d7904050fc1227a74d18"
-  integrity sha512-uBQPugOEH1hnWDI4i7pQUPdriSoSgrIRhq6famI2mxFtI3zUkhVmZ2gaPg73vt3SPA/WQDqRA7STE7wt54NDbg==
+"@orderly.network/wallet-connector@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/wallet-connector/-/wallet-connector-2.7.5-internal-fix-collateral-ratio.0.tgz#53a40a8079e85fa6ef29ec7570b2bca696cbc4f3"
+  integrity sha512-CVkmcagzkeX+blkiOD2CDlxPPQLoLbAoOw8eP9yOAJUY9ujbNVYGOv/saKUV1eOoXlEVcvFlJi1gGZFXN6bzmA==
   dependencies:
     "@binance/w3w-blocknative-connector" "^1.1.7"
-    "@orderly.network/core" "2.7.4"
-    "@orderly.network/hooks" "2.7.4"
-    "@orderly.network/types" "2.7.4"
-    "@orderly.network/ui" "2.7.4"
-    "@orderly.network/utils" "2.7.4"
+    "@orderly.network/core" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/hooks" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/ui" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/utils" "2.7.5-internal-fix-collateral-ratio.0"
     "@solana-mobile/wallet-adapter-mobile" "^2.1.4"
     "@solana/spl-token" "0.4.8"
     "@solana/wallet-adapter-base" "^0.9.23"
@@ -3065,13 +3065,13 @@
     lodash "^4.17.21"
     rxjs "^7.5.5"
 
-"@orderly.network/web3-provider-ethers@2.7.4":
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/@orderly.network/web3-provider-ethers/-/web3-provider-ethers-2.7.4.tgz#6e36d801820d974481abd9552d4e5aeed4e64db3"
-  integrity sha512-k5ya4ALwe4DKrHGeStkzlhw1nOrgxtovqJFlnuzpIBqrhswOOkW2EsQLmtjR0aGhT4/sB2K5tYqbGSKzY7jh8w==
+"@orderly.network/web3-provider-ethers@2.7.5-internal-fix-collateral-ratio.0":
+  version "2.7.5-internal-fix-collateral-ratio.0"
+  resolved "http://npm.orderly.network/@orderly.network/web3-provider-ethers/-/web3-provider-ethers-2.7.5-internal-fix-collateral-ratio.0.tgz#b998d39d9fd488954998ea313f977a9b97460c29"
+  integrity sha512-ja3Wo5o+aL4/cTwvj7xvs/ZmD7IWdFGWPSVkCZLIoPiUeOaMxc+vVWAQQaKqpJxi15b2Ca6PPXecbQ1Sq6a2OA==
   dependencies:
-    "@orderly.network/default-evm-adapter" "2.7.4"
-    "@orderly.network/types" "2.7.4"
+    "@orderly.network/default-evm-adapter" "2.7.5-internal-fix-collateral-ratio.0"
+    "@orderly.network/types" "2.7.5-internal-fix-collateral-ratio.0"
     ethers "^6.15.0"
     ethers-decode-error "^2.1.3"
 
