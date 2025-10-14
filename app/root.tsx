@@ -16,33 +16,53 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const [lang, setLang] = useState("en");
 
-  // Handle initial language setup
+  // Handle initial language setup (now includes IP-based region check)
   useEffect(() => {
-    const savedLang = localStorage.getItem("lang");
-    console.log(`Language set from localStorage: ${savedLang}`);
+    let cancelled = false;
 
-    if (savedLang) {
-      console.log(`Setting language to: ${savedLang}`);
-      setLang(savedLang);
-      i18n.changeLanguage(savedLang);
-      localStorage.removeItem("lang");
+    const applyLang = (lng: "en" | "ko") => {
+      if (cancelled) return;
+      setLang(lng);
+      i18n.changeLanguage(lng);
+      document.documentElement.style.setProperty("--current-lang", lng);
+      document.documentElement.setAttribute("data-lang", lng);
+    };
 
-      // Set CSS custom property for language
-      document.documentElement.style.setProperty('--current-lang', savedLang);
-      // Or set data attribute
-      document.documentElement.setAttribute('data-lang', savedLang);
-    } else {
-      // Check if i18n has a saved language preference
-      const currentLang = i18n.language === "ko" ? "ko" : "en";
-      setLang(currentLang);
-      console.log(`No language found in localStorage, using i18n default: ${currentLang}`);
-      i18n.changeLanguage(currentLang);
+    (async () => {
+      const savedLang = localStorage.getItem("lang");
+      if (savedLang === "en" || savedLang === "ko") {
+        applyLang(savedLang as "en" | "ko");
+        localStorage.removeItem("lang");
+        return;
+      }
 
-      // Set CSS custom property for language
-      document.documentElement.style.setProperty('--current-lang', currentLang);
-      // Or set data attribute
-      document.documentElement.setAttribute('data-lang', currentLang);
-    }
+      try {
+        const resp = await fetch("https://api.orderly.org/v1/ip_info");
+        if (resp.ok) {
+          const data = await resp.json();
+          const region = (data?.data?.region || "")
+            .toString()
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, "");
+          console.log("Detected region:", region);
+          const isKorean = ["korea", "southkorea", "republicofkorea", "kr"].includes(region);
+          if (isKorean) {
+            applyLang("ko");
+            return;
+          }
+        }
+      } catch {
+        // ignore network errors, fall through to i18n default
+      }
+
+      // Fallback to current i18n language (defaults to en)
+      applyLang(i18n.language === "ko" ? "ko" : "en");
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   // Handle referral code from URL parameters and set the default referral code
