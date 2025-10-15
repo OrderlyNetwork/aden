@@ -37,18 +37,17 @@ export default function PerpPage() {
     if (typeof window === "undefined") return;
     let t: number | undefined;
 
-    t = window.setTimeout(() => {
-      try {
-        // For desktop orderbook - set to quote (USDC)
-        localStorage.setItem("orderbook_coin_type", '"USDC"');
-        // For mobile orderbook - set to "quote"
-        localStorage.setItem("orderbook_mobile_coin_unit", '"quote"');
 
-        // localStorage.getItem("orderbook_coin_type")
-        // localStorage.getItem("orderbook_mobile_coin_unit")
-      } catch (e) {
-      }
-    }, 1000);
+    try {
+      // For desktop orderbook - set to quote (USDC)
+      localStorage.setItem("orderbook_coin_type", '"USDC"');
+      // For mobile orderbook - set to "quote"
+      localStorage.setItem("orderbook_mobile_coin_unit", '"quote"');
+
+      // localStorage.getItem("orderbook_coin_type")
+      // localStorage.getItem("orderbook_mobile_coin_unit")
+    } catch (e) {
+    }
 
     return () => {
       if (t) clearTimeout(t);
