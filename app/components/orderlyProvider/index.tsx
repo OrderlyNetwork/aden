@@ -293,6 +293,9 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
         PERP_BTC_USDC: "10",
         PERP_ETH_USDC: "0.1",
         PERP_SOL_USDC: "0.01",
+        PERP_NAS100_USDC: "1",
+        PERP_SPX500_USDC: "0.1"
+
       }}
       notification={{
         orderFilled: {
