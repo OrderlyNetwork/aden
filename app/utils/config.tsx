@@ -56,7 +56,7 @@ const DEFAULT_ENABLED_MENUS: MainNavItem[] = [
   // { name: "Leaderboard", href: "/leaderboard", translationKey: "tradingLeaderboard.leaderboard" },
   { name: "Community", href: "/demo_trading/BTCUSDT", translationKey: "common.demo_trading" },
   // { name: "Referral", href: "/referral", translationKey: "affiliate.referral" },
-  { name: "Competition", href: "/competition", translationKey: "extend.competition.menuItem", icon: "/usdt.png" }
+  // { name: "Competition", href: "/competition", translationKey: "extend.competition.menuItem", icon: "/usdt.png" }
 ];
 
 const getCustomMenuItems = (): MainNavItem[] => {
