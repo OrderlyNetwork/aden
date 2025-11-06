@@ -89,6 +89,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang={lang}>
       <head>
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/webp" href={withBasePath("/favicon.webp")} />
